@@ -8,11 +8,15 @@ Created on Thu Mar 27 14:35:38 2014
 import pygame
 from pygame.locals import *
 import time
+<<<<<<< HEAD
 import Characters
 import Wall
 import World
 from Scripts import *
  
+=======
+
+>>>>>>> c4596ec126df7a7947fcbcd9520dd87a3a0cb523
 
 class PyGamePathView:
     """
@@ -72,6 +76,11 @@ class PyGamePathView:
         # Keep time constant.
         clock.tick(60)
 
+<<<<<<< HEAD
+=======
+import Characters
+import World
+>>>>>>> c4596ec126df7a7947fcbcd9520dd87a3a0cb523
 
 if __name__ == '__main__':
     pygame.init()
