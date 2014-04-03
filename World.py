@@ -6,6 +6,7 @@ Created on Thu Apr  3 14:17:48 2014
 """
 import Wall
 import Node
+import Characters
 
 # Define colors.
 black = 0,0,0
@@ -22,12 +23,20 @@ startcolor = 255,235,62
 endcolor = 63,255,62
 playbuildcolor = 0,0,0
 
+# Set screen sizes and declare ref for future reference for blocks.
+ref = 20
+swidth = 36*ref
+sheight = 24*ref
+
+
+
+
 class world(object):
     """Encodes game state."""
     def __init__(self):
         self.world = {}
         self.characters=pygame.sprite.Group()
-        
+        self.Character = Characters.Characters(self,'Player',1,2,3,4,5,6,7,8)
         self.populateBlocks()
         self.populateCharaceters()
         for x in range(0,swidth,ref):
