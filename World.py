@@ -5,6 +5,22 @@ Created on Thu Apr  3 14:17:48 2014
 @author: jacob
 """
 import Wall
+import Node
+
+# Define colors.
+black = 0,0,0
+white = 255,255,255
+red = 255,0,0   # This is the side reference for creating the whole game grid.
+playercolor = 255,56,25
+nodecolor = 217,217,217
+wallcolor = 130,130,130
+lavacolor = 217,15,0
+icecolor = 94,227,255
+mudcolor = 127,87,52
+reversecolor = 145,33,196
+startcolor = 255,235,62
+endcolor = 63,255,62
+playbuildcolor = 0,0,0
 
 class world(object):
     """Encodes game state."""
@@ -16,7 +32,7 @@ class world(object):
         self.populateCharaceters()
         for x in range(0,swidth,ref):
             for y in range(0,sheight,ref):
-                node = Node(self,x,y)
+                node = Node.Node(self,x,y)
                 self.world[(node.x,node.y)] = node
                 
         for x in range(0,swidth,ref):

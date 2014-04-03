@@ -8,20 +8,6 @@ Created on Thu Mar 27 14:35:38 2014
 import pygame
 from pygame.locals import *
 import time
-<<<<<<< HEAD
-
-        
-
-        
-
-    
-                    
-
-        
- # class Wall(Block):
- #  """ A basic wall structure that stops the character."""
- #   def __init__(self, model, x, y):
- #       Block.__init__(self, wallcolor, x, y)
 
 
 class PyGamePathView:
@@ -84,11 +70,8 @@ class PyGamePathView:
         # Keep time constant.
         clock.tick(60)
 
-=======
 import Characters
 import World
->>>>>>> ed5543d2e9af31985e6692c5fe3cc4c8114be41f
-
 
 if __name__ == '__main__':
     pygame.init()
