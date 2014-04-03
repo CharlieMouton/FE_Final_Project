@@ -8,21 +8,11 @@ Created on Thu Mar 27 14:35:38 2014
 import pygame
 from pygame.locals import *
 import time
-<<<<<<< HEAD
-
-        
-
-        
-
-    
-                    
-
-        
- # class Wall(Block):
- #  """ A basic wall structure that stops the character."""
- #   def __init__(self, model, x, y):
- #       Block.__init__(self, wallcolor, x, y)
-
+import Characters
+import Wall
+import World
+from Scripts import *
+ 
 
 class PyGamePathView:
     """
@@ -38,13 +28,11 @@ class PyGamePathView:
         MAP_HEIGHT =  4
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
+        point1 = (0,0)
+        point2 = (100,100)
+        pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point1),CartToIso(point2),width=1)
          
-        for  x in  range (MAP_WIDTH):
-             for  y in  range (MAP_HEIGHT):
-                  tile =  MAP [y] [x]
-                  tile_x =  (x - y) * (TILE_WIDTH / 2 ) + self . map_x
-                  tile_y =  (x + y) * (TILE_HEIGHT / 2 ) + self . map_y
-                  self . tiles [tile]. draw (tile_x, tile_y)
+
 
 
 
@@ -84,12 +72,6 @@ class PyGamePathView:
         # Keep time constant.
         clock.tick(60)
 
-=======
-import Characters
-import Wall
-import World
->>>>>>> ed5543d2e9af31985e6692c5fe3cc4c8114be41f
-
 
 if __name__ == '__main__':
     pygame.init()
@@ -100,7 +82,17 @@ if __name__ == '__main__':
     running = True
 
     while running:
-        screen.fill(pygame.Color(255,255,255))
+        screen.fill(pygame.Color(255,255,255))       
+        point1 = (300,300)
+        point2 = (300,200)
+        point3 = (200,200)
+        point4 = (200,300)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
+         
+
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
