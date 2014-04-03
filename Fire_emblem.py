@@ -9,7 +9,6 @@ import pygame
 from pygame.locals import *
 import time
 import Characters
-import Wall
 import World
 
 

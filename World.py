@@ -4,6 +4,7 @@ Created on Thu Apr  3 14:17:48 2014
 
 @author: jacob
 """
+import Wall
 
 class world(object):
     """Encodes game state."""
@@ -21,7 +22,7 @@ class world(object):
         for x in range(0,swidth,ref):
             for y in range(0,sheight,ref):
                 if x not in range(3*ref,swidth-3*ref,ref) or y not in range(3*ref,sheight-3*ref,ref):
-                    boundary = Wall(self,x,y)
+                    boundary = Wall.Wall(self,x,y)
                     boundary.color = black
                     self.world[(boundary.x,boundary.y)] = boundary
                     
