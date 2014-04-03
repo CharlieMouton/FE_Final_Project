@@ -5,16 +5,29 @@ Created on Thu Apr  3 14:18:56 2014
 @author: jacob
 """
 
-class Blocks():
-    """
-    Creates a block for the game. Currently it inherits from pygame sprite because of pygame's inherent edge detection code.
-    """
-    def __init__(self, color, x, y):
-        self.color = color
-        self.side = ref
-        self.x = x
-        self.y = y
-        self.left = self.x
-        self.right = self.x + self.side
-        self.top = self.y
-        self.bottom = self.y + self.side
+class Grass(pygame.sprite.Sprite):
+    """This class encodes the state of a grass"""
+    def __init__ (self,x,y):
+        #Call the parent class (Sprite) constructor     
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('images/grassunit.jpg')
+        self.image = pygame.transform.scale(self.image, (SQUARELENGTH, SQUARELENGTH))
+        self.image.set_colorkey(WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+        
+
+
+class BlockPermanent(pygame.sprite.Sprite):
+    """This class encodes the state of a permanent block"""
+    def __init__ (self,x,y):
+        #Call the parent class (Sprite) constructor     
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('images/black-square.jpg')
+        self.image = pygame.transform.scale(self.image, (SQUARELENGTH, SQUARELENGTH))
+        self.image.set_colorkey(WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
