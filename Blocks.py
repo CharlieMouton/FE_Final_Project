@@ -20,8 +20,8 @@ class Grass(pygame.sprite.Sprite):
         
 
 
-class BlockPermanent(pygame.sprite.Sprite):
-    """This class encodes the state of a permanent block"""
+class Outeredge(pygame.sprite.Sprite):
+    """This class encodes the state of the outer edge of the screen"""
     def __init__ (self,x,y):
         #Call the parent class (Sprite) constructor     
         pygame.sprite.Sprite.__init__(self)
