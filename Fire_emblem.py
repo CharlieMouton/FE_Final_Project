@@ -8,22 +8,10 @@ Created on Thu Mar 27 14:35:38 2014
 import pygame
 from pygame.locals import *
 import time
+import Characters
 
-        
-
-        
-
-    
-                    
-
-        
-class Wall(Block):
-    """ A basic wall structure that stops the character."""
-    def __init__(self, model, x, y):
-        Block.__init__(self, wallcolor, x, y)
-
-
-
+import Wall
+import World
 
 
 if __name__ == '__main__':
