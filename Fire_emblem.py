@@ -48,8 +48,7 @@ class world(object):
             for y in range(0,sheight,ref):
                 if x not in range(3*ref,swidth-3*ref,ref) or y not in range(3*ref,sheight-3*ref,ref):
                     boundary = Blocks.Outeredge(x,y)
-                    self.grid[(boundary.x,boundary.y)] = boundary
-        print self.grid
+                    self.grid[(boundary.rect.x,boundary.rect.y)] = boundary
 
 class PathView:
     """
@@ -66,10 +65,10 @@ class PathView:
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
         for point in self.model.grid:
-            point1 = (point[1],point[2])
-            point2 = (point[1]+50,point[2])
-            point3 = (point[1]+50,point[2]+50)
-            point4 = (point[1],point[2]+50)
+            point1 = (point[0],point[1])
+            point2 = (point[0]+50,point[1])
+            point3 = (point[0]+50,point[1]+50)
+            point4 = (point[0],point[1]+50)
             pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
             pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
             pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
