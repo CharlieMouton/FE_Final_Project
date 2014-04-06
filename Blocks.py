@@ -6,9 +6,9 @@ Created on Thu Apr  3 14:18:56 2014
 """
 
 import pygame
+
 SQUARELENGTH=50
 WHITE = (255, 255, 255)
-
 
 
 class Grass(pygame.sprite.Sprite):
