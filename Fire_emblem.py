@@ -17,7 +17,7 @@ class PathView:
     Game viewer in pygame window.
     """
     def __init__(self,world,screen):
-        self.model=world
+        self.model= world
         self.screen = screen
 
     def draw(self):
@@ -26,14 +26,15 @@ class PathView:
         MAP_HEIGHT =  4
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
-        point1 = (300,300)
-        point2 = (300,200)
-        point3 = (200,200)
-        point4 = (200,300)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
+        for point in self.model.grid:
+            point1 = (point[1],point[2])
+            point2 = (point[1]+50,point[2])
+            point3 = (point[1]+50,point[2]+50)
+            point4 = (point[1],point[2]+50)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
 
 
 
