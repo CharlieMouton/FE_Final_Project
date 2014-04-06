@@ -24,9 +24,9 @@ endcolor = 63,255,62
 playbuildcolor = 0,0,0
 
 # Set screen sizes and declare ref for future reference for blocks.
-ref = 20
-swidth = 36*ref
-sheight = 24*ref
+ref = 50
+swidth = 14*ref
+sheight = 10*ref
 
 
 
