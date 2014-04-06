@@ -6,6 +6,7 @@ Created on Thu Apr  3 14:18:56 2014
 """
 
 import pygame
+import Characters
 
 SQUARELENGTH=50
 WHITE = (255, 255, 255)
@@ -30,6 +31,8 @@ class Grass(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
     
+    def interaction(self,character):
+        self.character.movementleft-=1
 
 class Outeredge(pygame.sprite.Sprite):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
@@ -42,7 +45,9 @@ class Outeredge(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        
+    
+    def interaction(self):
+        pass
         
 class Forest(pygame.sprite.Sprite):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
@@ -54,8 +59,10 @@ class Forest(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
         self.rect.x = x
-<<<<<<< HEAD
         self.rect.y = y
+        
+    def interaction(self):
+        pass
         
         
 class Fortress(pygame.sprite.Sprite):
@@ -70,6 +77,8 @@ class Fortress(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         
+    def interaction(self):
+        pass
         
         
         
@@ -120,8 +129,3 @@ class Fortress(pygame.sprite.Sprite):
         
         
         
-        
-        
-=======
-        self.rect.y = y
->>>>>>> 4c514d55cdda77117228aea410307cf5a3803a01

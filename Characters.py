@@ -5,7 +5,7 @@ Created on Thu Apr  3 14:16:43 2014
 @author: jacob
 """
 class Characters(object):
-    def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement,weaponrange,x,y):
+    def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement,movementleft, weaponrange,x,y):
         self.name=name
         self.level=level
         self.HP=HP
@@ -14,6 +14,7 @@ class Characters(object):
         self.agility=agility
         self.intelligence=intelligence
         self.movement=movement
+        self.movementleft=movementleft
         self.weaponrange=weaponrange
         self.x=x
         self.y=y
