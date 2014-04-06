@@ -10,6 +10,13 @@ import pygame
 SQUARELENGTH=50
 WHITE = (255, 255, 255)
 
+class Blocks():
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+        self.length=SQUARELENGTH        
+        
+
 
 class Grass(pygame.sprite.Sprite):
     """This class encodes the state of a grass"""

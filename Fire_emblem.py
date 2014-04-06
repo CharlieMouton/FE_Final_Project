@@ -16,8 +16,8 @@ class PyGamePathView:
     """
     Game viewer in pygame window.
     """
-    def __init__(self,model,screen):
-        self.model = model
+    def __init__(self,world,screen):
+        self.model=world
         self.screen = screen
 
     def draw(self):

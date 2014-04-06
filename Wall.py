@@ -4,6 +4,8 @@ Created on Thu Apr  3 14:18:26 2014
 
 @author: jacob
 """
+import pygame
+
 SQUARELENGTH=50
 WHITE = (255, 255, 255)
 
