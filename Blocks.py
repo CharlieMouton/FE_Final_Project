@@ -5,6 +5,9 @@ Created on Thu Apr  3 14:18:56 2014
 @author: jacob
 """
 
+SQUARELENGTH=50
+WHITE = (255, 255, 255)
+
 class Grass(pygame.sprite.Sprite):
     """This class encodes the state of a grass"""
     def __init__ (self,x,y):
@@ -21,7 +24,7 @@ class Grass(pygame.sprite.Sprite):
 
 
 class Outeredge(pygame.sprite.Sprite):
-    """This class encodes the state of the outer edge of the screen"""
+    """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
     def __init__ (self,x,y):
         #Call the parent class (Sprite) constructor     
         pygame.sprite.Sprite.__init__(self)
