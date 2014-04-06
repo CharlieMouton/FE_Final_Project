@@ -77,7 +77,7 @@ if __name__ == '__main__':
     
     world=World.world
     
-    size = (640,480)
+    size = (700,500)
     screen = pygame.display.set_mode(size)
     running = True
     view=PathView(world,screen)
