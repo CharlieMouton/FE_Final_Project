@@ -21,15 +21,19 @@ class PathView:
         self.screen = screen
 
     def draw(self):
-        self.screen.fill(pygame.Color(0,0,0))
+        self.screen.fill(pygame.Color(255,255,255))
         MAP_WIDTH =  4
         MAP_HEIGHT =  4
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
-        point1 = (0,0)
-        point2 = (100,100)
-        pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point1),CartToIso(point2),width=1)
-         
+        point1 = (300,300)
+        point2 = (300,200)
+        point3 = (200,200)
+        point4 = (200,300)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
+        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
 
 
 
@@ -67,31 +71,20 @@ class PathView:
 
         pygame.display.update()
 
-        # Keep time constant.
-        clock.tick(60)
 
 if __name__ == '__main__':
     pygame.init()
     
     world=World.world
     
-    size = (640,480)
+    size = (700,500)
     screen = pygame.display.set_mode(size)
     running = True
     view=PathView(world,screen)
     
     while running:
         screen.fill(pygame.Color(255,255,255))       
-        point1 = (300,300)
-        point2 = (300,200)
-        point3 = (200,200)
-        point4 = (200,300)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
-        pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
-         
-
+        view.draw()
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
