@@ -9,6 +9,7 @@ from pygame.locals import *
 import time
 import Characters
 import Wall
+import Blocks
 from Scripts import *
 
 # Define colors.
