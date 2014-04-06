@@ -4,10 +4,8 @@ Created on Thu Apr  3 14:53:54 2014
 
 @author: jacob
 """
-
 import World
 import Characters
- 
 
 class Model(self):
     def __init__(self):

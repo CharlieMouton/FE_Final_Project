@@ -4,8 +4,6 @@ Created on Thu Apr  3 14:16:43 2014
 
 @author: jacob
 """
-
-
 class Characters(object):
     def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement,weaponrange,x,y):
         self.name=name
