@@ -53,7 +53,7 @@ class PathView:
     """
     Game viewer in pygame window.
     """
-    def __init__(self,world,screen,grid):
+    def __init__(self,world,screen):
         self.model= world
         self.screen = screen
 
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     size = (700,500)
     screen = pygame.display.set_mode(size)
     running = True
-    view=PathView(world,screen,grid)
+    view=PathView(world,screen)
     
     while running:
         screen.fill(pygame.Color(255,255,255))       

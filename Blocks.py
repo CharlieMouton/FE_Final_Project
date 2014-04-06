@@ -23,7 +23,7 @@ class Grass(pygame.sprite.Sprite):
     def __init__ (self,x,y):
         #Call the parent class (Sprite) constructor     
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('grassunit.jpg')
+        self.image = pygame.image.load('images/grassunit.jpg')
         self.image = pygame.transform.scale(self.image, (SQUARELENGTH, SQUARELENGTH))
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
@@ -36,7 +36,7 @@ class Outeredge(pygame.sprite.Sprite):
     def __init__ (self,x,y):
         #Call the parent class (Sprite) constructor     
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('black-square.jpg')
+        self.image = pygame.image.load('images/black-square.jpg')
         self.image = pygame.transform.scale(self.image, (SQUARELENGTH, SQUARELENGTH))
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
