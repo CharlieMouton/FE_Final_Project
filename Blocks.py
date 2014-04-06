@@ -4,7 +4,6 @@ Created on Thu Apr  3 14:18:56 2014
 
 @author: jacob
 """
-
 class Grass(pygame.sprite.Sprite):
     """This class encodes the state of a grass"""
     def __init__ (self,x,y):
@@ -16,9 +15,6 @@ class Grass(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
-        
-
 
 class Outeredge(pygame.sprite.Sprite):
     """This class encodes the state of the outer edge of the screen"""
