@@ -12,12 +12,12 @@ import Wall
 import World
 from Scripts import *
 
-class PyGamePathView:
+class PathView:
     """
     Game viewer in pygame window.
     """
-    def __init__(self,model,screen):
-        self.model = model
+    def __init__(self,world,screen):
+        self.model=world
         self.screen = screen
 
     def draw(self):
@@ -73,11 +73,13 @@ class PyGamePathView:
 if __name__ == '__main__':
     pygame.init()
     
-
+    world=World.world
+    
     size = (640,480)
     screen = pygame.display.set_mode(size)
     running = True
-
+    view=PathView(world,screen)
+    
     while running:
         screen.fill(pygame.Color(255,255,255))       
         point1 = (300,300)
@@ -94,6 +96,7 @@ if __name__ == '__main__':
             if event.type == QUIT:
                 running = False
         time.sleep(.01)
+        
         pygame.display.update()
 
     pygame.quit()
