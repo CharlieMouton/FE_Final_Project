@@ -4,7 +4,6 @@ Created on Thu Mar 27 14:35:38 2014
 
 @author: julian
 """
-
 import pygame
 from pygame.locals import *
 import time
