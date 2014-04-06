@@ -54,6 +54,7 @@ class Forest(pygame.sprite.Sprite):
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
         self.rect.x = x
+<<<<<<< HEAD
         self.rect.y = y
         
         
@@ -121,3 +122,6 @@ class Fortress(pygame.sprite.Sprite):
         
         
         
+=======
+        self.rect.y = y
+>>>>>>> 4c514d55cdda77117228aea410307cf5a3803a01
