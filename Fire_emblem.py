@@ -8,7 +8,7 @@ from Scripts import *
 from Global_variables import *
 from operator import itemgetter
 
-grass = pygame.image.load('grass.png')  
+grass = pygame.image.load('images/grass.png')  
 
 class Model:
 
@@ -21,8 +21,8 @@ class Model:
         # self.populateCharaceters()
         for x in range(0,swidth,ref):
             for y in range(0,sheight,ref):
-                node = (x,y)
-                self.grid[(x,y)] = node  
+                # node = Blocks(x,y)
+                self.grid[(x,y)] = Blocks.Grass(x,y)  
         for x in range(0,swidth,ref):
             for y in range(0,sheight,ref):
                 if x not in range(3*ref,swidth-3*ref,ref) or y not in range(3*ref,sheight-3*ref,ref):
@@ -78,6 +78,8 @@ class View:
 
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
+            tempobj = self.model.grid[point]
+            # print tempobj
             screen.blit(grass,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-50))
 
         pygame.display.update()
