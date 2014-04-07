@@ -12,7 +12,7 @@ class Model:
     def __init__(self):
         self.grid = {}
         # self.characters=pygame.sprite.Group()
-        self.Character = Characters.Characters('Player',1,2,3,4,5,6,7,350,350)
+        self.Character = Characters.Characters(self,'Player',1,2,3,4,5,6,7,350,350)
         # self.populateBlocks()
         # self.populateCharaceters()
         for x in range(0,swidth,ref):
