@@ -1,5 +1,7 @@
 ref = 50
+global swidth 
 swidth = 15*ref
+global sheight
 sheight = 15*ref
 size = (1024,768)
 
