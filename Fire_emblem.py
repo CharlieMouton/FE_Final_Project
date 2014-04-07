@@ -3,7 +3,6 @@ from pygame.locals import *
 import time
 
 import Characters
-import Wall
 import Blocks
 from Scripts import *
 from Global_variables import *
