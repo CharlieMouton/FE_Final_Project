@@ -18,6 +18,7 @@ class Grass(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.movementcost=1
     
 class Outeredge(pygame.sprite.Sprite):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
@@ -30,9 +31,10 @@ class Outeredge(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.movementcost=0
             
 class Forest(pygame.sprite.Sprite):
-    """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
+    """This class encodes the forest block type."""
     def __init__ (self,x,y):
         #Call the parent class (Sprite) constructor     
         pygame.sprite.Sprite.__init__(self)
@@ -42,9 +44,10 @@ class Forest(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.movementcost=2
         
 class Fortress(pygame.sprite.Sprite):
-    """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
+    """This class encodes the fortress block type."""
     def __init__ (self,x,y):
         #Call the parent class (Sprite) constructor     
         pygame.sprite.Sprite.__init__(self)
@@ -54,3 +57,4 @@ class Fortress(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.movementcost=0
