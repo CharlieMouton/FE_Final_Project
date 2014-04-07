@@ -1,13 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  3 14:29:22 2014
+from Global_variables import *
 
-@author: jacob
-"""
 def CartToIso(x,y):
 	"""Takes an x and y pair and converts them to isometric position."""
-	centerx = 640/2
-	centery = 480/2
-	isox = x - y+centerx
-	isoy = (x+y)/2
-	return (isox,isoy)
+	isox = x - y + centerx
+	isoy = (x + y) / 2
+	return (isox, isoy)
+
+def IsoToCart(x,y):
+    """Takes an isometric position and converts them to an x and y pair."""
+    isox = isox - centerx
+    cartX = (2 * isoY + isoX) / 2
+    cartY = (2 * isoY - isoX) / 2
+    return (cartX, cartY)

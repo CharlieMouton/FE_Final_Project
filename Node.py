@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  3 14:40:05 2014
-
-@author: jacob
-"""
- 
 import Blocks
 
 class Node(Blocks.Blocks):

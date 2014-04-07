@@ -1,14 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  3 14:18:56 2014
-
-@author: jacob
-"""
-
 import pygame
-
-SQUARELENGTH=50
-WHITE = (255, 255, 255)
+from Global_variables import *
 
 class Blocks():
     def __init__(self,x,y):
@@ -16,8 +7,6 @@ class Blocks():
         self.y=y
         self.length=SQUARELENGTH        
         
-
-
 class Grass(pygame.sprite.Sprite):
     """This class encodes the state of a grass"""
     def __init__ (self,x,y):
@@ -30,7 +19,6 @@ class Grass(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
     
-
 class Outeredge(pygame.sprite.Sprite):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
     def __init__ (self,x,y):
@@ -42,8 +30,7 @@ class Outeredge(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        
-        
+            
 class Forest(pygame.sprite.Sprite):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
     def __init__ (self,x,y):
@@ -55,7 +42,6 @@ class Forest(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        
         
 class Fortress(pygame.sprite.Sprite):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""

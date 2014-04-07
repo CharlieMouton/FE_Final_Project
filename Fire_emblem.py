@@ -6,11 +6,7 @@ import Characters
 import Wall
 import Blocks
 from Scripts import *
-
-# Set screen sizes and declare ref for future reference for blocks.
-ref = 50
-swidth = 15*ref
-sheight = 15*ref
+from Global_variables import *
 
 class Model:
     """Encodes game state."""
@@ -30,6 +26,9 @@ class Model:
                     boundary = Blocks.Outeredge(x,y)
                     self.grid[(boundary.rect.x,boundary.rect.y)] = boundary
         # print self.grid
+
+    def update(self, mx, my):
+        pass
 
 class View:
     """
@@ -64,6 +63,9 @@ class Controller:
 
     def handle_mouse_event(self, event):
         mx, my = pygame.mouse.get_pos()
+        print mx, my
+        print CartToIso(mx, my)
+        # self.model.update(mx,my)
 
     def handle_keyboard_event(self, event):
         pass
@@ -72,7 +74,6 @@ if __name__ == '__main__':
     pygame.init()
     
     model = Model()
-    size = (1024,768)
     screen = pygame.display.set_mode(size)
     running = True
     view=View(model,screen)
@@ -90,8 +91,6 @@ if __name__ == '__main__':
             # KEYBOARDBUTTON is probably a lie. Fix below.
             # elif event.type == KEYBOARDDOWN:
             #     controller.handle_keyboard_event(event)
-            else:
-                pass
         time.sleep(.01)
 
     pygame.quit()

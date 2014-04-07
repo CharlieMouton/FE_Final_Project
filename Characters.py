@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  3 14:16:43 2014
-
-@author: jacob
-"""
-
 import random
 
 class Characters(object):
