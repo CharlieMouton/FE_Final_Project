@@ -76,6 +76,7 @@ class Fortress(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+<<<<<<< HEAD
         
     def interaction(self):
         pass
@@ -129,3 +130,5 @@ class Fortress(pygame.sprite.Sprite):
         
         
         
+=======
+>>>>>>> d5f5fc1b0f8526f573f94259772c1143084fba95
