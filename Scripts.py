@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
+from Global_variables import *
 """
-Created on Thu Apr  3 14:29:22 2014
-
 @author: jacob
 """
 def CartToIso(x,y,z):
@@ -11,3 +9,11 @@ def CartToIso(x,y,z):
 	isox = x - y+centerx 
 	isoy = (x+y)/2 - z
 	return (isox,isoy)
+
+def IsoToCart(x,y):
+    """Takes an isometric position and converts them to an x and y pair."""
+    isox = isox - centerx
+    cartX = (2 * (isoY+z) + isoX) / 2
+    cartY = (2 * (isoY+z) - isoX) / 2
+    return (cartX, cartY)
+
