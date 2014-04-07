@@ -12,6 +12,8 @@ import Wall
 import Blocks
 from Scripts import *
 
+from operator import itemgetter
+
 # Define colors.
 black = 0,0,0
 white = 255,255,255
@@ -64,49 +66,47 @@ class PathView:
         MAP_HEIGHT =  4
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
+
+
+        point1 = (300,300,0)
+        point2 = (300+50,300,0)
+        point3 = (300+50,300+50,0)
+        point4 = (300,300+50,0)
+
+        # Drawing a cube
+        # point1 = (point[0],point[1],0)
+        # point2 = (point[0]+50,point[1],0)
+        # point3 = (point[0]+50,point[1]+50,0)
+        # point4 = (point[0],point[1]+50,0)
+        # point5 = (300+50,300,-50)
+        # point6 = (300+50,300+50,-50)
+        # point7 = (300,300+50,-50)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1],point1[2]),CartToIso(point2[0],point2[1],point2[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1],point2[2]),CartToIso(point3[0],point3[1],point3[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1],point3[2]),CartToIso(point4[0],point4[1],point4[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1],point4[2]),CartToIso(point1[0],point1[1],point1[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1],point2[2]),CartToIso(point5[0],point5[1],point5[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point5[0],point5[1],point5[2]),CartToIso(point6[0],point6[1],point6[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point6[0],point6[1],point6[2]),CartToIso(point3[0],point3[1],point3[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point6[0],point6[1],point6[2]),CartToIso(point7[0],point7[1],point7[2]),1)
+        # pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point7[0],point7[1],point7[2]),CartToIso(point4[0],point4[1],point4[2]),1)
+        ordgrid =[]
         for point in self.model.grid:
-            point1 = (point[0],point[1])
-            point2 = (point[0]+50,point[1])
-            point3 = (point[0]+50,point[1]+50)
-            point4 = (point[0],point[1]+50)
-            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
-            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
-            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
-            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
+            # ordgrid.append(point)
+            point1 = (point[0],point[1],0)
+            point2 = (point[0]+50,point[1],0)
+            point3 = (point[0]+50,point[1]+50,0)
+            point4 = (point[0],point[1]+50,0)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1],point1[2]),CartToIso(point2[0],point2[1],point2[2]),1)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1],point2[2]),CartToIso(point3[0],point3[1],point3[2]),1)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1],point3[2]),CartToIso(point4[0],point4[1],point4[2]),1)
+            pygame.draw.line(screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1],point4[2]),CartToIso(point1[0],point1[1],point1[2]),1)
 
-
-
-
-        # # We sweep through our world dictionary, drawing the world from the inputs.
-        # for block in self.model.world:
-        #     value = self.model.world[block]
-        #     temp = pygame.Rect(value.x,value.y,value.side,value.side)
-        #     pygame.draw.rect(self.screen, pygame.Color(value.color[0],value.color[1],value.color[2]),temp)
-        # if model.endmode == True:
-        #     # Draws save button.
-        #     screen.blit(saveimage,(ref,3*ref))
-        # else:
-        #     temp = pygame.Rect(ref,3*ref,ref,ref)
-        #     pygame.draw.rect(self.screen, pygame.Color(0,0,0),temp)
-
-        # # Draws load button.
-        # screen.blit(loadimage,(ref,5*ref))
-
-        # if model.playmode == True:
-        #     # Draws player.
-        #     # temp = pygame.Rect(self.model.player.x,self.model.player.y,self.model.player.side,self.model.player.side)
-        #     # pygame.draw.rect(self.screen, pygame.Color(playercolor[0],playercolor[1],playercolor[2]),temp)
-        #     screen.blit(bob, (self.model.player.x, self.model.player.y))
-
-        #     # Draws hidden rectangle.`````````````````````
-        #     temp = pygame.Rect(3*ref,ref,len(model.palette)*2*ref,ref)
-        #     pygame.draw.rect(self.screen, pygame.Color(0,0,0),temp)
-
-        #     # Draws pause button.
-        #     screen.blit(pausebutton,(ref,ref))
-        # else:
-        #     # Draws play button.
-        #     screen.blit(playbutton,(ref,ref))
+        ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
+        # print ordgrid
+        grass = pygame.image.load('grass.png')
+        for point in ordgrid:
+            screen.blit(grass,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-50))
 
         pygame.display.update()
 
