@@ -5,8 +5,6 @@ sys.path.append(lib_path)
 from var_scripts import *
 from images import *
 
-size = (1024,768)
-
 class View:
     """
     Game viewer in pygame window.
