@@ -26,7 +26,7 @@ class Model:
             for y in range(0, self.sheight, self.ref):
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
-                    self.grid[(boundary.rect.x,boundary.rect.y)] = boundary
+                    self.grid[(boundary.x,boundary.y)] = boundary
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
