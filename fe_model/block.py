@@ -15,13 +15,13 @@ class Grass(Block):
         """
         #Call the parent class (Sprite) constructor     
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('images/grassunit.jpg')
         self.image = pygame.transform.scale(self.image, (SQUARELENGTH, SQUARELENGTH))
         self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
         """
+        self.image = pygame.image.load('images/grass.png')
         super(Grass,self).__init__(x,y)
         self.movementcost=1
     
@@ -39,6 +39,7 @@ class Outeredge(Block):
         self.rect.x = x
         self.rect.y = y
         """
+        self.image = pygame.image.load('images/grass.png')
         super(Outeredge,self).__init__(x,y)
         self.movementcost=0
             
@@ -56,6 +57,7 @@ class Forrest(Block):
         self.rect.x = x
         self.rect.y = y
         """
+        self.image = pygame.image.load('images/grass.png')
         super(Forrest,self).__init__(x,y)
         self.movementcost=2
         
@@ -73,6 +75,7 @@ class Fortress(Block):
         self.rect.x = x
         self.rect.y = y
         """
+        self.image = pygame.image.load('images/grass.png')
         super(Fortress,self).__init__(x,y)
         self.movementcost=0
         

@@ -4,6 +4,7 @@ lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
 from images import *
+from operator import itemgetter
 
 class View:
     """
@@ -32,6 +33,12 @@ class View:
             pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
             pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
             pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
+
+        ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
+        for point in ordgrid:
+            tempobj = self.model.grid[point]
+            # print tempobj
+            self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-50))
 
         pygame.display.update()
 

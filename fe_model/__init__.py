@@ -20,7 +20,7 @@ class Model:
         # self.populateCharaceters()
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
-                node = (x,y)
+                node = block.Grass(x,y)
                 self.grid[(x,y)] = node  
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
