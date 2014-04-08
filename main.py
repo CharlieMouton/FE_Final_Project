@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 import time
 
-from scripts import *
 from fe_model import *
 from fe_view import *
 from fe_controller import *
