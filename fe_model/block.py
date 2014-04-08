@@ -39,7 +39,7 @@ class Outeredge(Block):
         self.rect.x = x
         self.rect.y = y
         """
-        self.image = pygame.image.load('images/grass.png')
+        self.image = pygame.image.load('images/water.png')
         super(Outeredge,self).__init__(x,y)
         self.movementcost=0
             
