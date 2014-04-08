@@ -1,14 +1,17 @@
 import block
 import character
 import wall
-from variables import *
+import os, sys
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+from var_scripts import *
 
 class Model:
     """Encodes game state."""
     def __init__(self):
-        self.ref = 50
-        self.swidth = 15 * self.ref
-        self.sheight = 15 * self.ref
+        self.ref = ref
+        self.swidth = swidth
+        self.sheight = sheight
         self.grid = {}
         # self.characters=pygame.sprite.Group()
         self.character = character.Character(self,'Player',1,2,3,4,5,6,7,350,350)

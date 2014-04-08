@@ -1,21 +1,10 @@
 import pygame
+import os, sys
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+from var_scripts import *
 
 size = (1024,768)
-
-def CartToIso(x,y,z=10):
-    """Takes an x and y pair and converts them to isometric position."""
-    centerx = 640/2
-    centery = 480/2
-    isox = x - y+centerx 
-    isoy = (x+y)/2 - z
-    return (isox,isoy)
-
-def IsoToCart(x,y):
-    """Takes an isometric position and converts them to an x and y pair."""
-    isox = isox - centerx
-    cartX = (2 * (isoY+z) + isoX) / 2
-    cartY = (2 * (isoY+z) - isoX) / 2
-    return (cartX, cartY)
 
 class View:
     """
@@ -46,3 +35,5 @@ class View:
             pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
 
         pygame.display.update()
+
+sys.path.remove(lib_path)

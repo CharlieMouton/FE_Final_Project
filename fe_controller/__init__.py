@@ -1,3 +1,9 @@
+import pygame
+import os, sys
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+from var_scripts import *
+
 class Controller:
     def __init__(self, model):
         self.model = model
