@@ -5,6 +5,7 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
+from images import *
 
 class Model:
     """Encodes game state."""
@@ -26,7 +27,11 @@ class Model:
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.rect.x,boundary.rect.y)] = boundary
-        # print self.grid
 
-    def update(self, mx, my):
-        pass
+    def delete_block(self, x, y):
+        if (x, y) in self.grid:
+            del self.grid[(x, y)]
+        print len(self.grid)
+
+if __name__ == "__main__":
+    test_model = Model()

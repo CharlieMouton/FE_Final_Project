@@ -10,8 +10,10 @@ class Controller:
 
     def handle_mouse_event(self, event):
         mx, my = pygame.mouse.get_pos()
-        print mx, my
-        isoX, isoY = CartToIso(mx, my)
+        cartX, cartY = IsoToCart(mx, my)
+        temp_x = math.floor(cartX / ref) * ref
+        temp_y = math.floor(cartY / ref) * ref
+        self.model.delete_block(temp_x, temp_y)
 
     def handle_keyboard_event(self, event):
         pass

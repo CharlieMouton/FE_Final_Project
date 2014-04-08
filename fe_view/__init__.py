@@ -3,6 +3,7 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
+from images import *
 
 size = (1024,768)
 
