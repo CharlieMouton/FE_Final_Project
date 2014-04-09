@@ -26,11 +26,11 @@ class Characters(object):
         
     def Initiate(self,classtype,x,y):
         if classtype.ascii_uppercase=='ARCHER':
-            self.newSpawn=Character(classtype.ascii_uppercase,1,2,2,1,3,3,2,3,x,y)
+            self.newSpawn=Character(classtype.ascii_uppercase,1,6,2,1,3,3,2,3,x,y)
         elif classtype.ascii_uppercase=='WARRIOR':
-            self.newSpawn=Character(classtype.ascii_uppercase,1,3,3,2,1,1,1,1,x,y)
+            self.newSpawn=Character(classtype.ascii_uppercase,1,9,3,2,1,1,1,1,x,y)
         elif classtype.ascii_uppercase=='HORSEMAN':
-            self.newSpawn=Character(classtype.ascii_uppercase,1,2,1,3,2,2,3,2,x,y)
+            self.newSpawn=Character(classtype.ascii_uppercase,1,8,1,3,2,2,3,2,x,y)
     
     def LEVEL(self):
         """LvlUp is a list containing 7 components.  Each one matches up to the stats of the Characters Class."""
