@@ -1,14 +1,12 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  3 14:16:43 2014
-
-@author: jacob
-"""
-
 import random
 
+<<<<<<< HEAD:Characters.py
 class Characters(object):
     def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement,movementleft, weaponrange,x,y):
+=======
+class Character(object):
+    def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement,weaponrange,x,y):
+>>>>>>> ac2a6a03d49c06b4f51568bd8867005a5408a3da:fe_model/character.py
         self.name=name
         self.level=level
         self.MaxHP=HP
