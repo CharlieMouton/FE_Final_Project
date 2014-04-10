@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Apr  7 13:15:39 2014
-
-@author: julian
-"""
-
-"""
-Battles
-"""
-
 import Character
 
 class Battle(object):
@@ -30,7 +19,6 @@ class Battle(object):
                     pass
             else:
                 pass
-        
         
             elif self.player1.agility>(self.player2.agility*1.5):
                 if self.player1.strength>=self.player2.defence:
