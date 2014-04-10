@@ -14,6 +14,8 @@ class Controller:
         temp_x = math.floor(cartX / ref) * ref
         temp_y = math.floor(cartY / ref) * ref
         self.model.delete_block(temp_x, temp_y)
+        #return [temp_x,temp_y]
 
+        
     def handle_keyboard_event(self, event):
         pass
