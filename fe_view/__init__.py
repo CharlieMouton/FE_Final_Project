@@ -5,7 +5,7 @@ sys.path.append(lib_path)
 from var_scripts import *
 from images import *
 from operator import itemgetter
-from inputbox import *
+# from inputbox import *
 
 class View:
     """
@@ -13,8 +13,8 @@ class View:
     """
     def __init__(self, model, screen):
         self.size = size
-        self.centerx = size[0]/2
-        self.centery = size[1]/2
+        self.centerx = centerx
+        self.centery = centery
         self.model= model
         self.screen = screen
 
@@ -24,6 +24,8 @@ class View:
         MAP_HEIGHT =  4
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
+
+        # Possible location for some refactoring.
         for point in self.model.grid:
             # Please refactor into something more intuitive.
             point1 = (point[0],point[1])
@@ -39,7 +41,7 @@ class View:
         for point in ordgrid:
             tempobj = self.model.grid[point]
             # print tempobj
-            self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-50))
+            self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
 
         pygame.display.update()
 
