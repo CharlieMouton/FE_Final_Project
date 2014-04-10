@@ -47,3 +47,4 @@ class Character(object):
         self.movementleft=movementleft
         self.x=newX
         self.y=newY
+        
