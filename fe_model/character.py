@@ -18,6 +18,7 @@ class Character(object):
         self.x=x
         self.y=y
         self.xp=0
+        self.image = pygame.image.load('images/bob.png')
         
     def Initiate(self,classtype,x,y):
         if classtype.ascii_uppercase=='ARCHER':

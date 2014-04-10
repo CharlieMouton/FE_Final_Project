@@ -5,7 +5,7 @@ sys.path.append(lib_path)
 from var_scripts import *
 from images import *
 from operator import itemgetter
-# from inputbox import *
+from inputbox import *
 
 class View:
     """
@@ -25,24 +25,17 @@ class View:
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
 
-        # Possible location for some refactoring.
-        for point in self.model.grid:
-            # Please refactor into something more intuitive.
-            point1 = (point[0],point[1])
-            point2 = (point[0] + self.model.ref,point[1])
-            point3 = (point[0] + self.model.ref,point[1] + self.model.ref)
-            point4 = (point[0],point[1] + self.model.ref)
-            pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point1[0],point1[1]),CartToIso(point2[0],point2[1]),1)
-            pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point2[0],point2[1]),CartToIso(point3[0],point3[1]),1)
-            pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point3[0],point3[1]),CartToIso(point4[0],point4[1]),1)
-            pygame.draw.line(self.screen,pygame.Color(0,0,0),CartToIso(point4[0],point4[1]),CartToIso(point1[0],point1[1]),1)
-
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
             tempobj = self.model.grid[point]
-            # print tempobj
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
 
+        for person in self.model.character:
+            self.screen.blit(person.image,CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5)
+
         pygame.display.update()
+
+if __name__ == '__main__':
+    pass
 
 sys.path.remove(lib_path)
