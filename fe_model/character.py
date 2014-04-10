@@ -2,7 +2,7 @@ import random
 
 
 class Character(object):
-    def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y):
+    def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange, xpToNextLevel,x,y):
 
         self.name=name
         self.level=level
@@ -18,8 +18,9 @@ class Character(object):
         self.x=x
         self.y=y
         self.xp=0
+        self.xpToNextLevel=xpToNextLevel
         
-    def Initiate(self,classtype,x,y):
+    def Initiate(self, classtype,x,y):
         if classtype.ascii_uppercase=='ARCHER':
             self.newSpawn=Character(classtype.ascii_uppercase,1,6,2,1,3,3,2,3,x,y)
         elif classtype.ascii_uppercase=='WARRIOR':
@@ -48,3 +49,60 @@ class Character(object):
         self.x=newX
         self.y=newY
         
+    def Battle(self, player1,player2):
+        
+        self.player1=player1
+        self.player2=player2
+        
+        if self.player1.strength>=self.player2.defence:
+            self.player2.CurrentHP-=(self.player1.strength-self.player2.defence)
+        else:
+            pass
+        if self.player2.CurrentHP<=0:
+            pass
+        else:
+            if self.player1.weaponrange<=self.player2.weaponrange:
+                if self.player2.strength>=self.player1.defence:
+                    self.player1.CurrentHP-=(self.player2.strength-self.player1.defence)
+                else:
+                    pass
+            else:
+                pass
+        
+            if self.player1.CurrentHP<=0:
+                pass
+        
+            elif self.player1.agility>(self.player2.agility*1.5):
+                if self.player1.strength>=self.player2.defence:
+                    self.player2.CurrentHP-=2*(self.player1.strength-self.player2.defence)
+                else:
+                    pass
+            else:
+                pass
+        
+    def __repr__(self):
+        print self.name
+        print self.name
+        print self.level
+        print self.MaxHP
+        print self.CurrentHP
+        print self.strength
+        print self.defense
+        print self.agility
+        print self.intelligence
+        print self.movement
+        print self.movementleft
+        print self.weaponrange
+        print self.x
+        print self.y
+        print self.xp
+        print self.xpToNextLevel
+        
+if __name__ == "__main__":
+    test_character1 = Character.Initiate('Archer',100,100)
+    test_character1
+    test_character2 = Character.Initiate('Archer',100,100)
+    test_character2
+    test_character1.Battle(test_character1,test_character2)
+    test_character1
+    test_character2
