@@ -70,3 +70,6 @@ class Model:
 
 if __name__ == "__main__":
     test_model = Model()
+    Julian = Archer(model=test_model,x=5,y=5, name='Julian')
+    print Julian
+    print Julian.name
