@@ -49,36 +49,54 @@ class Character(object):
         self.x=newX
         self.y=newY
         
-    def Battle(self, player1,player2):
+    def Battle(self, player2):
         
-        self.player1=player1
         self.player2=player2
-        
-        if self.player1.strength>=self.player2.defence:
-            self.player2.CurrentHP-=(self.player1.strength-self.player2.defence)
+        #Player1 Attack
+        if self.strength>=self.player2.defence:
+            self.player2.CurrentHP-=(self.strength-self.player2.defence)
         else:
             pass
         if self.player2.CurrentHP<=0:
+            self.xp+=3
+            if self.xp>=self.xpToNextLevel:
+                self.LEVEL
+                self.xp=self.xp-self.xpToNextLevel
+                self.xpToNextLevel+=5
             pass
+        #Player2 Counterattack
         else:
-            if self.player1.weaponrange<=self.player2.weaponrange:
-                if self.player2.strength>=self.player1.defence:
-                    self.player1.CurrentHP-=(self.player2.strength-self.player1.defence)
+            if self.weaponrange<=self.player2.weaponrange:
+                if self.player2.strength>=self.defence:
+                    self.CurrentHP-=(self.player2.strength-self.defence)
                 else:
                     pass
             else:
                 pass
         
-            if self.player1.CurrentHP<=0:
+            if self.CurrentHP<=0:
+                self.player2.xp+=3
+                if self.player2.xp>=self.player2.xpToNextLevel:
+                    self.player2.LEVEL
+                    self.player2.xp=self.player2.xp-self.player2.xpToNextLevel
+                    self.player2.xpToNextLevel+=5
                 pass
-        
-            elif self.player1.agility>(self.player2.agility*1.5):
-                if self.player1.strength>=self.player2.defence:
-                    self.player2.CurrentHP-=2*(self.player1.strength-self.player2.defence)
+            #Possible Player1 second attack
+            elif self.agility>(self.player2.agility*1.5):
+                if self.strength>=self.player2.defence:
+                    self.player2.CurrentHP-=2*(self.strength-self.player2.defence)
                 else:
                     pass
             else:
                 pass
+            
+            if self.player2.CurrentHP<=0:
+                self.xp+=3
+                if self.xp>=self.xpToNextLevel:
+                    self.LEVEL
+                    self.xp=self.xp-self.xpToNextLevel
+                    self.xpToNextLevel+=5
+                
         
     def __repr__(self):
         print self.name
