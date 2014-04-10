@@ -25,20 +25,19 @@ if __name__ == '__main__':
         # VIEW
         view.draw()
 
-
+        '''
         for i in range(num_of_char):
     
             inputBox=InputBox()
             view.draw()
+          
             #Adds characters
             charType=inputBox.ask(screen, "Type")
             view.draw()
-            for event in pygame.event.get():
-                if event.type == MOUSEBUTTONDOWN:
-                    corr=controller.handle_mouse_event(event)
-            self.model.character=model.setupChar(charType,coor[1],coor[2])        
-        
+            noCoor=True       
+        '''
         # CONTROLLER
+        #    while noCoor:
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
@@ -46,7 +45,9 @@ if __name__ == '__main__':
             # MODEL
             if event.type == MOUSEBUTTONDOWN:
                 controller.handle_mouse_event(event)
-
+                #noCoor=False
+                
+       # self.model.character=model.setupChar(charType,coor[1],coor[2])
         time.sleep(.01)
 
     pygame.quit()
