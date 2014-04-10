@@ -8,7 +8,7 @@ from fe_controller import *
 if __name__ == '__main__':
     pygame.init()
     
-    #Setup
+    #Setup.
     model = Model()
     screen = pygame.display.set_mode(size)
     view=View(model,screen)
