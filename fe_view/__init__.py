@@ -29,7 +29,8 @@ class View:
         for point in ordgrid:
             tempobj = self.model.grid[point]
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
-
+        bot =  pygame.image.load('images/Bot_stationary.png')
+        self.screen.blit(bot,(CartToIso(0,0,0)[0]-20,CartToIso(0,0,0)[1]+5))
         for person in self.model.character:
             self.screen.blit(person.image,CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5)
 

@@ -18,7 +18,6 @@ class Character(object):
         self.x=x
         self.y=y
         self.xp=0
-        self.image = pygame.image.load('images/bob.png')
         self.xpToNextLevel=xpToNextLevel
 
     def Level(self):
@@ -120,6 +119,7 @@ class Character(object):
 class Archer(Character):
     def __init__(self, x,y, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=2, weaponrange=3):
         Character.__init__(self, name, level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
+        self.image = pygame.image.load('images/bob.png')
 
 # class Warrior(Character):
 #     def __init__(self, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=2, weaponrange=3,x,y):
