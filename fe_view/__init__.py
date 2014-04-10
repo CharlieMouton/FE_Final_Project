@@ -5,6 +5,7 @@ sys.path.append(lib_path)
 from var_scripts import *
 from images import *
 from operator import itemgetter
+from inputbox import *
 
 class View:
     """

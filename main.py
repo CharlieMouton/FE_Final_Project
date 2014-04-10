@@ -8,10 +8,18 @@ from fe_controller import *
 if __name__ == '__main__':
     pygame.init()
     
+    #Setup
     model = Model()
     screen = pygame.display.set_mode(size)
     view=View(model,screen)
     controller = Controller(model)
+    '''
+    inputBox=InputBox()
+    
+    #Adds characters
+    charType=inputBox.ask(screen, "Type")
+    model.setupChar(charType,x,y)
+    '''
     
     running = True
     while running:

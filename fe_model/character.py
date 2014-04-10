@@ -1,8 +1,8 @@
 import random
 
 
-class Characters(object):
-    def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement,movementleft, weaponrange,x,y):
+class Character(object):
+    def __init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y):
 
         self.name=name
         self.level=level
@@ -13,7 +13,7 @@ class Characters(object):
         self.agility=agility
         self.intelligence=intelligence
         self.movement=movement
-        self.movementleft=movementleft
+        self.movementleft=movement
         self.weaponrange=weaponrange
         self.x=x
         self.y=y
@@ -42,7 +42,8 @@ class Characters(object):
         self.movement+=LvlUp[5]
         self.weaponrange+=LvlUp[6]
     
-    def Move(self,newX,newY):
+    def Move(self,newX,newY,movementleft):
         """Changes the x and y values for the location of the character."""
+        self.movementleft=movementleft
         self.x=newX
         self.y=newY

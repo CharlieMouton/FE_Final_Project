@@ -15,7 +15,7 @@ class Model:
         self.sheight = sheight
         self.grid = {}
         # self.characters=pygame.sprite.Group()
-        self.character = character.Character(self,'Player',1,2,3,4,5,6,7,350,350)
+        self.character =[]
         # self.populateBlocks()
         # self.populateCharaceters()
         for x in range(0, self.swidth, self.ref):
@@ -32,6 +32,10 @@ class Model:
         if (x, y) in self.grid:
             del self.grid[(x, y)]
         print len(self.grid)
+    
+    def setupChar(self,classtype,x,y):
+        self.character=[character.Character.Initiate(classtype,x,y)]
+        
 
 if __name__ == "__main__":
     test_model = Model()
