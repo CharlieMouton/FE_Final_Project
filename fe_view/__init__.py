@@ -39,7 +39,7 @@ class View:
         for point in ordgrid:
             tempobj = self.model.grid[point]
             # print tempobj
-            self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-50))
+            self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
 
         pygame.display.update()
 
