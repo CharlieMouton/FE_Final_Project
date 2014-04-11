@@ -7,6 +7,9 @@ from images import *
 from operator import itemgetter
 from inputbox import *
 
+
+
+
 class View:
     """
     Game viewer in pygame window.
@@ -25,14 +28,20 @@ class View:
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
 
+        myfont = pygame.font.SysFont("arial", 30)
+
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
             tempobj = self.model.grid[point]
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
         bot =  pygame.image.load('images/Bot_stationary.png')
-        self.screen.blit(bot,(CartToIso(0,0,0)[0]-20,CartToIso(0,0,0)[1]+5))
+        self.screen.blit(bot,(CartToIso(100,100,0)[0]-20,CartToIso(100,100,0)[1]+5))
+        HP = myfont.render("30", 1, (0,0,0))
+        self.screen.blit(HP,(CartToIso(100,100,0)[0]-20,CartToIso(100,100,0)[1]-20))
         for person in self.model.character:
             self.screen.blit(person.image,CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5)
+            HP = myfont.render("(%d)" % current.HP, 1, (255,255,0))
+            screen.blit(HP, (CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5))
 
         pygame.display.update()
 

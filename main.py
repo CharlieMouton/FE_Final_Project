@@ -16,8 +16,7 @@ if __name__ == '__main__':
     view=View(model,screen)
     controller = Controller(model)
     
-    
-    
+   
     
     
     running = True
