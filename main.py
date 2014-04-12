@@ -15,10 +15,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size)
     view=View(model,screen)
     controller = Controller(model)
-    
-   
-    
-    
+     
     running = True
     while running:
         # VIEW
