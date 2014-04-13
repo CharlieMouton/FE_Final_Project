@@ -154,10 +154,35 @@ class Archer(Character):
         Character.__init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location)
         self.image = pygame.image.load('images/bob.png')
 
-# class Warrior(Character):
-#     def __init__(self, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=2, weaponrange=3,x,y):
-#         Character.__init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
+class Warrior(Character):
+    def __init__(self, x,y, name='Warrior', level=1, HP=9,strength=3,defense=2,agility=1,intelligence=1,movement=1, weaponrange=1):
+        Character.__init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
 
-# class Horseman(Character):
-#     def __init__(self, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=2, weaponrange=3,x,y):
-#         Character.__init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
+class Horseman(Character):
+    def __init__(self, x,y, name='Horsemen', level=1, HP=8,strength=1,defense=3,agility=2,intelligence=2,movement=3, weaponrange=2):
+        Character.__init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
+        
+# if __name__ == "__main__":
+#     test_character1 = Character.Initiate('Archer',100,100)
+#     test_character1
+#     test_character2 = Character.Initiate('Archer',100,100)
+#     test_character2
+#     test_character1.Battle(test_character1,test_character2)
+#     test_character1
+#     test_character2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> ee2824a04e012630ebeeb2a01a3f4faf529ad656

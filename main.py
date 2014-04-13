@@ -5,7 +5,7 @@ from fe_model import *
 from fe_view import *
 from fe_controller import *
 
-num_of_char=2
+num_of_char=2   
 
 if __name__ == '__main__':
     pygame.init()
