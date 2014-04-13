@@ -8,7 +8,8 @@ class Block(object):
     def __init__(self,x,y):
         self.x=x
         self.y=y
-        self.length=SQUARELENGTH       
+        self.length=SQUARELENGTH
+        self.resistance = 1      
         
 #class Grass(pygame.sprite.Sprite):
 class Grass(Block):

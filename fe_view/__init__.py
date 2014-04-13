@@ -7,9 +7,6 @@ from images import *
 from operator import itemgetter
 from inputbox import *
 
-
-
-
 class View:
     """
     Game viewer in pygame window.

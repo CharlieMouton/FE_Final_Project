@@ -1,8 +1,12 @@
 import random
+import pygame
+import os, sys
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+from var_scripts import ref
 
-
-class Character(object):
-    def __init__(self, model, name,level, HP,strength,defense,agility,intelligence,movement, xpToNextLevel, weaponrange,x,y):
+class Character:
+    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location):
         self.model = model
         self.name=name
         self.level=level
@@ -15,10 +19,10 @@ class Character(object):
         self.movement=movement
         self.movementleft=movement
         self.weaponrange=weaponrange
-        self.x=x
-        self.y=y
+        self.location = location
         self.xp=0
         self.xpToNextLevel=xpToNextLevel
+        self.availabilities = []
 
     def Level(self):
         """LvlUp is a list containing 7 components.  Each one matches up to the stats of the Characters Class."""
@@ -34,6 +38,35 @@ class Character(object):
         self.intelligence+=LvlUp[4]
         self.movement+=LvlUp[5]
         self.weaponrange+=LvlUp[6]
+
+    def available_locations(self, location, movement):
+        """
+        This function takes in the map and character attributes to determine which spaces are available to move through.
+
+        Returns: a list of available locations for inputted character.
+        """
+        # We need character location.
+        # Using the location, map to ground and gather attributes (I.E does it take up a move? <- Actually unecessary.)
+        # We also need character movement ability.
+        # Do a range in a for loop based on the farness of the given movement range.
+        # 4 possibilities. (Not the most effective.) ++ +- -+ --
+        # If block not possible, do not add into next consideration.
+        # We need a buffer.
+        
+        buffer_dict = [position for position in self.model.grid if ((position[0]-location[0])**2 + (position[1]-location[1])**2)**0.5 == self.model.ref and position not in self.availabilities]
+
+        # Base case, everything is false.
+        if len(buffer_dict) == 0 or movement == 0:
+            # print "Hello!"
+            return self.availabilities
+        
+        self.availabilities.append(location)
+        # print self.availabilities
+        for position in buffer_dict:
+            if self.model.grid[position].resistance <= movement:
+                self.available_locations(position, movement - self.model.grid[position].resistance)
+            else:
+                return self.availabilities
     
     def Move(self,newX,newY,movementleft):
         """Changes the x and y values for the location of the character."""
@@ -117,8 +150,8 @@ class Character(object):
 #         self.newSpawn=Character(classtype.ascii_uppercase,1,8,1,3,2,2,3,2,x,y)
 
 class Archer(Character):
-    def __init__(self, x,y, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=2, weaponrange=3):
-        Character.__init__(self, name, level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
+    def __init__(self, model, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=4, xpToNextLevel=100, weaponrange=3, location=(2*ref,3*ref)):
+        Character.__init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location)
         self.image = pygame.image.load('images/bob.png')
 
 # class Warrior(Character):
@@ -128,12 +161,3 @@ class Archer(Character):
 # class Horseman(Character):
 #     def __init__(self, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=2, weaponrange=3,x,y):
 #         Character.__init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
-        
-# if __name__ == "__main__":
-#     test_character1 = Character.Initiate('Archer',100,100)
-#     test_character1
-#     test_character2 = Character.Initiate('Archer',100,100)
-#     test_character2
-#     test_character1.Battle(test_character1,test_character2)
-#     test_character1
-#     test_character2

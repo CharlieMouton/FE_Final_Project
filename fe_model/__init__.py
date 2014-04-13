@@ -7,34 +7,6 @@ sys.path.append(lib_path)
 from var_scripts import *
 from images import *
 
-def available_locations(model, character):
-    """
-    This function takes in the map and character attributes to determine which spaces are available to move through.
-
-    Returns: a list of available locations for inputted character.
-    """
-    # We need character location.
-    # Using the location, map to ground and gather attributes (I.E does it take up a move? <- Actually unecessary.)
-    # We also need character movement ability.
-    # Do a range in a for loop based on the farness of the given movement range.
-    # 4 possibilities. (Not the most effective.) ++ +- -+ --
-    # If block not possible, do not add into next consideration.
-    # We need a buffer.
-    
-    location = character.current_position    # This will be a tuple of x and y.
-    move_range = character.move_range    # This will be a range represented as an int.
-
-    buffer_dict = [position for position in model.grid.iteritems() if ((position[0]-location[0])**2 + (position[1]-location[1])**2)**0.5 == model.ref]
-    availabilities = []
-
-    # Base case, everything is false.
-    if len(buffer_dict) == 0:
-        return availabilities
-    else:
-        availabilities.append(location)
-        for position in buffer_dict:
-            look_around(position, move_range - grid[position].resistance)
-
 class Model:
     """Encodes game state."""
     def __init__(self):
@@ -65,8 +37,13 @@ class Model:
         self.character=[character.Character.Initiate(classtype,x,y)]
         
 
-# if __name__ == "__main__":
-#     test_model = Model()
-#     Julian = Archer(model=test_model,x=5,y=5, name='Julian')
-#     print Julian
-#     print Julian.name
+if __name__ == "__main__":
+    test_model = Model()
+    Julian = character.Archer(model=test_model,location=(500,500), name='Julian', movement=12)
+    # print Julian.name
+    # print Julian.location
+    # print test_model.grid
+    # print test_model.grid[(500,500)]
+    Julian.available_locations(Julian.location, Julian.movement)
+    print Julian.availabilities
+    print len(Julian.availabilities)
