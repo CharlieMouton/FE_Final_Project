@@ -39,7 +39,8 @@ class Model:
 
 
     def populatePlayers(self):
-        self.character[(,)]=character.Archer(self,location=(150,150), name='Julian', movement=4)
+        pass
+        # self.character[(,)]=character.Archer(self,location=(150,150), name='Julian', movement=4)
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
