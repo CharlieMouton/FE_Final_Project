@@ -56,6 +56,16 @@ class Model:
 if __name__ == "__main__":
     pygame.init()
     test_model = Model()
+<<<<<<< HEAD
+    Julian = character.Archer(model=test_model,location=(500,500), name='Julian', movement=6)
+    # print Julian.name
+    # print Julian.location
+    # print test_model.grid
+    # print test_model.grid[(500,500)]
+    Julian.available_locations(Julian.location, Julian.movement)
+    print Julian.availabilities
+    print len(Julian.availabilities)
+=======
 
     running = True
     while running:
@@ -70,3 +80,4 @@ if __name__ == "__main__":
         for event in pygame.event.get():
                 if event.type == QUIT:
                     running = False
+>>>>>>> 4dc563b1ae0e681118488aaa44cc2600c0f4edc6
