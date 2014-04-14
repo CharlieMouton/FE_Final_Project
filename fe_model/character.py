@@ -54,19 +54,31 @@ class Character:
         # We need a buffer.
         
         buffer_dict = [position for position in self.model.grid if ((position[0]-location[0])**2 + (position[1]-location[1])**2)**0.5 == self.model.ref and position not in self.availabilities]
-
+        #print self.availabilities
         # Base case, everything is false.
-        if len(buffer_dict) == 0 or movement == 0:
-            # print "Hello!"
+        """
+        if len(buffer_dict) == 0:
+            #print "a"
             return self.availabilities
         
-        self.availabilities.append(location)
-        # print self.availabilities
+        elif movement<0:
+            #print "b"
+            return self.availabilities
+        """
+        
+        if location not in self.availabilities:
+            self.availabilities.append(location)
+        
+        #print self.availabilities
+        
         for position in buffer_dict:
+
             if self.model.grid[position].resistance <= movement:
                 self.available_locations(position, movement - self.model.grid[position].resistance)
+            
             else:
                 return self.availabilities
+
     
     def Move(self,newX,newY,movementleft):
         """Changes the x and y values for the location of the character."""
@@ -184,5 +196,3 @@ class Horseman(Character):
 
 
 
-
->>>>>>> ee2824a04e012630ebeeb2a01a3f4faf529ad656

@@ -39,7 +39,7 @@ class Model:
 
 if __name__ == "__main__":
     test_model = Model()
-    Julian = character.Archer(model=test_model,location=(500,500), name='Julian', movement=12)
+    Julian = character.Archer(model=test_model,location=(500,500), name='Julian', movement=6)
     # print Julian.name
     # print Julian.location
     # print test_model.grid
