@@ -37,13 +37,19 @@ class View:
             # screen.blit(HP, (CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5))
 
         # This is my testing ground for visual stuff while I wait to characters to work right.
-        myfont = pygame.font.SysFont("times new roman", 16)
-        bot =  pygame.image.load('images/Bot_stationary.png')
-        self.screen.blit(bot,(CartToIso(100,100,0)[0]-20,CartToIso(100,100,0)[1]+5))
-        statpage = pygame.image.load('images/Statsblock_simple.png')
-        self.screen.blit(statpage,(900,530))
-        HP = myfont.render("40", 1, (0,0,0))
-        self.screen.blit(HP,(965,700))
+        # myfont = pygame.font.SysFont("times new roman", 16)
+        # bot =  pygame.image.load('fe_model/images/Bot_stationary.png')
+        # self.screen.blit(bot,(CartToIso(100,100,0)[0]-20,CartToIso(100,100,0)[1]+5))
+        # statpage = pygame.image.load('fe_model/images/Statsblock_simple.png')
+        # self.screen.blit(statpage,(900,530))
+        # HP = myfont.render("40", 1, (0,0,0))
+        # self.screen.blit(HP,(965,700))
+        self.screen.blit(self.model.Julian.image,(CartToIso(self.model.Julian.location[0],self.model.Julian.location[1])[0]-20,CartToIso(self.model.Julian.location[0],self.model.Julian.location[1])[1]))
+        for block in self.model.Julian.availabilities:
+            pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
+            pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
+            pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
+            pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
         
 
 

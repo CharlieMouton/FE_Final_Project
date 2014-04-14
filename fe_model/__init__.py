@@ -5,6 +5,7 @@ import os, sys
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
+from fe_view import *
 from images import *
 
 class Model:
@@ -27,6 +28,14 @@ class Model:
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
+        self.Julian = character.Archer(self,location=(350,350), name='Julian', movement=4)
+        # print Julian.name
+        # print Julian.location
+        # print test_model.grid
+        # print test_model.grid[(500,500)]
+        self.Julian.available_locations(self.Julian.location, self.Julian.movement)
+        print self.Julian.availabilities
+        print len(self.Julian.availabilities)
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
@@ -38,7 +47,9 @@ class Model:
         
 
 if __name__ == "__main__":
+    pygame.init()
     test_model = Model()
+<<<<<<< HEAD
     Julian = character.Archer(model=test_model,location=(500,500), name='Julian', movement=6)
     # print Julian.name
     # print Julian.location
@@ -47,3 +58,19 @@ if __name__ == "__main__":
     Julian.available_locations(Julian.location, Julian.movement)
     print Julian.availabilities
     print len(Julian.availabilities)
+=======
+
+    running = True
+    while running:
+        # screen = pygame.display.set_mode(size)
+        # screen.fill((255,255,255))
+        for block in Julian.availabilities:
+            pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
+            pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
+            pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
+            pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
+
+        for event in pygame.event.get():
+                if event.type == QUIT:
+                    running = False
+>>>>>>> 4dc563b1ae0e681118488aaa44cc2600c0f4edc6

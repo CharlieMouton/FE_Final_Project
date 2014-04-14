@@ -164,7 +164,7 @@ class Character:
 class Archer(Character):
     def __init__(self, model, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=4, xpToNextLevel=100, weaponrange=3, location=(2*ref,3*ref)):
         Character.__init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location)
-        self.image = pygame.image.load('images/bob.png')
+        self.image = pygame.image.load('fe_model/images/Bot_stationary.png')
 
 class Warrior(Character):
     def __init__(self, x,y, name='Warrior', level=1, HP=9,strength=3,defense=2,agility=1,intelligence=1,movement=1, weaponrange=1):
@@ -183,6 +183,7 @@ class Horseman(Character):
 #     test_character1
 #     test_character2
 
+<<<<<<< HEAD
 
 
 
@@ -196,3 +197,5 @@ class Horseman(Character):
 
 
 
+=======
+>>>>>>> 4dc563b1ae0e681118488aaa44cc2600c0f4edc6

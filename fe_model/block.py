@@ -25,7 +25,7 @@ class Grass(Block):
         self.rect.x = x
         self.rect.y = y
         """
-        self.image = pygame.image.load('images/grass.png')
+        self.image = pygame.image.load('fe_model/images/grass.png')
         super(Grass,self).__init__(x,y)
         self.movementcost=1
     
@@ -48,7 +48,7 @@ class Outeredge(Block):
         self.rect.y = y
 
         """
-        self.image = pygame.image.load('images/water.png')
+        self.image = pygame.image.load('fe_model/images/water.png')
         super(Outeredge,self).__init__(x,y)
         self.movementcost=0
         
@@ -67,7 +67,7 @@ class Forrest(Block):
         self.rect.x = x
         self.rect.y = y
         """
-        self.image = pygame.image.load('images/grass.png')
+        self.image = pygame.image.load('fe_model/images/grass.png')
         super(Forrest,self).__init__(x,y)
         self.movementcost=2
         
@@ -89,7 +89,7 @@ class Fortress(Block):
         self.rect.x = x
         self.rect.y = y
         """
-        self.image = pygame.image.load('images/grass.png')
+        self.image = pygame.image.load('fe_model/images/grass.png')
         super(Fortress,self).__init__(x,y)
         self.movementcost=0
         
