@@ -45,8 +45,8 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
 
-    def UpdateCharLocation(self, x, y):
-        self.character
+    def UpdateCharLocation(self, oldx, oldy, x, y):
+        self.character[(x,y)]=self.character(oldx, oldy)
     
     """
     def setupChar(self,classtype,x,y):
