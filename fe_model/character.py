@@ -141,23 +141,9 @@ class Character:
                     self.xpToNextLevel+=5
                 
         
-    def __repr__(self):
-        print self.name
-        print self.name
-        print self.level
-        print self.MaxHP
-        print self.CurrentHP
-        print self.strength
-        print self.defense
-        print self.agility
-        print self.intelligence
-        print self.movement
-        print self.movementleft
-        print self.weaponrange
-        print self.x
-        print self.y
-        print self.xp
-        print self.xpToNextLevel
+    def __str__(self):
+        return 'This character is a ' + str(self.name)+'\nat Level ' + str(self.level)+'\nwith ' + str(self.CurrentHP) + ' of your total ' + str(self.MaxHP) + ' HP\n' + str(self.strength) + ' Strength\n' +str(self.defense) + ' Defense \n' + str(self.agility) + ' Agility \n' + str(self.intelligence) + ' Intelligence \n' +'This character has ' + str(self.movementleft) + ' movement left from ' + str(self.movement) + ' movement \n' + str(self.weaponrange) + ' weapon range \n'+'and has ' + str(self.xp) + 'xp of ' + str(self.xpToNextLevel) + 'xp required to levelup!'
+#        print 'This character is at ' + str(self.x)+ ' and ' + str(self.y)
 
 # def Initiate(self,classtype,x,y):
 #     if classtype.ascii_uppercase=='ARCHER':

@@ -43,13 +43,13 @@ class View:
         # self.screen.blit(statpage,(900,530))
         # HP = myfont.render("40", 1, (0,0,0))
         # self.screen.blit(HP,(965,700))
-        self.screen.blit(self.model.Julian.image,(CartToIso(self.model.Julian.location[0],self.model.Julian.location[1])[0]-20,CartToIso(self.model.Julian.location[0],self.model.Julian.location[1])[1]))
         for block in self.model.Julian.availabilities:
             pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
             pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
             pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
             pygame.draw.line(self.screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
-        
+        self.screen.blit(self.model.Julian.image,(CartToIso(self.model.Julian.location[0],self.model.Julian.location[1])[0]-20,CartToIso(self.model.Julian.location[0],self.model.Julian.location[1])[1]-40))
+
 
 
 
@@ -57,7 +57,7 @@ class View:
 
     def char_select(self,character):
         myfont = pygame.font.SysFont("arial", 30)
-        statpage = pygame.image.load('images/statsblock_simple.png')
+        statpage = pygame.image.load('fe_model/images/statsblock_simple.png')
         name = myfont.render(str(character.name), 1, (255,255,255))
         self.screen.blit(name,(910,535))
         # How do we access what class the character is?
