@@ -16,19 +16,21 @@ class Model:
         self.sheight = sheight
         self.grid = {}
         # self.characters=pygame.sprite.Group()
-        self.character =[]
+        self.character ={}
         # self.populateBlocks()
         # self.populateCharaceters()
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 node = block.Grass(x,y)
-                self.grid[(x,y)] = node  
+                self.grid[(x,y)] = node
+                self.character[(x,y)]=None
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
-        self.Julian = character.Archer(self,location=(350,350), name='Julian', movement=4)
+        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)
+        self.Julian=self.character[(350,350)]        
         # print Julian.name
         # print Julian.location
         # print test_model.grid
