@@ -32,10 +32,10 @@ class Model:
         self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)        
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        self.character[(350,350)].available_locations(self.Julian.location, self.Julian.movement)
-        print self.character[(350,350)].availabilities
-        print len(self.character[(350,350)].availabilities)
-        print self.character[(350,350)]
+        # self.character[(350,350)].available_locations(self.Julian.location, self.Julian.movement)
+        # print self.character[(350,350)].availabilities
+        # print len(self.character[(350,350)].availabilities)
+        # print self.character[(350,350)]
 
 
 
@@ -61,11 +61,11 @@ if __name__ == "__main__":
     while running:
         # screen = pygame.display.set_mode(size)
         # screen.fill((255,255,255))
-        for block in Julian.availabilities:
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
+        # for block in Julian.availabilities:
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
 
         for event in pygame.event.get():
                 if event.type == QUIT:
