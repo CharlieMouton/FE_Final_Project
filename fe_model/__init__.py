@@ -36,15 +36,17 @@ class Model:
         self.Julian.available_locations(self.Julian.location, self.Julian.movement)
         print self.Julian.availabilities
         print len(self.Julian.availabilities)
+        print self.Julian
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
             del self.grid[(x, y)]
         print len(self.grid)
     
+    """
     def setupChar(self,classtype,x,y):
-        self.character=[character.Character.Initiate(classtype,x,y)]
-        
+        self.character+=[character.Archer.]
+    """    
 
 if __name__ == "__main__":
     pygame.init()
