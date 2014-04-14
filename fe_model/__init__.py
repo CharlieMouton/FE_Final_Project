@@ -37,10 +37,16 @@ class Model:
         print len(self.character[(350,350)].availabilities)
         print self.character[(350,350)]
 
+
+
+
     def delete_block(self, x, y):
         if (x, y) in self.grid:
             del self.grid[(x, y)]
         print len(self.grid)
+
+    def UpdateCharLocation(self, x, y):
+        self.character
     
     """
     def setupChar(self,classtype,x,y):
