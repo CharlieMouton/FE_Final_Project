@@ -186,20 +186,3 @@ class Horseman(Character):
 #     test_character1.Battle(test_character1,test_character2)
 #     test_character1
 #     test_character2
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 4dc563b1ae0e681118488aaa44cc2600c0f4edc6

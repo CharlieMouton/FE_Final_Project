@@ -38,7 +38,8 @@ class Model:
         print self.character[(350,350)]
 
 
-
+    def populatePlayers(self):
+        self.character[(,)]=character.Archer(self,location=(150,150), name='Julian', movement=4)
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
