@@ -33,7 +33,7 @@ class Model:
         # print Julian.location
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        self.Julian.available_locations(self.Julian.location, self.Julian.movement)
+        self.Julian.available_locations()
         print self.Julian.availabilities
         print len(self.Julian.availabilities)
 

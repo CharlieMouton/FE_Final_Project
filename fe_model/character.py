@@ -39,7 +39,25 @@ class Character:
         self.movement+=LvlUp[5]
         self.weaponrange+=LvlUp[6]
 
-    def available_locations(self, location, movement):
+    def available_locations(self):
+
+        # Save current location
+        current_positions = [self.location]
+
+        # Iterate throughout the map to find available positions.
+        for step in range(self.movement):
+            if len(current_positions) == 0:
+                break
+            for current_position in current_positions:
+                # Possible refactoring for mapping.
+                next_positions = [next_position for next_position in self.model.grid if ((next_position[0]-current_position[0])**2 + (next_position[1]-current_position[1])**2)**0.5 == self.model.ref and next_position not in self.availabilities]
+                self.availabilities.append(next_positions)
+                current_positions = next_positions
+
+        return self.availabilities
+
+
+    def available_locations_v1(self, location, movement):
         """
         This function takes in the map and character attributes to determine which spaces are available to move through.
 
