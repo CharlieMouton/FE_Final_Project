@@ -36,6 +36,7 @@ class Model:
         self.Julian.available_locations(self.Julian.location, self.Julian.movement)
         print self.Julian.availabilities
         print len(self.Julian.availabilities)
+        print self.Julian
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
