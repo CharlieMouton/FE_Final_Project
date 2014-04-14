@@ -16,35 +16,42 @@ class Model:
         self.sheight = sheight
         self.grid = {}
         # self.characters=pygame.sprite.Group()
-        self.character =[]
+        self.character ={}
         # self.populateBlocks()
         # self.populateCharaceters()
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 node = block.Grass(x,y)
-                self.grid[(x,y)] = node  
+                self.grid[(x,y)] = node
+                self.character[(x,y)]=None
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
-        self.Julian = character.Archer(self,location=(350,350), name='Julian', movement=4)
-        # print Julian.name
-        # print Julian.location
+        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)        
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        self.Julian.available_locations(self.Julian.location, self.Julian.movement)
-        print self.Julian.availabilities
-        print len(self.Julian.availabilities)
+        self.character[(350,350)].available_locations(self.Julian.location, self.Julian.movement)
+        print self.character[(350,350)].availabilities
+        print len(self.character[(350,350)].availabilities)
+        print self.character[(350,350)]
+
+
+
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
             del self.grid[(x, y)]
         print len(self.grid)
+
+    def UpdateCharLocation(self, x, y):
+        self.character
     
+    """
     def setupChar(self,classtype,x,y):
-        self.character=[character.Character.Initiate(classtype,x,y)]
-        
+        self.character+=[character.Archer.]
+    """    
 
 if __name__ == "__main__":
     pygame.init()
