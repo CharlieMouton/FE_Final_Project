@@ -42,9 +42,10 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
     
+    """
     def setupChar(self,classtype,x,y):
-        self.character=[character.Character.Initiate(classtype,x,y)]
-        
+        self.character+=[character.Archer.]
+    """    
 
 if __name__ == "__main__":
     pygame.init()
