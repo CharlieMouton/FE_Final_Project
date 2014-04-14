@@ -29,16 +29,13 @@ class Model:
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
-        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)
-        self.Julian=self.character[(350,350)]        
-        # print Julian.name
-        # print Julian.location
+        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)        
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        self.Julian.available_locations(self.Julian.location, self.Julian.movement)
-        print self.Julian.availabilities
-        print len(self.Julian.availabilities)
-        print self.Julian
+        self.character[(350,350)].available_locations(self.Julian.location, self.Julian.movement)
+        print self.character[(350,350)].availabilities
+        print len(self.character[(350,350)].availabilities)
+        print self.character[(350,350)]
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
