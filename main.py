@@ -19,6 +19,7 @@ if __name__ == '__main__':
     running = True
     while running:
         # VIEW
+        model.update()
         view.draw()
 
         '''
@@ -40,8 +41,13 @@ if __name__ == '__main__':
 
             # MODEL
             if event.type == MOUSEBUTTONDOWN:
-                controller.handle_mouse_event(event)
-                #noCoor=False
+                if controller.charselected != None:
+                    controller.move(event,controller.charselected)
+                else:
+                    controller.charselect(event)
+                
+
+
                 
        # self.model.character=model.setupChar(charType,coor[1],coor[2])
         time.sleep(.01)
