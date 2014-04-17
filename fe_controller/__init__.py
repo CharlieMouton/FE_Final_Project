@@ -22,15 +22,23 @@ class Controller:
         # self.model.delete_block(temp_x, temp_y)`
         #return [temp_x,temp_y]
 
-    def move(self,event,character):
+     
+
+    def move(self,event,player):
         mx, my = pygame.mouse.get_pos()
         cartX, cartY = IsoToCart(mx, my)
         temp_x = math.floor(cartX / ref) * ref
         temp_y = math.floor(cartY / ref) * ref
-        if (temp_x,temp_y) in character.availabilities:
-            self.model.updateCharLocation([character.location[0],temp_x],[character.location[1],temp_y])
-        else:
-            self.charselected = None
+        if self.model.character[(temp_x,temp_y)] == None:
+            if (temp_x,temp_y) in player.availabilities:
+                self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
+            else:
+                self.charselected = None
+        elif self.model.character[(temp_x,temp_y)] != None :
+            if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50)<=player.weaponrange:
+                self.model.battle(player,self.model.character[(temp_x,temp_y)])
+                    
+            
 
         
     def handle_keyboard_event(self, event):

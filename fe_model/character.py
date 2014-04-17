@@ -77,8 +77,8 @@ class Character:
         
         self.player2=player2
         #Player1 Attack
-        if self.strength>=self.player2.defence:
-            self.player2.CurrentHP-=(self.strength-self.player2.defence)
+        if self.strength>=self.player2.defense:
+            self.player2.CurrentHP-=(self.strength-self.player2.defense)
         else:
             pass
         if self.player2.CurrentHP<=0:
@@ -91,8 +91,8 @@ class Character:
         #Player2 Counterattack
         else:
             if self.weaponrange<=self.player2.weaponrange:
-                if self.player2.strength>=self.defence:
-                    self.CurrentHP-=(self.player2.strength-self.defence)
+                if self.player2.strength>=self.defense:
+                    self.CurrentHP-=(self.player2.strength-self.defense)
                 else:
                     pass
             else:
@@ -107,8 +107,8 @@ class Character:
                 pass
             #Possible Player1 second attack
             elif self.agility>(self.player2.agility*1.5):
-                if self.strength>=self.player2.defence:
-                    self.player2.CurrentHP-=2*(self.strength-self.player2.defence)
+                if self.strength>=self.player2.defense:
+                    self.player2.CurrentHP-=2*(self.strength-self.player2.defense)
                 else:
                     pass
             else:
@@ -120,6 +120,7 @@ class Character:
                     self.LEVEL
                     self.xp=self.xp-self.xpToNextLevel
                     self.xpToNextLevel+=5
+
                 
     def __str__(self):
         return 'This character is a ' + str(self.name)+'\nat Level ' + str(self.level)+'\nwith ' + str(self.CurrentHP) + ' of your total ' + str(self.MaxHP) + ' HP\n' + str(self.strength) + ' Strength\n' +str(self.defense) + ' Defense \n' + str(self.agility) + ' Agility \n' + str(self.intelligence) + ' Intelligence \n' +'This character has ' + str(self.movementleft) + ' movement left from ' + str(self.movement) + ' movement \n' + str(self.weaponrange) + ' weapon range \n'+'and has ' + str(self.xp) + 'xp of ' + str(self.xpToNextLevel) + 'xp required to levelup!'

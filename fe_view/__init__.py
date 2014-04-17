@@ -68,7 +68,7 @@ class View:
         self.screen.blit(xp,(959,567))
         currHP = myfont.render(str(character.CurrentHP), 1, (255,255,255))
         self.screen.blit(currHP,(935,582))
-        MaxHP = myfont.render(str(character.CurrentHP), 1, (255,255,255))
+        MaxHP = myfont.render(str(character.MaxHP), 1, (255,255,255))
         self.screen.blit(MaxHP,(965,582))
         strength = myfont.render(str(character.strength), 1, (255,255,255))
         self.screen.blit(strength,(965,626))

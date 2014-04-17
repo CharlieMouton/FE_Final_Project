@@ -69,12 +69,16 @@ class Model:
                     self.character[(x[i-1],y[i-1])]=None
                 else:
                     pass
-
-                
+    
+    def battle(self,player1, player2):
+        player1.battle(player2)
+        if player1.CurrentHP == 0:
+            character[player1.location]=None
+        if player2.CurrentHP == 0:
+            character[player2.location]=None
     
 
-    def callBattle(self, x1, y1, x2, y2):
-        self.character[(x1,y1)].Battle(self.character[(x2,y2)])    
+
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
