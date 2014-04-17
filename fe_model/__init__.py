@@ -56,7 +56,7 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
 
-     def updateCharLocation(self, x, y):
+    def updateCharLocation(self, x, y):
         """'x' and 'y' are both input list of all locations along the path
         that the character is moving.  'x' and 'y' must be the same length."""
         for i in range(len(x)):
