@@ -72,18 +72,7 @@ class Character:
                 return_blocks += [block]
 
         return return_blocks
-    
-<<<<<<< HEAD
-    def move(self,newX,newY,movementleft):
-        """Changes the x and y values for the location of the character."""
-        while escape or enter!=1:
-            
-            self.movementleft=movementleft
-            self.x=newX
-            self.y=newY
 
-=======
->>>>>>> 14a61ecfa0d7e893b33407f0cb02b24002a9fece
     def battle(self, player2):
         
         self.player2=player2

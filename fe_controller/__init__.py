@@ -42,7 +42,6 @@ class Controller:
 
         else:
             self.charselected = None
-
-        
+ 
     def handle_keyboard_event(self, event):
         pass

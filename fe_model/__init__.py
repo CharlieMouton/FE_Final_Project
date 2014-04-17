@@ -9,7 +9,6 @@ from var_scripts import *
 from fe_view import *
 from images import *
 
-
 class Model:
     """Encodes game state."""
     def __init__(self):
@@ -74,12 +73,6 @@ class Model:
                 else:
                     pass
 
-                
-    
-
-
-
-
     def callBattle(self, x1, y1, x2, y2):
         self.character[(x1,y1)].Battle(self.character[(x2,y2)])    
     """
@@ -87,7 +80,6 @@ class Model:
         self.character+=[character.Archer.]
 
     """
-
 
     def update(self):
         for point in self.character:
@@ -111,4 +103,3 @@ if __name__ == "__main__":
         for event in pygame.event.get():
                 if event.type == QUIT:
                     running = False
-
