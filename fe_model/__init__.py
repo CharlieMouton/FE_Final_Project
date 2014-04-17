@@ -48,10 +48,13 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
 
-    def UpdateCharLocation(self, oldx, oldy, x, y):
-        
-        self.character[(x,y)]=self.character(oldx, oldy)
-        self.character[(oldx,oldy)]=None
+    def UpdateCharLocation(self, x, y):
+        for i in range(len(x)):
+	    for i in range(len(y)):
+		self.character(x(0),y(0)).movementleft-=self.grid(x(i),y(i)).movementcost
+	        if self.character(x(0),y(0)).movementleft>=0:
+	             self.character[(x(-1),y(-1))]=self.character(x(0), y(0))
+	             self.character[(x(0),y(0))]=None
     
 
     def CallBattle(self, x1, y1, x2, y2):
