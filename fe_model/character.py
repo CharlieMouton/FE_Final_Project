@@ -45,7 +45,7 @@ class Character:
         current_positions = [self.location]
 
         # Iterate throughout the map to find available positions.
-        for step in range(self.movement):
+        for step in range(self.movementleft):
             temp_buffer = []
             
             for current_position in current_positions:
