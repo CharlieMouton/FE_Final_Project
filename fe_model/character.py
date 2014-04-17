@@ -55,57 +55,46 @@ class Character:
 
         # Iterate throughout the map to find available positions.
         for step in range(self.movement):
-            if len(current_positions) == 0:
-                break
+            # if len(current_positions) == 0:
+            #     break
             for current_position in current_positions:
                 # Possible refactoring for mapping.
                 next_positions = [next_position for next_position in self.model.grid if ((next_position[0]-current_position[0])**2 + (next_position[1]-current_position[1])**2)**0.5 == self.model.ref and next_position not in self.availabilities]
-                self.availabilities.append(next_positions)
+                self.availabilities += next_positions
                 current_positions = next_positions
 
+        print self.availabilities
         return self.availabilities
 
 
-    def available_locations_v1(self, location, movement):
-        """
-        This function takes in the map and character attributes to determine which spaces are available to move through.
+    # def available_locations_v1(self, location, movement):
+    #     """
+    #     This function takes in the map and character attributes to determine which spaces are available to move through.
 
-        Returns: a list of available locations for inputted character.
-        """
-        # We need character location.
-        # Using the location, map to ground and gather attributes (I.E does it take up a move? <- Actually unecessary.)
-        # We also need character movement ability.
-        # Do a range in a for loop based on the farness of the given movement range.
-        # 4 possibilities. (Not the most effective.) ++ +- -+ --
-        # If block not possible, do not add into next consideration.
-        # We need a buffer.
+    #     Returns: a list of available locations for inputted character.
+    #     """
+    #     # We need character location.
+    #     # Using the location, map to ground and gather attributes (I.E does it take up a move? <- Actually unecessary.)
+    #     # We also need character movement ability.
+    #     # Do a range in a for loop based on the farness of the given movement range.
+    #     # 4 possibilities. (Not the most effective.) ++ +- -+ --
+    #     # If block not possible, do not add into next consideration.
+    #     # We need a buffer.
         
-        buffer_dict = [position for position in self.model.grid if ((position[0]-location[0])**2 + (position[1]-location[1])**2)**0.5 == self.model.ref and position not in self.availabilities]
-        #print self.availabilities
-        # Base case, everything is false.
-        """
-        if len(buffer_dict) == 0:
-            #print "a"
-            return self.availabilities
-        
-        elif movement<0:
-            #print "b"
-            return self.availabilities
-        """
-        
-        if location not in self.availabilities:
-            self.availabilities.append(location)
-        
-        #print self.availabilities
-        
-        for position in buffer_dict:
+    #     buffer_dict = [position for position in self.model.grid if ((position[0]-location[0])**2 + (position[1]-location[1])**2)**0.5 == self.model.ref and position not in self.availabilities]
 
-            if self.model.grid[position].resistance <= movement:
-                self.available_locations(position, movement - self.model.grid[position].resistance)
-            
-            else:
-                return self.availabilities
-
+    #     # Base case, everything is false.
+    #     if len(buffer_dict) == 0 or movement == 0:
+    #         # print "Hello!"
+    #         return self.availabilities
+        
+    #     self.availabilities.append(location)
+    #     # print self.availabilities
+    #     for position in buffer_dict:
+    #         if self.model.grid[position].resistance <= movement:
+    #             self.available_locations(position, movement - self.model.grid[position].resistance)
+    #         else:
+    #             return self.availabilities
     
     def Move(self,newX,newY,movementleft):
         """Changes the x and y values for the location of the character."""
@@ -195,20 +184,3 @@ class Horseman(Character):
 #     test_character1.Battle(test_character1,test_character2)
 #     test_character1
 #     test_character2
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 4dc563b1ae0e681118488aaa44cc2600c0f4edc6
