@@ -9,6 +9,7 @@ from var_scripts import *
 from fe_view import *
 from images import *
 
+
 class Model:
     """Encodes game state."""
     def __init__(self):
@@ -32,10 +33,12 @@ class Model:
                     self.grid[(boundary.x,boundary.y)] = boundary
 
         self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
+        
+
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        # self.character[(350,350)].available_locations()
-        #print self.character.surroundings()
+        self.character[(350,350)].available_locations()
+        # print self.character[(350,350)].surroundings((0,0))
         # print self.character[(350,350)].availabilities
         # print len(self.character[(350,350)].availabilities)
         # print self.character[(350,350)]
