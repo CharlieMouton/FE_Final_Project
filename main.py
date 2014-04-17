@@ -33,6 +33,7 @@ if __name__ == '__main__':
             view.draw()
             noCoor=True       
         '''
+        
         # CONTROLLER
         #    while noCoor:
         for event in pygame.event.get():
