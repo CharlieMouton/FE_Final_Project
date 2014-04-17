@@ -23,7 +23,7 @@ class Character:
         self.xp=0
         self.xpToNextLevel=xpToNextLevel
         self.availabilities = []
-        
+
     def Level(self):
         """LvlUp is a list containing 7 components.  Each one matches up to the stats of the Characters Class."""
         LvlUp=[1,2,3,4,5,6,7]
@@ -56,6 +56,7 @@ class Character:
             current_positions = temp_buffer
 
         return self.availabilities
+
 
     def surroundings(self, current_position):
         blocks = range(4)
