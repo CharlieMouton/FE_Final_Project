@@ -46,9 +46,6 @@ if __name__ == '__main__':
                 else:
                     controller.charselect(event)
                 
-
-
-                
        # self.model.character=model.setupChar(charType,coor[1],coor[2])
         time.sleep(.01)
 

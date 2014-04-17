@@ -9,7 +9,6 @@ from var_scripts import *
 from fe_view import *
 from images import *
 
-
 class Model:
     """Encodes game state."""
     def __init__(self):
@@ -41,6 +40,8 @@ class Model:
         self.character[(350,350)].available_locations()
         self.character[(400,450)].available_locations()
         self.character[(550,550)].available_locations()
+
+        print self.character[(400,450)].availabilities
         # print self.character[(350,350)].surroundings((0,0))
 
         # print self.character[(350,350)].availabilities
@@ -61,31 +62,29 @@ class Model:
         that the character is moving.  'x' and 'y' must be the same length."""
         for i in range(len(x)):
             if i>0:
-<<<<<<< HEAD
-                self.character[(x(i),y(i))]=self.character(x(i-1), y(i-1))
-                self.character[(x(i-1),y(i-1))]=None
-                view.draw()
-                time.sleep(.25)
-=======
+
+
                 if self.character[(x[i],y[i])] == None:
                     self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
+                    self.character[(x[i],y[i])].location=(x[i],y[i])
+                    moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
+                    self.character[(x[i],y[i])].movementleft-=moved
                     self.character[(x[i-1],y[i-1])]=None
                 else:
                     pass
-
-                
     
->>>>>>> 9252aec244cbbc675e4a97740d51753ef472ecd3
-
-    def callBattle(self, x1, y1, x2, y2):
-        self.character[(x1,y1)].Battle(self.character[(x2,y2)])    
+    def battleCall(self,player1, player2):
+        player1.battle(player2)
+        if player1.CurrentHP == 0:
+            self.character[player1.location]=None
+        if player2.CurrentHP == 0:
+            self.character[player2.location]=None
+    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
-<<<<<<< HEAD
+
     """
-=======
-    """    
 
     def update(self):
         for point in self.character:
@@ -109,4 +108,3 @@ if __name__ == "__main__":
         for event in pygame.event.get():
                 if event.type == QUIT:
                     running = False
->>>>>>> 9252aec244cbbc675e4a97740d51753ef472ecd3
