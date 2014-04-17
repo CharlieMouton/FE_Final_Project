@@ -33,8 +33,8 @@ class Model:
                     self.grid[(boundary.x,boundary.y)] = boundary
 
         self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
-        self.character[(400,450)] = character.Archer(self,location=(400,450), name='Bryan', movement=3)
-        self.character[(550,550)] = character.Archer(self,location=(550,550), name='Bryan', movement=3)
+        self.character[(400,450)] = character.Archer(self,location=(400,450), name='David', movement=4)
+        self.character[(550,550)] = character.Archer(self,location=(550,550), name='Charlie', movement=5)
         # print test_model.grid
         # print test_model.grid[(500,500)]
 
@@ -64,8 +64,12 @@ class Model:
         for i in range(len(x)):
             if i>0:
 
+
                 if self.character[(x[i],y[i])] == None:
                     self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
+                    self.character[(x[i],y[i])].location=(x[i],y[i])
+                    moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
+                    self.character[(x[i],y[i])].movementleft-=moved
                     self.character[(x[i-1],y[i-1])]=None
                 else:
                     pass
@@ -74,13 +78,16 @@ class Model:
     
 
 
+
+
     def callBattle(self, x1, y1, x2, y2):
         self.character[(x1,y1)].Battle(self.character[(x2,y2)])    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
 
-    """    
+    """
+
 
     def update(self):
         for point in self.character:
