@@ -33,13 +33,14 @@ class Model:
                     self.grid[(boundary.x,boundary.y)] = boundary
 
         self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
-        self.character[(250,450)] = character.Archer(self,location=(250,450), name='Bryan', movement=3)
-
+        self.character[(400,450)] = character.Archer(self,location=(400,450), name='Bryan', movement=3)
+        self.character[(550,550)] = character.Archer(self,location=(550,550), name='Bryan', movement=3)
         # print test_model.grid
         # print test_model.grid[(500,500)]
 
         self.character[(350,350)].available_locations()
-        self.character[(250,450)].available_locations()
+        self.character[(400,450)].available_locations()
+        self.character[(550,550)].available_locations()
         # print self.character[(350,350)].surroundings((0,0))
 
         # print self.character[(350,350)].availabilities
