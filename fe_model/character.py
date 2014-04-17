@@ -86,7 +86,7 @@ class Character:
 
         print blocks
         return blocks
-
+    
 
     # def available_locations_v1(self, location, movement):
     #     """
