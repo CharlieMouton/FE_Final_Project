@@ -31,15 +31,8 @@ class Model:
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
 
-        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=10)        
-        # print test_model.grid
-        # print test_model.grid[(500,500)]
-        self.character[(350,350)].available_locations()
-        # print self.character[(350,350)].surroundings((0,0))
-        # print self.character[(350,350)].availabilities
-        # print len(self.character[(350,350)].availabilities)
-        # print self.character[(350,350)]
-
+        self.character[(550,550)] = character.Archer(self,location=(550,550), name='Julian', movement=15)
+        self.character[(550,550)].available_locations()
 
     def populatePlayers(self):
         pass
@@ -59,30 +52,10 @@ class Model:
                 self.character[(x(i-1),y(i-1))]=None
                 view.draw()
                 time.sleep(.25)
-                
-    
 
     def CallBattle(self, x1, y1, x2, y2):
         self.character(x1,y1).Battle(self.character(x2,y2))    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
-    """    
-
-if __name__ == "__main__":
-    pygame.init()
-    test_model = Model()
-
-    running = True
-    while running:
-        # screen = pygame.display.set_mode(size)
-        # screen.fill((255,255,255))
-        # for block in Julian.availabilities:
-        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
-        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
-        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
-        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
-
-        for event in pygame.event.get():
-                if event.type == QUIT:
-                    running = False
+    """
