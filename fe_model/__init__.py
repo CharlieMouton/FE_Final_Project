@@ -49,11 +49,17 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
 
-    # Move  to character.
-    def UpdateCharLocation(self, oldx, oldy, x, y):
-        
-        self.character[(x,y)]=self.character(oldx, oldy)
+    def UpdateCharLocation(self, x, y):
+        for i in range(len(x)):
+	    for i in range(len(y)):
+		self.character(x(0),y(0)).movementleft-=self.grid(x(i),y(i)).movementcost
+	        if self.character(x(0),y(0)).movementleft>=0:
+	             self.character[(x(-1),y(-1))]=self.character(x(0), y(0))
+	             self.character[(x(0),y(0))]=None
     
+
+    def CallBattle(self, x1, y1, x2, y2):
+        self.character(x1,y1).Battle(self.character(x2,y2))    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
