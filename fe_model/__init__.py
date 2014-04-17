@@ -35,7 +35,7 @@ class Model:
         # print test_model.grid
         # print test_model.grid[(500,500)]
         # self.character[(350,350)].available_locations()
-        print self.character.surroundings()
+        #print self.character.surroundings()
         # print self.character[(350,350)].availabilities
         # print len(self.character[(350,350)].availabilities)
         # print self.character[(350,350)]
