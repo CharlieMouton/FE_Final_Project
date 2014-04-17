@@ -23,7 +23,7 @@ class Character:
         self.xp=0
         self.xpToNextLevel=xpToNextLevel
         self.availabilities = []
-        
+        """
         # Load respective image for playeri and scale.
         self.image = pygame.image.load('images/cavalry_unit.jpg'.format(playeri))
         self.image = pygame.transform.scale(self.image, (50, 50))
@@ -32,7 +32,7 @@ class Character:
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
+"""
     def Level(self):
         """LvlUp is a list containing 7 components.  Each one matches up to the stats of the Characters Class."""
         LvlUp=[1,2,3,4,5,6,7]
@@ -65,8 +65,7 @@ class Character:
 
         print self.availabilities
         return self.availabilities
-
-
+print available_locations()
     # def available_locations_v1(self, location, movement):
     #     """
     #     This function takes in the map and character attributes to determine which spaces are available to move through.
