@@ -2,6 +2,7 @@ import block
 import character
 import wall
 import os, sys
+import time
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
@@ -50,12 +51,15 @@ class Model:
         print len(self.grid)
 
     def UpdateCharLocation(self, x, y):
+        """'x' and 'y' are both input list of all locations along the path 
+        that the character is moving.  'x' and 'y' must be the same length."""
         for i in range(len(x)):
-	    for i in range(len(y)):
-		self.character(x(0),y(0)).movementleft-=self.grid(x(i),y(i)).movementcost
-	        if self.character(x(0),y(0)).movementleft>=0:
-	             self.character[(x(-1),y(-1))]=self.character(x(0), y(0))
-	             self.character[(x(0),y(0))]=None
+            if i>0:
+                self.character[(x(i),y(i))]=self.character(x(i-1), y(i-1))
+                self.character[(x(i-1),y(i-1))]=None
+                view.draw()
+                time.sleep(.25)
+                
     
 
     def CallBattle(self, x1, y1, x2, y2):
