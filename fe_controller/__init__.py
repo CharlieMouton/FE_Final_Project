@@ -17,7 +17,7 @@ class Controller:
         print temp_x, temp_y
         if self.model.character[(temp_x,temp_y)]!= None:
             self.view.statselect = self.model.character[(temp_x,temp_y)]
-        # self.model.delete_block(temp_x, temp_y)
+        # self.model.delete_block(temp_x, temp_y)`
         #return [temp_x,temp_y]
 
         

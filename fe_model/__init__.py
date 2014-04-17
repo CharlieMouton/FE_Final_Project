@@ -2,6 +2,7 @@ import block
 import character
 import wall
 import os, sys
+import time
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
@@ -30,10 +31,11 @@ class Model:
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
 
-        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)        
+        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        # self.character[(350,350)].available_locations(self.Julian.location, self.Julian.movement)
+        # self.character[(350,350)].available_locations()
+        print self.character.surroundings()
         # print self.character[(350,350)].availabilities
         # print len(self.character[(350,350)].availabilities)
         # print self.character[(350,350)]
@@ -48,10 +50,20 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
 
-    def UpdateCharLocation(self, oldx, oldy, x, y):
-        
-        self.character[(x,y)]=self.character(oldx, oldy)
+    def UpdateCharLocation(self, x, y):
+        """'x' and 'y' are both input list of all locations along the path 
+        that the character is moving.  'x' and 'y' must be the same length."""
+        for i in range(len(x)):
+            if i>0:
+                self.character[(x(i),y(i))]=self.character(x(i-1), y(i-1))
+                self.character[(x(i-1),y(i-1))]=None
+                view.draw()
+                time.sleep(.25)
+                
     
+
+    def CallBattle(self, x1, y1, x2, y2):
+        self.character(x1,y1).Battle(self.character(x2,y2))    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
