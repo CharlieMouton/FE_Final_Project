@@ -72,6 +72,7 @@ class Character:
 
         return self.availabilities
 
+
     def surroundings(self, current_position):
         blocks = range(4)
         blocks[0] = (current_position[0] + self.model.ref, current_position[1])
