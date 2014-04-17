@@ -30,10 +30,11 @@ class Model:
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
 
-        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)        
+        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        # self.character[(350,350)].available_locations(self.Julian.location, self.Julian.movement)
+        # self.character[(350,350)].available_locations()
+        print self.character.surroundings()
         # print self.character[(350,350)].availabilities
         # print len(self.character[(350,350)].availabilities)
         # print self.character[(350,350)]
@@ -48,10 +49,17 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
 
-    def UpdateCharLocation(self, oldx, oldy, x, y):
-        
-        self.character[(x,y)]=self.character(oldx, oldy)
+    def UpdateCharLocation(self, x, y):
+        for i in range(len(x)):
+	    for i in range(len(y)):
+		self.character(x(0),y(0)).movementleft-=self.grid(x(i),y(i)).movementcost
+	        if self.character(x(0),y(0)).movementleft>=0:
+	             self.character[(x(-1),y(-1))]=self.character(x(0), y(0))
+	             self.character[(x(0),y(0))]=None
     
+
+    def CallBattle(self, x1, y1, x2, y2):
+        self.character(x1,y1).Battle(self.character(x2,y2))    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
