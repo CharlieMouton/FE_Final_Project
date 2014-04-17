@@ -51,6 +51,11 @@ class Model:
     def UpdateCharLocation(self, oldx, oldy, x, y):
         
         self.character[(x,y)]=self.character(oldx, oldy)
+        self.character[(oldx,oldy)]=None
+    
+
+    def CallBattle(self, x1, y1, x2, y2):
+        self.character(x1,y1).Battle(self.character(x2,y2))
     
     """
     def setupChar(self,classtype,x,y):
