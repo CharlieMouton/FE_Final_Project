@@ -34,7 +34,7 @@ class Controller:
                 self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
             else:
                 self.charselected = None
-        elif self.model.character[(temp_x,temp_y)] != None :
+        elif self.model.character[(temp_x,temp_y)] != None and self.model.character[(temp_x,temp_y)] != player:
             if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50)<=player.weaponrange:
                 self.model.battle(player,self.model.character[(temp_x,temp_y)])
                     

@@ -73,9 +73,9 @@ class Model:
     def battle(self,player1, player2):
         player1.battle(player2)
         if player1.CurrentHP == 0:
-            character[player1.location]=None
+            self.character[player1.location]=None
         if player2.CurrentHP == 0:
-            character[player2.location]=None
+            self.character[player2.location]=None
     
 
 
