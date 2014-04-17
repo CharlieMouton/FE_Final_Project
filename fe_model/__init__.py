@@ -64,6 +64,8 @@ class Model:
                 if self.character[(x[i],y[i])] == None:
                     self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
                     self.character[(x[i],y[i])].location=(x[i],y[i])
+                    moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
+                    self.character[(x[i],y[i])].movementleft-=moved
                     self.character[(x[i-1],y[i-1])]=None
                 else:
                     pass

@@ -42,15 +42,15 @@ class Character:
     def available_locations(self):
 
         # Save current location
+        self.availabilities=[]
         current_positions = [self.location]
-
         # Iterate throughout the map to find available positions.
-        for step in range(self.movementleft):
+        for step in range(int(self.movementleft)):
             temp_buffer = []
             
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
-                next_positions = [block for block in blocks if block not in self.availabilities and self.model.grid[block].movementcost <= self.movement - step]
+                next_positions = [block for block in blocks if (block not in self.availabilities and self.model.grid[block].movementcost <= self.movementleft - step)]
                 self.availabilities += [current_position]
                 temp_buffer += next_positions
             
@@ -73,12 +73,6 @@ class Character:
 
         return return_blocks
     
-    def move(self,newX,newY,movementleft):
-        """Changes the x and y values for the location of the character."""
-        self.movementleft=movementleft
-        self.x=newX
-        self.y=newY
-
     def battle(self, player2):
         
         self.player2=player2
