@@ -25,8 +25,6 @@ class View:
         TILE_WIDTH =  64
         TILE_HEIGHT =  32
 
-
-
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
             tempobj = self.model.grid[point]
@@ -47,9 +45,6 @@ class View:
         # self.screen.blit(statpage,(900,530))
         # HP = myfont.render("40", 1, (0,0,0))
         # self.screen.blit(HP,(965,700))
-
-
-
 
         pygame.display.update()
 
@@ -85,11 +80,3 @@ class View:
             pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
         # self.screen.blit(character.image,(CartToIso(character.location[0],character.location[1])[0]-20,CartToIso(character.location[0],character.location[1])[1]-40))
         pygame.display.update()
-
-
-
-
-if __name__ == '__main__':
-    pass
-
-sys.path.remove(lib_path)

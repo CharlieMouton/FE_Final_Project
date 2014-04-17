@@ -72,7 +72,7 @@ class Character:
                 return_blocks += [block]
 
         return return_blocks
-    
+
     def battle(self, player2):
         
         self.player2=player2
