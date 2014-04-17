@@ -28,12 +28,14 @@ class Model:
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
+        
         self.Julian = character.Archer(self,location=(350,350), name='Julian', movement=4)
         # print Julian.name
         # print Julian.location
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        self.Julian.available_locations()
+        self.Julian.availabilities = []
+        print self.Julian.available_locations()
         print self.Julian.availabilities
         print len(self.Julian.availabilities)
         print self.Julian
