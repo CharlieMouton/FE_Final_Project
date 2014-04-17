@@ -50,20 +50,20 @@ class Model:
             del self.grid[(x, y)]
         print len(self.grid)
 
-    def UpdateCharLocation(self, x, y):
+    def updateCharLocation(self, x, y):
         """'x' and 'y' are both input list of all locations along the path 
         that the character is moving.  'x' and 'y' must be the same length."""
         for i in range(len(x)):
             if i>0:
-                self.character[(x(i),y(i))]=self.character(x(i-1), y(i-1))
+                self.character[(x(i),y(i))]=self.character[(x(i-1), y(i-1))]
                 self.character[(x(i-1),y(i-1))]=None
                 view.draw()
                 time.sleep(.25)
                 
     
 
-    def CallBattle(self, x1, y1, x2, y2):
-        self.character(x1,y1).Battle(self.character(x2,y2))    
+    def callBattle(self, x1, y1, x2, y2):
+        self.character[(x1,y1)].Battle(self.character[(x2,y2)])    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
