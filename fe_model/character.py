@@ -20,6 +20,7 @@ class Character:
         self.movementleft=movement
         self.weaponrange=weaponrange
         self.location = location
+        self.o_location = location
         self.xp=0
         self.xpToNextLevel=xpToNextLevel
         self.availabilities = []

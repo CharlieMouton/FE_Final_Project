@@ -45,14 +45,12 @@ if __name__ == '__main__':
                     controller.move(event,controller.charselected)
                 else:
                     controller.charselect(event)
-                
+
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    controller.char_reset(controller.charselected)
+
        # self.model.character=model.setupChar(charType,coor[1],coor[2])
         time.sleep(.01)
 
     pygame.quit()
-    
-    
-    
-    
-    
-    

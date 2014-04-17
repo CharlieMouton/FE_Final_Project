@@ -34,20 +34,11 @@ class Model:
         self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
         self.character[(400,450)] = character.Archer(self,location=(400,450), name='David', movement=4)
         self.character[(550,550)] = character.Archer(self,location=(550,550), name='Charlie', movement=5)
-        # print test_model.grid
-        # print test_model.grid[(500,500)]
 
-        self.character[(350,350)].available_locations()
-        self.character[(400,450)].available_locations()
-        self.character[(550,550)].available_locations()
-
-        print self.character[(400,450)].availabilities
-        # print self.character[(350,350)].surroundings((0,0))
-
-        # print self.character[(350,350)].availabilities
-        # print len(self.character[(350,350)].availabilities)
-        # print self.character[(350,350)]
-
+        # self.character[(350,350)].available_locations()
+        # self.character[(400,450)].available_locations()
+        # self.character[(550,550)].available_locations()
+        
     def populatePlayers(self):
         pass
         # self.character[(,)]=character.Archer(self,location=(150,150), name='Julian', movement=4)
@@ -62,8 +53,6 @@ class Model:
         that the character is moving.  'x' and 'y' must be the same length."""
         for i in range(len(x)):
             if i>0:
-
-
                 if self.character[(x[i],y[i])] == None:
                     self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
                     self.character[(x[i],y[i])].location=(x[i],y[i])
