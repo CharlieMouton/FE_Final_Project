@@ -29,6 +29,17 @@ class Controller:
         temp_y = math.floor(cartY / ref) * ref
         if (temp_x,temp_y) in character.availabilities:
             self.model.updateCharLocation([character.location[0],temp_x],[character.location[1],temp_y])
+            state = True
+            # while state:
+            #     while event.key!=K_ESCAPE or event.key!=K_RETURN:
+            #         print "h"
+            #         # pass
+            if event.key==K_ESCAPE:
+                self.model.character.location=self.availabilities[0]
+                state = False
+            else:
+                state = False
+
         else:
             self.charselected = None
 

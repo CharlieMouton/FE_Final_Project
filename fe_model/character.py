@@ -75,9 +75,11 @@ class Character:
     
     def move(self,newX,newY,movementleft):
         """Changes the x and y values for the location of the character."""
-        self.movementleft=movementleft
-        self.x=newX
-        self.y=newY
+        while escape or enter!=1:
+            
+            self.movementleft=movementleft
+            self.x=newX
+            self.y=newY
 
     def battle(self, player2):
         
