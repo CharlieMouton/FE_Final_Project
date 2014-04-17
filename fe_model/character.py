@@ -50,12 +50,32 @@ class Character:
             #     break
             for current_position in current_positions:
                 # Possible refactoring for mapping.
-                next_positions = [next_position for next_position in self.model.grid if ((next_position[0]-current_position[0])**2 + (next_position[1]-current_position[1])**2)**0.5 == self.model.ref and next_position not in self.availabilities]
-                self.availabilities += next_positions
+                next_positions = self.surroundings(current_position)
+                # next_positions = [block for block in blocks if block not in self.availabilities]
+
+
+                # next_positions = [next_position for next_position in self.model.grid if ((next_position[0]-current_position[0])**2 + (next_position[1]-current_position[1])**2)**0.5 == self.model.ref and next_position]
+                # next_positions = [next_position for next_position in self.model.grid if ((next_position[0]-current_position[0])**2 + (next_position[1]-current_position[1])**2)**0.5 == self.model.ref and next_position not in self.availabilities]
+                # print current_position
+                self.availabilities += [current_position]
+                # print self.availabilities
                 current_positions = next_positions
 
-        print self.availabilities
         return self.availabilities
+
+    def surroundings(self, current_position):
+        blocks = range(4)
+        blocks[0] = (current_position[0] + self.model.ref, current_position[1])
+        blocks[1] = (current_position[0] - self.model.ref, current_position[1])
+        blocks[2] = (current_position[0], current_position[1] + self.model.ref)
+        blocks[3] = (current_position[0], current_position[1] - self.model.ref)
+
+        for block in blocks:
+            if block[0] <= 0 or block[0] >= self.model.swidth or block[1] <= 0 or block[1] >= self.model.sheight:
+                blocks.remove(block)
+
+        print blocks
+        return blocks
 
 
     # def available_locations_v1(self, location, movement):
