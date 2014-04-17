@@ -62,9 +62,12 @@ class Model:
         that the character is moving.  'x' and 'y' must be the same length."""
         for i in range(len(x)):
             if i>0:
-                self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
-                self.character[(x[i-1],y[i-1])]=None
-                time.sleep(.25)
+                if self.character[(x[i],y[i])] == None:
+                    self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
+                    self.character[(x[i-1],y[i-1])]=None
+                else:
+                    pass
+
                 
     
 
