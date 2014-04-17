@@ -47,6 +47,7 @@ class Controller:
         print character.o_location
         print character.location
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
-      
+        character.movementleft=character.movement        
+        
     def handle_keyboard_event(self, event):
         pass
