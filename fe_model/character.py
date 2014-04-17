@@ -49,7 +49,8 @@ class Character:
             temp_buffer = []
             
             for current_position in current_positions:
-                next_positions = self.surroundings(current_position)
+                blocks = self.surroundings(current_position)
+                next_positions = [block for block in blocks if block not in self.availabilities and self.model.grid[block].movementcost <= self.movement - step]
                 self.availabilities += [current_position]
                 temp_buffer += next_positions
             
@@ -67,10 +68,8 @@ class Character:
         blocks[3] = (current_position[0], current_position[1] - self.model.ref)
 
         for block in blocks:
-
-            if block[0] >= 0 and block[0] <= self.model.swidth and block[1] >= 0 and block[1] <= self.model.sheight:
+            if block[0] >= 0 and block[0] < self.model.swidth and block[1] >= 0 and block[1] < self.model.sheight:
                 return_blocks += [block]
-
 
         return return_blocks
     

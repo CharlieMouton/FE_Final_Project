@@ -47,7 +47,6 @@ class Model:
         # print len(self.character[(350,350)].availabilities)
         # print self.character[(350,350)]
 
-
     def populatePlayers(self):
         pass
         # self.character[(,)]=character.Archer(self,location=(150,150), name='Julian', movement=4)
@@ -62,6 +61,12 @@ class Model:
         that the character is moving.  'x' and 'y' must be the same length."""
         for i in range(len(x)):
             if i>0:
+<<<<<<< HEAD
+                self.character[(x(i),y(i))]=self.character(x(i-1), y(i-1))
+                self.character[(x(i-1),y(i-1))]=None
+                view.draw()
+                time.sleep(.25)
+=======
                 if self.character[(x[i],y[i])] == None:
                     self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
                     self.character[(x[i-1],y[i-1])]=None
@@ -70,12 +75,16 @@ class Model:
 
                 
     
+>>>>>>> 9252aec244cbbc675e4a97740d51753ef472ecd3
 
     def callBattle(self, x1, y1, x2, y2):
         self.character[(x1,y1)].Battle(self.character[(x2,y2)])    
     """
     def setupChar(self,classtype,x,y):
         self.character+=[character.Archer.]
+<<<<<<< HEAD
+    """
+=======
     """    
 
     def update(self):
@@ -100,3 +109,4 @@ if __name__ == "__main__":
         for event in pygame.event.get():
                 if event.type == QUIT:
                     running = False
+>>>>>>> 9252aec244cbbc675e4a97740d51753ef472ecd3

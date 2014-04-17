@@ -9,7 +9,6 @@ class Block(object):
         self.x=x
         self.y=y
         self.length=SQUARELENGTH
-        self.resistance = 1      
         
 #class Grass(pygame.sprite.Sprite):
 class Grass(Block):
@@ -27,7 +26,7 @@ class Grass(Block):
         """
         self.image = pygame.image.load('fe_model/images/grass.png')
         super(Grass,self).__init__(x,y)
-        self.movementcost=1
+        self.movementcost = 1
     
     def interaction(self,character):
         self.character.movementleft-=1
@@ -50,7 +49,7 @@ class Outeredge(Block):
         """
         self.image = pygame.image.load('fe_model/images/water.png')
         super(Outeredge,self).__init__(x,y)
-        self.movementcost=0
+        self.movementcost = 100
         
    
 #class Forest(pygame.sprite.Sprite):
