@@ -46,75 +46,41 @@ class Character:
 
         # Iterate throughout the map to find available positions.
         for step in range(self.movement):
-            # if len(current_positions) == 0:
-            #     break
+            temp_buffer = []
+            
             for current_position in current_positions:
-                # Possible refactoring for mapping.
                 next_positions = self.surroundings(current_position)
-                # next_positions = [block for block in blocks if block not in self.availabilities]
-
-
-                # next_positions = [next_position for next_position in self.model.grid if ((next_position[0]-current_position[0])**2 + (next_position[1]-current_position[1])**2)**0.5 == self.model.ref and next_position]
-                # next_positions = [next_position for next_position in self.model.grid if ((next_position[0]-current_position[0])**2 + (next_position[1]-current_position[1])**2)**0.5 == self.model.ref and next_position not in self.availabilities]
-                # print current_position
                 self.availabilities += [current_position]
-                # print self.availabilities
-                current_positions = next_positions
+                temp_buffer += next_positions
+            
+            current_positions = temp_buffer
 
         return self.availabilities
 
 
     def surroundings(self, current_position):
         blocks = range(4)
+        return_blocks = []
         blocks[0] = (current_position[0] + self.model.ref, current_position[1])
         blocks[1] = (current_position[0] - self.model.ref, current_position[1])
         blocks[2] = (current_position[0], current_position[1] + self.model.ref)
         blocks[3] = (current_position[0], current_position[1] - self.model.ref)
 
         for block in blocks:
-            if block[0] <= 0 or block[0] >= self.model.swidth or block[1] <= 0 or block[1] >= self.model.sheight:
-                blocks.remove(block)
 
-        print blocks
-        return blocks
+            if block[0] >= 0 and block[0] <= self.model.swidth and block[1] >= 0 and block[1] <= self.model.sheight:
+                return_blocks += [block]
 
 
-    # def available_locations_v1(self, location, movement):
-    #     """
-    #     This function takes in the map and character attributes to determine which spaces are available to move through.
-
-    #     Returns: a list of available locations for inputted character.
-    #     """
-    #     # We need character location.
-    #     # Using the location, map to ground and gather attributes (I.E does it take up a move? <- Actually unecessary.)
-    #     # We also need character movement ability.
-    #     # Do a range in a for loop based on the farness of the given movement range.
-    #     # 4 possibilities. (Not the most effective.) ++ +- -+ --
-    #     # If block not possible, do not add into next consideration.
-    #     # We need a buffer.
-        
-    #     buffer_dict = [position for position in self.model.grid if ((position[0]-location[0])**2 + (position[1]-location[1])**2)**0.5 == self.model.ref and position not in self.availabilities]
-
-    #     # Base case, everything is false.
-    #     if len(buffer_dict) == 0 or movement == 0:
-    #         # print "Hello!"
-    #         return self.availabilities
-        
-    #     self.availabilities.append(location)
-    #     # print self.availabilities
-    #     for position in buffer_dict:
-    #         if self.model.grid[position].resistance <= movement:
-    #             self.available_locations(position, movement - self.model.grid[position].resistance)
-    #         else:
-    #             return self.availabilities
+        return return_blocks
     
-    def Move(self,newX,newY,movementleft):
+    def move(self,newX,newY,movementleft):
         """Changes the x and y values for the location of the character."""
         self.movementleft=movementleft
         self.x=newX
         self.y=newY
 
-    def Battle(self, player2):
+    def battle(self, player2):
         
         self.player2=player2
         #Player1 Attack
@@ -162,18 +128,8 @@ class Character:
                     self.xp=self.xp-self.xpToNextLevel
                     self.xpToNextLevel+=5
                 
-        
     def __str__(self):
         return 'This character is a ' + str(self.name)+'\nat Level ' + str(self.level)+'\nwith ' + str(self.CurrentHP) + ' of your total ' + str(self.MaxHP) + ' HP\n' + str(self.strength) + ' Strength\n' +str(self.defense) + ' Defense \n' + str(self.agility) + ' Agility \n' + str(self.intelligence) + ' Intelligence \n' +'This character has ' + str(self.movementleft) + ' movement left from ' + str(self.movement) + ' movement \n' + str(self.weaponrange) + ' weapon range \n'+'and has ' + str(self.xp) + 'xp of ' + str(self.xpToNextLevel) + 'xp required to levelup!'
-#        print 'This character is at ' + str(self.x)+ ' and ' + str(self.y)
-
-# def Initiate(self,classtype,x,y):
-#     if classtype.ascii_uppercase=='ARCHER':
-#         self.newSpawn=Character(classtype.ascii_uppercase,1,6,2,1,3,3,2,3,x,y)
-#     elif classtype.ascii_uppercase=='WARRIOR':
-#         self.newSpawn=Character(classtype.ascii_uppercase,1,9,3,2,1,1,1,1,x,y)
-#     elif classtype.ascii_uppercase=='HORSEMAN':
-#         self.newSpawn=Character(classtype.ascii_uppercase,1,8,1,3,2,2,3,2,x,y)
 
 class Archer(Character):
     def __init__(self, model, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=4, xpToNextLevel=100, weaponrange=3, location=(2*ref,3*ref)):
@@ -187,12 +143,3 @@ class Warrior(Character):
 class Horseman(Character):
     def __init__(self, x,y, name='Horsemen', level=1, HP=8,strength=1,defense=3,agility=2,intelligence=2,movement=3, weaponrange=2):
         Character.__init__(self,name,level, HP,strength,defense,agility,intelligence,movement, weaponrange,x,y)
-        
-# if __name__ == "__main__":
-#     test_character1 = Character.Initiate('Archer',100,100)
-#     test_character1
-#     test_character2 = Character.Initiate('Archer',100,100)
-#     test_character2
-#     test_character1.Battle(test_character1,test_character2)
-#     test_character1
-#     test_character2
