@@ -16,34 +16,41 @@ class Model:
         self.sheight = sheight
         self.grid = {}
         # self.characters=pygame.sprite.Group()
-        self.character =[]
+        self.character ={}
         # self.populateBlocks()
         # self.populateCharaceters()
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 node = block.Grass(x,y)
-                self.grid[(x,y)] = node  
+                self.grid[(x,y)] = node
+                self.character[(x,y)]=None
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
-        
-        self.Julian = character.Archer(self,location=(350,350), name='Julian', movement=4)
-        # print Julian.name
-        # print Julian.location
+
+        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=4)        
         # print test_model.grid
         # print test_model.grid[(500,500)]
-        self.Julian.availabilities = []
-        print self.Julian.available_locations()
-        print self.Julian.availabilities
-        print len(self.Julian.availabilities)
-        print self.Julian
+        # self.character[(350,350)].available_locations(self.Julian.location, self.Julian.movement)
+        # print self.character[(350,350)].availabilities
+        # print len(self.character[(350,350)].availabilities)
+        # print self.character[(350,350)]
+
+
+    def populatePlayers(self):
+        pass
+        # self.character[(,)]=character.Archer(self,location=(150,150), name='Julian', movement=4)
 
     def delete_block(self, x, y):
         if (x, y) in self.grid:
             del self.grid[(x, y)]
         print len(self.grid)
+
+    def UpdateCharLocation(self, oldx, oldy, x, y):
+        
+        self.character[(x,y)]=self.character(oldx, oldy)
     
     """
     def setupChar(self,classtype,x,y):
@@ -58,11 +65,11 @@ if __name__ == "__main__":
     while running:
         # screen = pygame.display.set_mode(size)
         # screen.fill((255,255,255))
-        for block in Julian.availabilities:
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
-            pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
+        # for block in Julian.availabilities:
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
+        #     pygame.draw.line(screen,(255,255,255),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
 
         for event in pygame.event.get():
                 if event.type == QUIT:

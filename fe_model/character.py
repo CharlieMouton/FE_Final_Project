@@ -175,4 +175,3 @@ class Horseman(Character):
 #     test_character1.Battle(test_character1,test_character2)
 #     test_character1
 #     test_character2
-
