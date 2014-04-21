@@ -33,7 +33,7 @@ class Model:
                     self.grid[(boundary.x,boundary.y)] = boundary
 
         self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
-        self.character[(400,450)] = character.Archer(self,location=(400,450), name='David', movement=4)
+        self.character[(400,450)] = character.Warrior(self,location=(400,450), name='David', movement=4)
         self.character[(550,550)] = character.Archer(self,location=(550,550), name='Charlie', movement=5)
         # print test_model.grid
         # print test_model.grid[(500,500)]

@@ -31,7 +31,7 @@ class View:
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
         for point in self.model.character:
             if self.model.character[point] != None:
-                self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-40))
+                self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
         if self.statselect != None:
             self.char_select(self.statselect)
             # HP = myfont.render("(%d)" % current.HP, 1, (255,255,0))
