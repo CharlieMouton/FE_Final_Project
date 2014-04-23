@@ -127,12 +127,12 @@ class Character:
         return 'This character is a ' + str(self.name)+'\nat Level ' + str(self.level)+'\nwith ' + str(self.CurrentHP) + ' of your total ' + str(self.MaxHP) + ' HP\n' + str(self.strength) + ' Strength\n' +str(self.defense) + ' Defense \n' + str(self.agility) + ' Agility \n' + str(self.intelligence) + ' Intelligence \n' +'This character has ' + str(self.movementleft) + ' movement left from ' + str(self.movement) + ' movement \n' + str(self.weaponrange) + ' weapon range \n'+'and has ' + str(self.xp) + 'xp of ' + str(self.xpToNextLevel) + 'xp required to levelup!'
 
 class Archer(Character):
-    def __init__(self, model, name='Archer', level=1, HP=6,strength=2,defense=1,agility=3,intelligence=3,movement=4, xpToNextLevel=100, weaponrange=2, location=(2*ref,3*ref)):
+    def __init__(self, model, name='Archer', level=1, HP=6,strength=3,defense=1,agility=3,intelligence=3,movement=4, xpToNextLevel=100, weaponrange=2, location=(2*ref,3*ref)):
         Character.__init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location)
         self.image = pygame.image.load('fe_model/images/Anne.png')
 
 class Warrior(Character):
-    def __init__(self, model, name='Warrior', level=1, HP=9,strength=3,defense=2,agility=1,intelligence=1,movement=1, xpToNextLevel=100, weaponrange=1, location=(2*ref,3*ref)):
+    def __init__(self, model, name='Warrior', level=1, HP=9,strength=2,defense=2,agility=1,intelligence=1,movement=1, xpToNextLevel=100, weaponrange=1, location=(2*ref,3*ref)):
         Character.__init__(self,model, name,level, HP,strength,defense,agility,intelligence,movement, xpToNextLevel,weaponrange,location)
         self.image = pygame.image.load('fe_model/images/Bot_stationary.png')
 
