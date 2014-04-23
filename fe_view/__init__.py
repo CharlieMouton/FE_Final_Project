@@ -20,20 +20,18 @@ class View:
 
     def draw(self):
         self.screen.fill(pygame.Color(255,255,255))
-        MAP_WIDTH =  4
-        MAP_HEIGHT =  4
-        TILE_WIDTH =  64
-        TILE_HEIGHT =  32
 
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
             tempobj = self.model.grid[point]
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
-        for point in self.model.character:
-            if self.model.character[point] != None:
-                self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-40))
+
         if self.statselect != None:
             self.char_select(self.statselect)
+
+        for point in self.model.character:
+            if self.model.character[point] != None:
+                self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
             # HP = myfont.render("(%d)" % current.HP, 1, (255,255,0))
             # screen.blit(HP, (CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5))
 
@@ -79,4 +77,7 @@ class View:
             pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
             pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
         # self.screen.blit(character.image,(CartToIso(character.location[0],character.location[1])[0]-20,CartToIso(character.location[0],character.location[1])[1]-40))
-        pygame.display.update()
+
+    def turn_display(self):
+        """Displays the turn which the game is currently in."""
+        myfont = pygame.font.SysFont("arial", 24)
