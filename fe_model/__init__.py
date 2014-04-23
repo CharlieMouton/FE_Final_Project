@@ -35,10 +35,22 @@ class Model:
         self.populatePlayers()
 
     def populatePlayers(self):
-        self.character[(350,350)] = character.Archer(self,location=(350,350), name='Julian', movement=3)        
-        self.character[(400,450)] = character.Warrior(self,location=(400,450), name='David', movement=4)
-        self.character[(550,550)] = character.Archer(self,location=(550,550), name='Charlie', movement=5)
+        self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', team = 1)        
+        self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', team = 1)
+        self.character[(400,550)] = character.Archer(self,location=(400,550), name='Charlie', team  = 2)
+        self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', team  = 2)
+        
+        team1 = []
+        team2 = []
+        team3 = []
 
+        for point in self.character:
+            if self.character[point] != None:
+                if self.character[point].team == 1:
+                    team1.append(self.character[point])
+                if self.character[point].team == 3:
+                    team2.append(self.character[point])
+                    
     def delete_block(self, x, y):
         if (x, y) in self.grid:
             del self.grid[(x, y)]
