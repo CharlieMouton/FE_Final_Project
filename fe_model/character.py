@@ -137,7 +137,7 @@ class Character:
 class Archer(Character):
     def __init__(self, model, name='Archer', level=1, HP=6,strength=3,defense=1,agility=3,intelligence=3,movement=3, xpToNextLevel=100, weaponrange=2, location=(2*ref,3*ref), team=1, can_move = False):
         Character.__init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location, team)
-        self.images = {'s':pygame.image.load('fe_model/images/Anne.png'),'w':pygame.transform.flip(pygame.image.load('fe_model/images/Anne.png'),True,False),'n':pygame.transform.flip(pygame.image.load('fe_model/images/Anne_Back.png'),True,False),'e':pygame.image.load('fe_model/images/Anne_Back.png')}
+        self.images = {'s':pygame.image.load('fe_model/images/Anne.png'),'w':pygame.transform.flip(pygame.image.load('fe_model/images/Anne.png'),True,False),'e':pygame.transform.flip(pygame.image.load('fe_model/images/Anne_Back.png'),True,False),'n':pygame.image.load('fe_model/images/Anne_Back.png')}
         self.image = self.images[self.orient]
 
 class Warrior(Character):

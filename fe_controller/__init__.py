@@ -35,19 +35,27 @@ class Controller:
             # If the character can reach this block,
             if (temp_x,temp_y) in player.availabilities:
                 # Update to that location.
-                self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
+                location = self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
+                print location
+                player.orient = location
             else:
                 # Remove character selection.
                 self.charselected = None
 
-        # Finding situation.
+        # Fighting situation.
         elif self.model.character[(temp_x,temp_y)] != None and self.model.character[(temp_x,temp_y)] != player:
             if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50)<=player.weaponrange:
                 self.model.battleCall(player,self.model.character[(temp_x,temp_y)])
+            else:
+                # Remove character selection.
+                self.view.statselect = self.model.character[(temp_x,temp_y)]
+                self.charselected = self.model.character[(temp_x,temp_y)]
+                self.model.character[(temp_x,temp_y)].orient = 's'
 
     def char_reset(self, character):
         print character.o_location
         print character.location
+        character.orient = "s"
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
         character.movementleft=character.movement        
         

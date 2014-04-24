@@ -1,9 +1,9 @@
 import math
 
 ref = 50
-swidth = 15 * ref
-sheight = 15 * ref
-size = (1024, 768)
+swidth = 14 * ref
+sheight = 14 * ref
+size = (1280, 720)
 SQUARELENGTH=50
 WHITE = (255, 255, 255)
 centerx = size[0]/2

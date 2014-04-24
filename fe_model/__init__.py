@@ -31,7 +31,7 @@ class Model:
                 self.character[(x,y)]=None
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
-                if x not in range(3 * self.ref, self.swidth - 3*self.ref,self.ref) or y not in range(3*self.ref, self.sheight-3*self.ref, self.ref):
+                if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
 
@@ -61,18 +61,29 @@ class Model:
         print len(self.grid)
 
     def updateCharLocation(self, x, y):
-        """
-        'x' and 'y' are both input list of all locations along the path
+        """'x' and 'y' are both input list of all locations along the path
         that the character is moving.  'x' and 'y' must be the same length.
-        """
+
+        returns the direction the character should be facing after the move."""
         for i in range(len(x)):
             if i>0:
                 if self.character[(x[i],y[i])] == None:
                     self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
                     self.character[(x[i],y[i])].location=(x[i],y[i])
                     moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
+                    if abs(x[i]-x[i-1]) > abs(y[i]-y[i-1]):
+                        if x[i]-x[i-1] < 0:
+                            direction = 'n'
+                        else:
+                            direction = 's'
+                    else:
+                        if y[i]-y[i-1] < 0:
+                            direction = 'e'
+                        else:
+                            direction = 'w'
                     self.character[(x[i],y[i])].movementleft-=moved
                     self.character[(x[i-1],y[i-1])]=None
+                    return direction
 
     def battleCall(self,player1, player2):
         """This function allows for two characters to engage combat."""
@@ -111,3 +122,5 @@ class Model:
                 # This line should not be used.
                 character.available_locations()
                 character.image = character.images[character.orient]
+                if character.CurrentHP <= 0:
+                    character = None
