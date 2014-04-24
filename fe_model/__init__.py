@@ -58,15 +58,28 @@ class Model:
 
     def updateCharLocation(self, x, y):
         """'x' and 'y' are both input list of all locations along the path
-        that the character is moving.  'x' and 'y' must be the same length."""
+        that the character is moving.  'x' and 'y' must be the same length.
+
+        returns the direction the character should be facing after the move."""
         for i in range(len(x)):
             if i>0:
                 if self.character[(x[i],y[i])] == None:
                     self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
                     self.character[(x[i],y[i])].location=(x[i],y[i])
                     moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
+                    if abs(x[i]-x[i-1]) > abs(y[i]-y[i-1]):
+                        if x[i]-x[i-1] < 0:
+                            direction = 'n'
+                        else:
+                            direction = 's'
+                    else:
+                        if y[i]-y[i-1] < 0:
+                            direction = 'e'
+                        else:
+                            direction = 'w'
                     self.character[(x[i],y[i])].movementleft-=moved
                     self.character[(x[i-1],y[i-1])]=None
+                    return direction
 
     def battleCall(self,player1, player2):
         player1.battle(player2)
@@ -79,3 +92,4 @@ class Model:
         for point in self.character:
             if self.character[point] != None:
                 self.character[point].available_locations()
+                self.character[point].image = self.character[point].images[self.character[point].orient]
