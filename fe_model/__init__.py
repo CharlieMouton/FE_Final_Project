@@ -93,3 +93,5 @@ class Model:
             if self.character[point] != None:
                 self.character[point].available_locations()
                 self.character[point].image = self.character[point].images[self.character[point].orient]
+                if self.character[point].CurrentHP <= 0:
+                    self.character[point] = None

@@ -41,7 +41,7 @@ class Controller:
                 # Remove character selection.
                 self.charselected = None
 
-        # Finding situation.
+        # Fighting situation.
         elif self.model.character[(temp_x,temp_y)] != None and self.model.character[(temp_x,temp_y)] != player:
             if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50)<=player.weaponrange:
                 self.model.battleCall(player,self.model.character[(temp_x,temp_y)])
