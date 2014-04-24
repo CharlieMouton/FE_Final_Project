@@ -29,6 +29,7 @@ class View:
         if self.statselect != None:
             self.char_select(self.statselect)
 
+        # This lines draws the characters in the wrong order.
         for point in self.model.character:
             if self.model.character[point] != None:
                 self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))

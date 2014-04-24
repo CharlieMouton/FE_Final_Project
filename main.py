@@ -35,7 +35,8 @@ if __name__ == '__main__':
 
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    controller.char_reset(controller.charselected)
+                    if controller.charselected != None:
+                        controller.char_reset(controller.charselected)
 
         time.sleep(.01)
 

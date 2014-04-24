@@ -19,6 +19,7 @@ class Controller:
         if self.model.character[(temp_x,temp_y)]!= None:
             self.view.statselect = self.model.character[(temp_x,temp_y)]
             self.charselected = self.model.character[(temp_x,temp_y)]
+            self.model.character[(temp_x,temp_y)].orient = 's'
         # self.model.delete_block(temp_x, temp_y)`
         #return [temp_x,temp_y]
 
