@@ -30,20 +30,12 @@ class View:
             self.char_select(self.statselect)
 
         # This lines draws the characters in the wrong order.
-        for point in self.model.character:
+        ordchar = sorted(self.model.character, key=itemgetter(0,1))
+        for point in ordchar:
             if self.model.character[point] != None:
                 self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
             # HP = myfont.render("(%d)" % current.HP, 1, (255,255,0))
             # screen.blit(HP, (CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5))
-
-        # This is my testing ground for visual stuff while I wait to characters to work right.
-        # myfont = pygame.font.SysFont("times new roman", 16)
-        # bot =  pygame.image.load('fe_model/images/Bot_stationary.png')
-        # self.screen.blit(bot,(CartToIso(100,100,0)[0]-20,CartToIso(100,100,0)[1]+5))
-        # statpage = pygame.image.load('fe_model/images/Statsblock_simple.png')
-        # self.screen.blit(statpage,(900,530))
-        # HP = myfont.render("40", 1, (0,0,0))
-        # self.screen.blit(HP,(965,700))
 
         pygame.display.update()
 
@@ -72,11 +64,14 @@ class View:
         defense = myfont.render(str(character.defense), 1, (255,255,255))
         self.screen.blit(defense,(965+258,700-530))        
         for block in character.availabilities:
-            pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
-            pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
-            pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
-            pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
-        # self.screen.blit(character.image,(CartToIso(character.location[0],character.location[1])[0]-20,CartToIso(character.location[0],character.location[1])[1]-40))
+            bluesq = pygame.image.load('fe_model/images/BlueSquare.png')
+            self.screen.blit(bluesq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))
+            
+            # Drawing an array of squares
+            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
+            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
+            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
+            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
 
     def turn_display(self):
         """Displays the turn which the game is currently in."""
