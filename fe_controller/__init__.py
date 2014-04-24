@@ -24,6 +24,7 @@ class Controller:
         #return [temp_x,temp_y]
 
     def move(self,event,player):
+        # This should not be here. Refactor and move out of controller.
         mx, my = pygame.mouse.get_pos()
         cartX, cartY = IsoToCart(mx, my)
         temp_x = math.floor(cartX / ref) * ref

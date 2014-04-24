@@ -18,7 +18,10 @@ class Model:
         self.grid = {}
         self.character ={}
         self.turn = 0
-        self.phase = 0
+        self.team1 = []
+        self.team2 = []
+        self.team3 = []
+        self.teams = [self.team1, self.team2, self.team3]
 
         # Generate map.
         for x in range(0, self.swidth, self.ref):
@@ -32,33 +35,36 @@ class Model:
                     boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
 
+        # Create players.
         self.populatePlayers()
 
     def populatePlayers(self):
-        self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', team = 1)        
-        self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', team = 1)
+        """This function creates all players and places them within teams."""
+        self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', team = 1, can_move = True)
+        self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', team = 1, can_move = True)
         self.character[(400,550)] = character.Archer(self,location=(400,550), name='Charlie', team  = 2)
         self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', team  = 2)
         
-        team1 = []
-        team2 = []
-        team3 = []
-
         for point in self.character:
             if self.character[point] != None:
                 if self.character[point].team == 1:
-                    team1.append(self.character[point])
+                    self.team1.append(self.character[point])
+                if self.character[point].team == 2:
+                    self.team2.append(self.character[point])
                 if self.character[point].team == 3:
-                    team2.append(self.character[point])
+                    self.team3.append(self.character[point])
                     
     def delete_block(self, x, y):
+        """This function deletes the selected block from the world."""
         if (x, y) in self.grid:
             del self.grid[(x, y)]
         print len(self.grid)
 
     def updateCharLocation(self, x, y):
-        """'x' and 'y' are both input list of all locations along the path
-        that the character is moving.  'x' and 'y' must be the same length."""
+        """
+        'x' and 'y' are both input list of all locations along the path
+        that the character is moving.  'x' and 'y' must be the same length.
+        """
         for i in range(len(x)):
             if i>0:
                 if self.character[(x[i],y[i])] == None:
@@ -69,14 +75,39 @@ class Model:
                     self.character[(x[i-1],y[i-1])]=None
 
     def battleCall(self,player1, player2):
+        """This function allows for two characters to engage combat."""
         player1.battle(player2)
         if player1.CurrentHP == 0:
             self.character[player1.location]=None
         if player2.CurrentHP == 0:
-            self.character[player2.location]=None   
+            self.character[player2.location]=None
+
+    def team_turn_check(self, team = None):
+        """
+        Tests if a team can still move.
+        Returns a boolean True or False depending on if the team can still move.
+        """
+        for character in team:
+            return character.can_move
+
+    def reset_can_move_to_team(self, choice):
+        """Considers whose turn it is, and resets which team has moving abilities."""
+        for character in self.teams[choice]:
+            character.can_move == True
 
     def update(self):
-        for point in self.character:
-            if self.character[point] != None:
-                self.character[point].available_locations()
-                self.character[point].image = self.character[point].images[self.character[point].orient]
+        """[Add docstring here.]"""
+        choice = self.turn % 3
+        current_team = self.teams[choice]
+        if self.team_turn_check(current_team) == False:
+            self.turn += 1
+            self.reset_can_move_to_team(choice)
+
+            for character in current_team:
+                character.movementleft = character.movement
+                character.available_locations()
+        else:
+            for character in current_team:
+                # This line should not be used.
+                character.available_locations()
+                character.image = character.images[character.orient]
