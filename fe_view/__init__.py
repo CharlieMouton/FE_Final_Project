@@ -66,7 +66,9 @@ class View:
         for block in character.availabilities:
             bluesq = pygame.image.load('fe_model/images/BlueSquare.png')
             self.screen.blit(bluesq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))
-            
+        for block in character.attackrange:
+            redsq = pygame.image.load('fe_model/images/RedSquare.png')
+            self.screen.blit(redsq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))   
             # Drawing an array of squares
             # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
             # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)

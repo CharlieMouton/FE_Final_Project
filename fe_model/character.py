@@ -26,7 +26,12 @@ class Character:
 
         self.location = location
         self.o_location = location
+
+        self.availabilities = []
+        self.attackrange=[]
+"""
         self.availabilities = {}
+"""
         self.can_move = can_move
         self.orient = 's'
 
@@ -59,12 +64,25 @@ class Character:
             self.availabilities={}
             current_positions = {self.location: self.location}
             # Iterate throughout the map to find available positions.
+
+            for step in range(int(self.movementleft)+int(self.weaponrange)):
+                temp_buffer = []
+"""
             for step in range(int(self.movementleft)):
                 temp_buffer = {}
-                
+"""
                 for current_position in current_positions:
                     blocks = self.surroundings(current_position)
                     next_positions = [block for block in blocks if (block not in self.availabilities and self.model.grid[block].movementcost <= self.movementleft - step)]
+
+                    if step< self.movementleft:
+                        self.availabilities += [current_position]
+                        temp_buffer += next_positions
+                    else:
+                        self.attackrange += [current_position]
+                        temp_buffer += next_positions
+ 
+"""
 
                     next_positions_dict = {}
                     for next_position in next_positions:
@@ -72,10 +90,11 @@ class Character:
 
                     self.availabilities[current_position] = current_positions[current_position]
                     temp_buffer.update(next_positions_dict)
+"""
                 
                 current_positions = temp_buffer
 
-        return self.availabilities
+        return self.availabilities, self.attackrange
 
     def surroundings(self, current_position):
         blocks = range(4)
