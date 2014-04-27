@@ -26,7 +26,7 @@ class Character:
 
         self.location = location
         self.o_location = location
-        self.availabilities = []
+        self.availabilities = {}
         self.can_move = can_move
         self.orient = 's'
 
@@ -50,20 +50,28 @@ class Character:
     def available_locations(self):
         """Generates a set of availabilities."""
         if self.can_move == False:
-            self.availabilities = [self.location] 
+            self.availabilities = {self.location: self.location} 
+        
+        if self.availabilities == {self.location: self.location}:
+            self.can_move = False   
         else:
             # Save current location
-            self.availabilities=[]
-            current_positions = [self.location]
+            self.availabilities={}
+            current_positions = {self.location: self.location}
             # Iterate throughout the map to find available positions.
             for step in range(int(self.movementleft)):
-                temp_buffer = []
+                temp_buffer = {}
                 
                 for current_position in current_positions:
                     blocks = self.surroundings(current_position)
                     next_positions = [block for block in blocks if (block not in self.availabilities and self.model.grid[block].movementcost <= self.movementleft - step)]
-                    self.availabilities += [current_position]
-                    temp_buffer += next_positions
+
+                    next_positions_dict = {}
+                    for next_position in next_positions:
+                        next_positions_dict[next_position] = current_position
+
+                    self.availabilities[current_position] = current_positions[current_position]
+                    temp_buffer.update(next_positions_dict)
                 
                 current_positions = temp_buffer
 

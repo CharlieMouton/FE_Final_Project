@@ -98,8 +98,11 @@ class Model:
         Tests if a team can still move.
         Returns a boolean True or False depending on if the team can still move.
         """
-        for character in team:
-            return character.can_move
+        if len(team) == 0:
+            return False
+        else:
+            for character in team:
+                return character.can_move
 
     def reset_can_move_to_team(self, choice):
         """Considers whose turn it is, and resets which team has moving abilities."""
@@ -110,17 +113,22 @@ class Model:
         """[Add docstring here.]"""
         choice = self.turn % 3
         current_team = self.teams[choice]
+        
+        for character in current_team:
+            character.available_locations()
+
         if self.team_turn_check(current_team) == False:
+            print self.turn
             self.turn += 1
+            print "turn change happened."
             self.reset_can_move_to_team(choice)
 
             for character in current_team:
                 character.movementleft = character.movement
-                character.available_locations()
+                # Change?
+
         else:
             for character in current_team:
-                # This line should not be used.
-                character.available_locations()
                 character.image = character.images[character.orient]
                 if character.CurrentHP <= 0:
                     character = None
