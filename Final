@@ -1,0 +1,67 @@
+def sum_numbers_not_divisible_by_four(n):
+	res = []
+	for numb in range(n+1):
+		if numb%4 != 0:
+			res.append(numb)
+	return sum(res)
+
+def count_frequencies_of_first_letters(L):
+	res = {}
+	for word in L:
+		if word[0] in res:
+			res[word[0]]+=1
+		else:
+			res[word[0]] = 1
+	return res
+
+def compute_binomial_coeff_recursive(n,k):
+	if n == k:
+		return 1
+	elif k == 0:
+		return 1
+	else:
+		return compute_binomial_coeff_recursive(n-1,k-1)+compute_binomial_coeff_recursive(n-1,k)
+
+class Date:
+	def __init__(self,month,day,year):
+		self.month = month
+		self.day = day
+		self.year = year
+
+	def is_before(self,other_date):
+		if self.year < other_date.year:
+			return True
+		elif self.month < other_date.month:
+			return True
+		elif self.day < other_date.day:
+			return True
+		else:
+			return False
+
+	def increment_year(self):
+		print self.year
+		self.year += 1
+		print self.year
+
+
+class PointND(object):
+	def __init__(self,coordinates):
+		self.coordinates = coordinates
+
+	def distance(self,other):
+		diff = []
+		for n in range(len(self.coordinates)):
+			diff.append((other.coordinates[n-1]-self.coordinates[n-1])**2)
+		return (sum(diff)**(.5))
+
+class Point3D(PointND):
+	def __init__(self,x,y,z):
+		PointND.__init__(self,[x,y,z])
+
+
+
+
+if __name__ == '__main__':
+	p1 = Point3D(1,2,3)
+	p2 = Point3D(4,5,6)
+	print p1.distance(p2)

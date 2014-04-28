@@ -35,9 +35,8 @@ class Controller:
             # If the character can reach this block,
             if (temp_x,temp_y) in player.availabilities:
                 # Update to that location.
-                location = self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
-                print location
-                player.orient = location
+                 player.orient = self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
+
             else:
                 # Remove character selection.
                 self.charselected = None
