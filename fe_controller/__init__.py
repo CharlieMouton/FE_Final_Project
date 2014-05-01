@@ -6,6 +6,9 @@ sys.path.append(lib_path)
 from var_scripts import *
 
 class Controller:
+    """
+    This class represents the PyGame controller.
+    """
     def __init__(self, model, view):
         self.model = model
         self.view = view

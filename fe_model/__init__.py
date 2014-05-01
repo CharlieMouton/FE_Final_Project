@@ -10,7 +10,9 @@ from fe_view import *
 from images import *
 
 class Model:
-    """Encodes game state."""
+    """
+    This class encodes the game state.
+    """
     def __init__(self):
         self.running = True
 
@@ -39,7 +41,12 @@ class Model:
         self.organize_teams()
 
     def populatePlayers(self):
-        """This function creates all players and places them within teams."""
+        """
+        This function creates all players and places them within teams.
+
+        Inputs: Model
+        Outputs: None
+        """
         self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
         self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
         self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5 , crit=5, team  = 1)
@@ -49,7 +56,7 @@ class Model:
         """
         This function places all players into the right teams.
 
-        Inputs: the model
+        Inputs: Model
         Outputs: None
         """
         for point in self.character:
@@ -60,10 +67,11 @@ class Model:
                 self.teams[self.character[point].team].append(self.character[point])
 
     def updateCharLocation(self, x, y):
-        """'x' and 'y' are both input list of all locations along the path
-        that the character is moving.  'x' and 'y' must be the same length.
+        """
+        This function updates the character location.
 
-        returns the direction the character should be facing after the move."""
+        Inputs: 'x' and 'y' are both input list of all locations along the path that the character is moving.  'x' and 'y' must be the same length.
+        Outputs: the direction the character should be facing after the move."""
         for i in range(len(x)):
             if i>0:
                 if self.character[(x[i],y[i])] == None:
@@ -85,7 +93,12 @@ class Model:
                     return direction
 
     def battleCall(self,player1, player2):
-        """This function allows for two characters to engage combat."""
+        """
+        This function allows for two characters to engage combat.
+
+        Inputs: Model, two characters
+        Outputs: None
+        """
         if not player1.hasAttacked:
             player1.battle(player2)
             if player1.CurrentHP == 0:
@@ -108,13 +121,6 @@ class Model:
             character.can_move = True
             character.hasAttacked = False
             character.movementleft = character.movement
-
-    def charselect(self):
-        corner_x, corner_y = self.controller.box_select()
-        if self.model.character[(corner_x,corner_y)] !=  None:
-            self.view.statselect = self.model.character[(corner_x,corner_y)]
-            self.charselected = self.model.character[(corner_x,corner_y)]
-            self.model.character[(corner_x,corner_y)].orient = 's'
         
     def update(self):
         """
