@@ -20,7 +20,7 @@ class Model:
         self.grid = {}
         self.character ={}
         self.turn = 0
-        self.teams = [[],[],[]]
+        self.teams = []
 
         # Generate map.
         for x in range(0, self.swidth, self.ref):
@@ -43,10 +43,16 @@ class Model:
         self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
         self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5 , crit=5, team  = 1)
         self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', dodge = 5 , crit=5, team  = 2)
-        
+
+        # Allocate characters into teams. 
         for point in self.character:
             if self.character[point] != None:
+                if self.character[point].team >= len(self.teams):
+                    for adding in range(self.character[point].team - len(self.teams) + 1):
+                        self.teams.append([])
                 self.teams[self.character[point].team].append(self.character[point])
+
+        print self.teams
 
     def updateCharLocation(self, x, y):
         """'x' and 'y' are both input list of all locations along the path
@@ -82,25 +88,6 @@ class Model:
             if player2.CurrentHP == 0:
                 self.character[player2.location]=None
 
-    # def team_turn_check(self, team = None):
-    #     """
-    #     Tests if a team can still move.
-    #     Returns a boolean True or False depending on if the team can still move.
-    #     """
-    #     if len(team) == 0:
-    #         return False
-    #     else:
-    #         for character in team:
-    #             if character.can_move == True:
-    #                 return True
-
-    #         return False
-
-    # def reset_can_move_to_team(self, choice):
-    #     """Considers whose turn it is, and resets which team has moving abilities."""
-    #     for character in self.teams[choice]:
-    #         character.can_move = True
-
     def next_turn(self):
         """
         This function, when called, ends the turn of the current team.
@@ -108,11 +95,15 @@ class Model:
         Inputs: the model 
         Outputs: None
         """
+        for character in self.teams[self.turn % 3]:
+            character.can_move = False
+
         self.turn += 1
-        choice = teams[self.turn % 3]
-        for character in choice:
+        for character in self.teams[self.turn % 3]:
             character.can_move = True
             character.hasAttacked = False
+
+        print self.turn
 
     def update(self):
         """

@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
         model.update()
         view.draw()
-        running = controller.control()
+        controller.control()
         
         time.sleep(.01)
 

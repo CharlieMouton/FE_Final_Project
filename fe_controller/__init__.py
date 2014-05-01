@@ -12,23 +12,38 @@ class Controller:
         self.charselected = None
 
     def control(self):
+        """
+        control is the main function of Controller and delegates everything accordingly.
+        """
         for event in pygame.event.get():
             if event.type == QUIT:
                 self.model.running = False
 
-            # Model
             if event.type == MOUSEBUTTONDOWN:
-                if self.charselected != None:
-                    self.move(event,self.charselected)
-                else:
-                    self.charselect(event)
-
+                self.handle_mouse_event(event)
+                
             if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
-                    if self.charselected != None:
-                        if self.charselected.hasAttacked != True:
-                            self.char_reset(self.charselected)
-                # if event.key == K_SPACE:
+                self.handle_keyboard_event(event)
+
+    def handle_mouse_event(self, event):
+        """
+        This function handles all mouse events and translates the information into the model.
+        """
+        if self.charselected != None:
+            self.move(event,self.charselected)
+        else:
+            self.charselect(event)
+
+    def handle_keyboard_event(self, event):
+        """
+        This function handles all keyboard events and translates the information into the model.
+        """
+        if event.key == K_SPACE:
+            self.model.next_turn()
+        if event.key == K_ESCAPE:
+            if self.charselected != None:
+                if self.charselected.hasAttacked != True:
+                    self.char_reset(self.charselected)
 
     def charselect(self, event):
         mx, my = pygame.mouse.get_pos()
@@ -85,11 +100,3 @@ class Controller:
         character.orient = "s"
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
         character.movementleft=character.movement        
-        
-    def handle_keyboard_event(self, event):
-        """
-        This function handles all keyboard events and translates the information into the model.
-        """
-        pass
-        # if 
-        # self.model.next_turn

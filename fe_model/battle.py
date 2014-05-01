@@ -25,5 +25,3 @@ class Battle(object):
                     self.player2.CurrentHP-=2*(self.player1.strength-self.player2.defence)
                 else:
                     pass
-            
-        
