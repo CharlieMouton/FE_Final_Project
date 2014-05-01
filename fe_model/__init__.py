@@ -108,6 +108,13 @@ class Model:
             character.can_move = True
             character.hasAttacked = False
             character.movementleft = character.movement
+
+    def charselect(self):
+        corner_x, corner_y = self.controller.box_select()
+        if self.model.character[(corner_x,corner_y)] !=  None:
+            self.view.statselect = self.model.character[(corner_x,corner_y)]
+            self.charselected = self.model.character[(corner_x,corner_y)]
+            self.model.character[(corner_x,corner_y)].orient = 's'
         
     def update(self):
         """

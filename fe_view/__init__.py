@@ -82,7 +82,6 @@ class View:
         for n in range(char2.CurrentHP):
             self.screen.blit(healthblock,(400+300+4*n,625+70))
 
-
     def char_select(self,character):   
         myfont = pygame.font.SysFont("arial", 16)
         statpage = pygame.image.load('fe_model/images/Statsblock_simple.png')
@@ -117,11 +116,6 @@ class View:
         for block in character.attackrange:
             redsq = pygame.image.load('fe_model/images/RedSquare.png')
             self.screen.blit(redsq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))   
-            # Drawing an array of squares
-            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]),CartToIso(block[0]+50,block[1]),1)
-            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]),CartToIso(block[0]+50,block[1]+50),1)
-            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0]+50,block[1]+50),CartToIso(block[0],block[1]+50),1)
-            # pygame.draw.line(self.screen,(255,0,0),CartToIso(block[0],block[1]+50),CartToIso(block[0],block[1]),1)
 
     def turn_display(self):
         """Displays the turn which the game is currently in."""

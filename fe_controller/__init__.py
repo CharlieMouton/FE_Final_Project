@@ -32,7 +32,7 @@ class Controller:
         if self.charselected != None:
             self.move(event,self.charselected)
         else:
-            self.charselect(event)
+            self.charselect()
 
     def handle_keyboard_event(self, event):
         """
@@ -45,18 +45,26 @@ class Controller:
                 if self.charselected.hasAttacked != True:
                     self.char_reset(self.charselected)
 
-    def charselect(self, event):
+    def box_select(self, ):
+        """
+        Generates coordinates of a selected box after mouse selection.
+
+        Inputs: Controller and click event.
+        Outputs: corner x and y coordinates for the selected boxself.
+        """
         mx, my = pygame.mouse.get_pos()
         cartX, cartY = IsoToCart(mx, my)
-        temp_x = math.floor(cartX / ref) * ref
-        temp_y = math.floor(cartY / ref) * ref
-        print temp_x, temp_y
-        if self.model.character[(temp_x,temp_y)]!= None:
-            self.view.statselect = self.model.character[(temp_x,temp_y)]
-            self.charselected = self.model.character[(temp_x,temp_y)]
-            self.model.character[(temp_x,temp_y)].orient = 's'
-        # self.model.delete_block(temp_x, temp_y)`
-        #return [temp_x,temp_y]
+        corner_x = math.floor(cartX / ref) * ref
+        corner_y = math.floor(cartY / ref) * ref
+
+        return corner_x, corner_y
+
+    def charselect(self):
+        corner_x, corner_y = self.box_select()
+        if self.model.character[(corner_x,corner_y)] !=  None:
+            self.view.statselect = self.model.character[(corner_x,corner_y)]
+            self.charselected = self.model.character[(corner_x,corner_y)]
+            self.model.character[(corner_x,corner_y)].orient = 's'
 
     def move(self,event,player):
         # This should not be here. Refactor and move out of controller.
