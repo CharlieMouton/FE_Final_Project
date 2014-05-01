@@ -50,7 +50,7 @@ class View:
         healthblock = pygame.image.load("fe_model/images/healthblock.png")
         emptyhealthblock = pygame.image.load("fe_model/images/emptyhealthblock.png")
 
-        name = myfont.render(str(char1.name), 1, (255,255,255))
+        name = myfont.render(str(char1.name), 1, (0,0,0))
         self.screen.blit(name,(char1.location[0]+120,char1.location[1]+25))
         hit = myfont.render('mia', 1, (255,255,255))
         self.screen.blit(hit,(char1.location[0]+50,char1.location[1]+2))
@@ -65,7 +65,7 @@ class View:
         for n in range(char1.CurrentHP):
             self.screen.blit(healthblock,(char1.location[0]+50+4*n,char1.location[1]+70))
         
-        name = myfont.render(str(char2.name), 1, (255,255,255))
+        name = myfont.render(str(char2.name), 1, (0,0,0))
         self.screen.blit(name,(char1.location[0]+300,char1.location[1]+25))
         hit = myfont.render('mia', 1, (255,255,255))
         self.screen.blit(hit,(char1.location[0]+450,char1.location[1]+2))
