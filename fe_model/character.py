@@ -118,15 +118,12 @@ class Character:
                     self.player2.CurrentHP-=(self.strength*3-self.player2.defense)
                 else:
                     self.player2.CurrentHP-=(self.strength-self.player2.defense)
-        else:
-            pass
         if self.player2.CurrentHP<=0:
             self.xp+=3
             if self.xp>=self.xpToNextLevel:
                 self.LEVEL
                 self.xp=self.xp-self.xpToNextLevel
                 self.xpToNextLevel+=5
-            pass
         #Player2 Counterattack
         else:
             if self.weaponrange<=self.player2.weaponrange:
@@ -138,11 +135,6 @@ class Character:
                             self.CurrentHP-=(self.player2.strength*3-self.defense)
                         else:
                             self.CurrentHP-=(self.player2.strength-self.defense)
-                else:
-                    pass
-            else:
-                pass
-        
             if self.CurrentHP<=0:
                 self.player2.xp+=3
                 if self.player2.xp>=self.player2.xpToNextLevel:
@@ -159,9 +151,6 @@ class Character:
                         self.player2.CurrentHP-=(self.strength*3-self.player2.defense)
                     else:
                         self.player2.CurrentHP-=(self.strength-self.player2.defense)
-            else:
-                pass
-            
             if self.player2.CurrentHP<=0:
                 self.xp+=3
                 if self.xp>=self.xpToNextLevel:
