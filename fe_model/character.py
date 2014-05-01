@@ -25,11 +25,7 @@ class Character:
         self.weaponrange=weaponrange
         self.dodge = dodge
         self.crit = crit
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> d15369b547002d0873750e2c2f489699f5f19cd5
         self.location = location
         self.o_location = location
 
