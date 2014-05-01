@@ -112,7 +112,9 @@ class Model:
         for character in self.teams[choice]:
             character.can_move = True
 
-    def update(self):
+    def end_turn
+
+    def update(self, controller):
         """[Add docstring here.]"""
         choice = self.turn % 3
         current_team = self.teams[choice]
@@ -129,7 +131,6 @@ class Model:
             for character in self.teams[choice]:
                 character.availabilities = {}
                 character.movementleft = character.movement
-
         else:
             for character in current_team:
                 character.image = character.images[character.orient]
