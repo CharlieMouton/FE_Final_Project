@@ -63,6 +63,8 @@ class Controller:
         return corner_x, corner_y
 
     def charselect(self):
+        """
+        """
         corner_x, corner_y = self.box_select()
         if self.model.character[(corner_x,corner_y)] !=  None:
             self.view.statselect = self.model.character[(corner_x,corner_y)]
@@ -110,8 +112,8 @@ class Controller:
                     self.model.character[(temp_x,temp_y)].orient = 's'
 
     def char_reset(self, character):
-        print character.o_location
-        print character.location
+        """
+        """
         character.orient = "s"
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
         character.movementleft=character.movement
