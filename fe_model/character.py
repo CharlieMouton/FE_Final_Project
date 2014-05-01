@@ -6,7 +6,7 @@ sys.path.append(lib_path)
 from var_scripts import ref
 
 class Character:
-    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location, dodge = 5 , crit=5, team = 1, can_move = True):
+    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location, dodge = 5 , crit=5, team = 1, can_move = True, hasAttacked=False):
         self.model = model
         self.name=name
         
@@ -34,7 +34,8 @@ class Character:
         self.availabilities = {}
         self.can_move = can_move
         self.orient = 's'
-
+        self.hasAttacked=hasAttacked            
+            
         self.team = team
 
     def Level(self):
@@ -105,29 +106,35 @@ class Character:
 
     def battle(self, player2):
         
+        self.hasAttacked=True        
+        
         self.player2=player2
         #Player1 Attack
         if self.strength>=self.player2.defense:
-            self.player2.CurrentHP-=(self.strength-self.player2.defense)
-        else:
-            pass
+            if random.randint(1,100) <= self.player2.dodge:
+                pass
+            else:
+                if random.randint(1,100) <= self.crit:
+                    self.player2.CurrentHP-=(self.strength*3-self.player2.defense)
+                else:
+                    self.player2.CurrentHP-=(self.strength-self.player2.defense)
         if self.player2.CurrentHP<=0:
             self.xp+=3
             if self.xp>=self.xpToNextLevel:
                 self.LEVEL
                 self.xp=self.xp-self.xpToNextLevel
                 self.xpToNextLevel+=5
-            pass
         #Player2 Counterattack
         else:
             if self.weaponrange<=self.player2.weaponrange:
                 if self.player2.strength>=self.defense:
-                    self.CurrentHP-=(self.player2.strength-self.defense)
-                else:
-                    pass
-            else:
-                pass
-        
+                    if random.randint(1,100) <= self.dodge:
+                        pass
+                    else:
+                        if random.randint(1,100) <= self.player2.crit:
+                            self.CurrentHP-=(self.player2.strength*3-self.defense)
+                        else:
+                            self.CurrentHP-=(self.player2.strength-self.defense)
             if self.CurrentHP<=0:
                 self.player2.xp+=3
                 if self.player2.xp>=self.player2.xpToNextLevel:
@@ -137,13 +144,13 @@ class Character:
                 pass
             #Possible Player1 second attack
             elif self.agility>(self.player2.agility*1.5):
-                if self.strength>=self.player2.defense:
-                    self.player2.CurrentHP-=2*(self.strength-self.player2.defense)
-                else:
+                if random.randint(1,100) <= self.player2.dodge:
                     pass
-            else:
-                pass
-            
+                else:
+                    if random.randint(1,100) <= self.crit:
+                        self.player2.CurrentHP-=(self.strength*3-self.player2.defense)
+                    else:
+                        self.player2.CurrentHP-=(self.strength-self.player2.defense)
             if self.player2.CurrentHP<=0:
                 self.xp+=3
                 if self.xp>=self.xpToNextLevel:
