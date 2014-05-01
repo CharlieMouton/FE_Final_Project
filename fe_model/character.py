@@ -80,6 +80,10 @@ class Character:
         
         # Iterate throughout the map to find available positions.
         for step in range(int(self.movementleft)+int(self.weaponrange)):
+            print "step"
+            print step
+            print "weaponrange"
+            print self.weaponrange
             temp_buffer = {}
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)

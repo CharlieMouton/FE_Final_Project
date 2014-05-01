@@ -31,6 +31,9 @@ class Grass(Block):
     def interaction(self,character):
         self.character.movementleft-=1
 
+class HighGrass(Grass):
+    pass
+
 
 #class Outeredge(pygame.sprite.Sprite):
 class Outeredge(Block):
