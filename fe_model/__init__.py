@@ -41,7 +41,7 @@ class Model:
         """This function creates all players and places them within teams."""
         self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
         self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
-        self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5 , crit=5, team  = 1)
+        self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 100, crit=5, team  = 1)
         self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', dodge = 5 , crit=5, team  = 2)
         
         for point in self.character:
@@ -76,11 +76,13 @@ class Model:
     def battleCall(self,player1, player2):
         """This function allows for two characters to engage combat."""
         if not player1.hasAttacked:
-            player1.battle(player2)
+            x = player1.battle(player2)
             if player1.CurrentHP == 0:
                 self.character[player1.location]=None
             if player2.CurrentHP == 0:
                 self.character[player2.location]=None
+            print x
+            return x
 
     # def team_turn_check(self, team = None):
     #     """

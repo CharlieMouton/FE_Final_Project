@@ -105,16 +105,18 @@ class Character:
         return return_blocks
 
     def battle(self, player2):
-        
+        x = []
         self.hasAttacked=True        
         
         self.player2=player2
         #Player1 Attack
         if self.strength>=self.player2.defense:
             if random.randint(1,100) <= self.player2.dodge:
+                x.append("dodge2")
                 pass
             else:
                 if random.randint(1,100) <= self.crit:
+                    x.append("crit1")
                     self.player2.CurrentHP-=(self.strength-self.player2.defense)*3
                 else:
                     self.player2.CurrentHP-=(self.strength-self.player2.defense)
@@ -129,9 +131,11 @@ class Character:
             if self.weaponrange<=self.player2.weaponrange:
                 if self.player2.strength>=self.defense:
                     if random.randint(1,100) <= self.dodge:
+                        x.append("dodge1")
                         pass
                     else:
                         if random.randint(1,100) <= self.player2.crit:
+                            x.append("crit2")
                             self.CurrentHP-=(self.player2.strength-self.defense)*3
                         else:
                             self.CurrentHP-=(self.player2.strength-self.defense)
@@ -157,6 +161,7 @@ class Character:
                     self.LEVEL
                     self.xp=self.xp-self.xpToNextLevel
                     self.xpToNextLevel+=5
+        return x
          
     def __str__(self):
         return 'This character is a ' + str(self.name)+'\nat Level ' + str(self.level)+'\nwith ' + str(self.CurrentHP) + ' of your total ' + str(self.MaxHP) + ' HP\n' + str(self.strength) + ' Strength\n' +str(self.defense) + ' Defense \n' + str(self.agility) + ' Agility \n' + str(self.intelligence) + ' Intelligence \n' +'This character has ' + str(self.movementleft) + ' movement left from ' + str(self.movement) + ' movement \n' + str(self.weaponrange) + ' weapon range \n'+'and has ' + str(self.xp) + 'xp of ' + str(self.xpToNextLevel) + 'xp required to levelup!'
