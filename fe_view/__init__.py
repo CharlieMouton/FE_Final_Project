@@ -46,41 +46,41 @@ class View:
     def battlestats(self,(char1,char2)):
         myfont = pygame.font.SysFont("arial", 16)
         battlestatpage = pygame.image.load("fe_model/images/BattleScreen.png")
-        self.screen.blit(battlestatpage,(char1.location[0],char1.location[1]))
+        self.screen.blit(battlestatpage,(400,625))
         healthblock = pygame.image.load("fe_model/images/healthblock.png")
         emptyhealthblock = pygame.image.load("fe_model/images/emptyhealthblock.png")
         if char1 == None or char2 == None:
             self.battlescreen = None
             return
         name = myfont.render(str(char1.name), 1, (0,0,0))
-        self.screen.blit(name,(char1.location[0]+120,char1.location[1]+25))
+        self.screen.blit(name,(400+120,625+25))
         hit = myfont.render(str(100-char2.dodge), 1, (0,0,0))
-        self.screen.blit(hit,(char1.location[0]+50,char1.location[1]+2))
+        self.screen.blit(hit,(400+50,625+2))
         dmg = myfont.render(str(char1.strength-char2.defense), 1, (0,0,0))
-        self.screen.blit(dmg,(char1.location[0]+50,char1.location[1]+17))
+        self.screen.blit(dmg,(400+50,625+17))
         crit = myfont.render(str(char1.crit), 1, (0,0,0))
-        self.screen.blit(crit,(char1.location[0]+50,char1.location[1]+32))
+        self.screen.blit(crit,(400+50,625+32))
         CurrHP = myfont.render(str(char1.CurrentHP), 1, (255,255,255))
-        self.screen.blit(CurrHP,(char1.location[0]+25,char1.location[1]+65))
+        self.screen.blit(CurrHP,(400+25,625+65))
         for n in range(char1.MaxHP):
-            self.screen.blit(emptyhealthblock,(char1.location[0]+50+4*n,char1.location[1]+70))
+            self.screen.blit(emptyhealthblock,(400+50+4*n,625+70))
         for n in range(char1.CurrentHP):
-            self.screen.blit(healthblock,(char1.location[0]+50+4*n,char1.location[1]+70))
+            self.screen.blit(healthblock,(400+50+4*n,625+70))
         
         name = myfont.render(str(char2.name), 1, (0,0,0))
-        self.screen.blit(name,(char1.location[0]+300,char1.location[1]+25))
+        self.screen.blit(name,(400+300,625+25))
         hit = myfont.render(str(100-char1.dodge), 1, (0,0,0))
-        self.screen.blit(hit,(char1.location[0]+450,char1.location[1]+2))
+        self.screen.blit(hit,(400+450,625+2))
         dmg = myfont.render(str(char2.strength-char1.defense), 1, (0,0,0))
-        self.screen.blit(dmg,(char1.location[0]+450,char1.location[1]+17))
+        self.screen.blit(dmg,(400+450,625+17))
         crit = myfont.render(str(char2.crit), 1, (0,0,0))
-        self.screen.blit(crit,(char1.location[0]+450,char1.location[1]+32))
+        self.screen.blit(crit,(400+450,625+32))
         CurrHP = myfont.render(str(char2.CurrentHP), 1, (255,255,255))
-        self.screen.blit(CurrHP,(char1.location[0]+270,char1.location[1]+65))
+        self.screen.blit(CurrHP,(400+270,625+65))
         for n in range(char2.MaxHP):
-            self.screen.blit(emptyhealthblock,(char1.location[0]+300+4*n,char1.location[1]+70))
+            self.screen.blit(emptyhealthblock,(400+300+4*n,625+70))
         for n in range(char2.CurrentHP):
-            self.screen.blit(healthblock,(char1.location[0]+300+4*n,char1.location[1]+70))
+            self.screen.blit(healthblock,(400+300+4*n,625+70))
 
 
     def char_select(self,character):   
