@@ -30,12 +30,11 @@ class Character:
         self.location = location
         self.o_location = location
 
-        self.availabilities = []
-        self.attackrange=[]
         self.availabilities = {}
+        self.attackrange = {}
         self.can_move = can_move
         self.orient = 's'
-        self.hasAttacked=hasAttacked            
+        self.hasAttacked = hasAttacked            
             
         self.team = team
 
@@ -59,35 +58,36 @@ class Character:
         if self.can_move == False:
             self.availabilities = {self.location: self.location} 
         
-        if self.availabilities == {self.location: self.location}:
-            self.can_move = False   
-        else:
-            # Save current location
-            self.availabilities={}
-            current_positions = {self.location: self.location}
-            # Iterate throughout the map to find available positions.
+        # Could be false?
+        # if self.availabilities == {self.location: self.location}:
+        #     self.can_move = False   
+        # else:
+        # Save current location
+        self.availabilities={}
+        current_positions = {self.location: self.location}
+        # Iterate throughout the map to find available positions.
 
-            for step in range(int(self.movementleft)+int(self.weaponrange)):
-                temp_buffer = {}
-                for current_position in current_positions:
-                    blocks = self.surroundings(current_position)
-                    next_positions = [block for block in blocks if (block not in self.availabilities and self.model.grid[block].movementcost <= self.movementleft - step)]
+        for step in range(int(self.movementleft)+int(self.weaponrange)):
+            temp_buffer = {}
+            for current_position in current_positions:
+                blocks = self.surroundings(current_position)
+                next_positions = [block for block in blocks if (block not in self.availabilities and self.model.grid[block].movementcost <= self.movementleft - step)]
 
-                    # if step< self.movementleft:
-                    #     self.availabilities += [current_position]
-                    #     temp_buffer += next_positions
-                    # else:
-                    #     self.attackrange += [current_position]
-                    #     temp_buffer += next_positions
- 
-                    next_positions_dict = {}
-                    for next_position in next_positions:
-                        next_positions_dict[next_position] = current_position
+                # if step< self.movementleft:
+                #     self.availabilities += [current_position]
+                #     temp_buffer += next_positions
+                # else:
+                #     self.attackrange += [current_position]
+                #     temp_buffer += next_positions
 
-                    self.availabilities[current_position] = current_positions[current_position]
-                    temp_buffer.update(next_positions_dict)
-                
-                current_positions = temp_buffer
+                next_positions_dict = {}
+                for next_position in next_positions:
+                    next_positions_dict[next_position] = current_position
+
+                self.availabilities[current_position] = current_positions[current_position]
+                temp_buffer.update(next_positions_dict)
+            
+            current_positions = temp_buffer
 
         return self.availabilities, self.attackrange
 
@@ -163,19 +163,19 @@ class Character:
         return 'This character is a ' + str(self.name)+'\nat Level ' + str(self.level)+'\nwith ' + str(self.CurrentHP) + ' of your total ' + str(self.MaxHP) + ' HP\n' + str(self.strength) + ' Strength\n' +str(self.defense) + ' Defense \n' + str(self.agility) + ' Agility \n' + str(self.intelligence) + ' Intelligence \n' +'This character has ' + str(self.movementleft) + ' movement left from ' + str(self.movement) + ' movement \n' + str(self.weaponrange) + ' weapon range \n'+'and has ' + str(self.xp) + 'xp of ' + str(self.xpToNextLevel) + 'xp required to levelup!'
 
 class Archer(Character):
-    def __init__(self, model, name='Archer', level=1, HP=6,strength=3,defense=1,agility=3,intelligence=3,movement=3, xpToNextLevel=100, weapontype=item.Bow, location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
+    def __init__(self, model, name='Archer', level=1, HP=6,strength=3,defense=1,agility=3,intelligence=3,movement=3, xpToNextLevel=100, weapontype=item.Bow(), location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
         Character.__init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weapontype,location, dodge, crit, team)
         self.images = {'s':pygame.image.load('fe_model/images/Anne.png'),'w':pygame.transform.flip(pygame.image.load('fe_model/images/Anne.png'),True,False),'e':pygame.transform.flip(pygame.image.load('fe_model/images/Anne_Back.png'),True,False),'n':pygame.image.load('fe_model/images/Anne_Back.png')}
         self.image = self.images[self.orient]
 
 class Warrior(Character):
-    def __init__(self, model, name='Warrior', level=1, HP=9,strength=2,defense=2,agility=1,intelligence=1,movement=3, xpToNextLevel=100, weapontype=item.Sword, location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
+    def __init__(self, model, name='Warrior', level=1, HP=9,strength=2,defense=2,agility=1,intelligence=1,movement=3, xpToNextLevel=100, weapontype=item.Sword(), location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
         Character.__init__(self,model, name,level, HP,strength,defense,agility,intelligence,movement, xpToNextLevel,weapontype,location, dodge, crit, team)
         self.images = {'s':pygame.image.load('fe_model/images/Bot_stationary.png'),'w':pygame.transform.flip(pygame.image.load('fe_model/images/Bot_stationary.png'),True,False),'n':pygame.transform.flip(pygame.image.load('fe_model/images/bot_Stationary_Back.png'),True,False),'e':pygame.image.load('fe_model/images/bot_Stationary_Back.png')}
         self.image = self.images[self.orient]
 
 class Horseman(Character):
-    def __init__(self, x,y, name='Horsemen', level=1, HP=8,strength=1,defense=3,agility=2,intelligence=2,movement=3, xpToNextLevel=100, weapontype=item.Lance, location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
+    def __init__(self, x,y, name='Horsemen', level=1, HP=8,strength=1,defense=3,agility=2,intelligence=2,movement=3, xpToNextLevel=100, weapontype=item.Lance(), location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
         Character.__init__(self,model, name,level, HP,strength,defense,agility,intelligence,movement, xpToNextLevel,weapontype,location, dodge, crit, team)
         self.images = {'s':pygame.image.load('fe_model/images/Anne.png'),'w':pygame.transform.flip(pygame.image.load('fe_model/images/Anne.png'),True,False),'n':pygame.transform.flip(pygame.image.load('fe_model/images/Anne_Back.png'),True,False),'e':pygame.image.load('fe_model/images/Anne_Back.png')}
         self.image = self.images[self.orient]
