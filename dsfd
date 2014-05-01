@@ -1,0 +1,1550 @@
+commit 96f5128b5a9cc89719cb1f4094c6e519cd72ec58
+Merge: 0e68a1f 384b91c
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 30 21:59:51 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Goddamn Merges
+
+commit 384b91caf1c93f4a88fc8939e717adafff4f9683
+Merge: 0316f98 ed37e2e
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 28 17:20:27 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 0316f983622d8525c21ca1f67d8bf72041161111
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 28 17:19:45 2014 -0400
+
+    added more pictures
+
+commit ed37e2e3217fd134f7ad9f0a9a1ccb3eeab339a6
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Sat Apr 26 22:46:18 2014 -0400
+
+    Moves work.
+
+commit bc2c57a6b452f03bdd469fd7635b9de243018fd3
+Merge: c24548e 34d175d
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Sat Apr 26 22:43:33 2014 -0400
+
+    Merge branch 'master' of github.com:CharlieMouton/FE_Final_Project
+
+commit c24548ef4e4afda1a905371b1a17127aab3c1210
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Sat Apr 26 22:43:27 2014 -0400
+
+    Turns almost work.
+
+commit 34d175d720156474b1fd0ce3853f366bd1c6e136
+Merge: f59d02d ed5f7dc
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 26 22:19:10 2014 -0400
+
+    I added the attack range. I know we are not supposed to push broken code, but I want to ask you guys to fix it. So I don't know how to update the red squares so that they dissappear after you move. Run the code and move the guys to know what I'm talking about..
+
+commit f59d02d2b207d3b462dcbb38e9c1ba196e6a9f24
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 26 22:13:56 2014 -0400
+
+    I added the attack range
+
+commit ed5f7dc1407774bd5ce7bd90235c5350d998cea4
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Sat Apr 26 21:48:31 2014 -0400
+
+    Availabilities now a dictionary.
+
+commit d46d65d68318a5b1325257d9132ac631522ff6d1
+Merge: db246fa 08956a2
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 26 20:17:14 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 0e68a1f4cf6d46b103d8025cd056911d785b64c4
+Merge: 31197c8 08956a2
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Fri Apr 25 18:02:10 2014 -0600
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Merge?
+
+commit 08956a226341fc45acb34e9ac2058b4f9e36b0ec
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 24 19:43:07 2014 -0400
+
+    Added a prettier move grid and fixed the order that characters are drawn.
+
+commit 915b224101d09d2ad6493dd8bd67ed56a22fc484
+Merge: 45727e2 3005975
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 24 15:08:23 2014 -0400
+
+    Fixed merge.
+
+commit 45727e2738cd41aeff00772b2700be856df1ef8d
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 24 15:06:14 2014 -0400
+
+    Turns almost work.
+
+commit 300597572fe5090febe4c3201f7c7504867ee7e6
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 24 15:02:41 2014 -0400
+
+    changed screen size, and displays class in stat box.
+
+commit db246fad92c464af0935abb39d3b885c4d766bab
+Merge: 6bb270b c4b275f
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 24 14:52:13 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit c4b275fead493ef4f52ad2b923e01cb73a4d0933
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 24 14:41:36 2014 -0400
+
+    players die as soon as they drop below 0 health
+
+commit 6bb270bb9f86b00ae47afe978574ddd295b37098
+Merge: ef7b5b6 f1142d7
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 24 14:27:55 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit f1142d70d6c2c2f0182bc259790e2f5cec183ab7
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 24 14:27:29 2014 -0400
+
+    Added full orientation and got rid of the having to click off to select a different character.
+
+commit 950352b8fddcbfd59627074e3c18244d00a33ea3
+Merge: 512a594 566b5fe
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 23 21:08:50 2014 -0400
+
+    added orientation, but have not yet made move modify the orient of a character.
+
+commit 512a5944c4152017a9a673cd3b2bf21fdb420a27
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 23 19:45:41 2014 -0400
+
+    made the archer slightly stronger
+
+commit ef7b5b6012d1e3837dc1fd358298da14316d0365
+Merge: 4d8326c 566b5fe
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 23 14:16:30 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 566b5feacbf0cc2cf08d81cf30058027b065ed15
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 23 14:16:20 2014 -0400
+
+    Added teams.
+
+commit 4d8326cf06dec49e0b9416b7076c5a9bd2dc9458
+Merge: eafdca8 df497f6
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 23 14:01:09 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit df497f64d5e590947cb2b87b29f3366a129c2fab
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 23 09:59:56 2014 -0400
+
+    How do we separate images from the model module?
+
+commit 471a9140ae0ea9136d7269f1b4a47bdaee9ca593
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 23 09:50:58 2014 -0400
+
+    Made some cleanup changes.
+
+commit b11f39029dfb267283853b8172dfe31d3ed29d0f
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 23 09:43:56 2014 -0400
+
+    Made the range box now display in the background layer.
+
+commit 8b510b3220d2fafc0f2a6601ad8d3711e6968559
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 21 17:16:37 2014 -0400
+
+    modified images
+
+commit 31197c88e3098b997a82fb13cae07f5c9b19b02a
+Merge: 0135606 a0c4bf0
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 14:25:43 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    merge
+
+commit eafdca8033daeaca6cbe33947ed47cc8373d59fa
+Merge: 0135606 a0c4bf0
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 17 14:25:37 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit a0c4bf033ea28afcf5a705632a22e072856d02dc
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 17 14:25:33 2014 -0400
+
+    Fixed indention.
+
+commit a99ea4bddbce91eebe271135e2b16d70922d2dd8
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 17 14:24:33 2014 -0400
+
+    Fixing broken updates.
+
+commit 01356069a1e0636af1eb6c3079476c8c1bee499a
+Merge: e6aef83 0c61cf2
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 13:41:46 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Merge
+
+commit e6aef8369093985e6229c4ca98ff09b8730c6f6c
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 13:41:28 2014 -0400
+
+    fixed move back to origin
+
+commit 0c61cf23d866eab1b9df53a58cf2aac9d89dfa65
+Merge: 9ee3ce8 73a1da3
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 17 13:38:45 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 9ee3ce8eb51b126ff821f75326030c43c30967ba
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 17 13:38:42 2014 -0400
+
+    ds
+
+commit 73a1da313a786ed384f3a1f96d3a3a1a290e75d6
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 13:38:10 2014 -0400
+
+    fixed move back to origin
+
+commit 9a7baf87c752213f203cb4d4d11185a347090c53
+Merge: bb14f12 4f3a781
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 17 12:35:18 2014 -0400
+
+    Merge branch 'master' of github.com:CharlieMouton/FE_Final_Project
+
+commit bb14f127285e0bc83edc294dff5cd563031f9784
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 17 12:35:15 2014 -0400
+
+    Basic escape works.
+
+commit 4f3a781d36c57f2d6edbf128b319fc0bf40345af
+Merge: d4f89d2 af72d93
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 17 12:02:12 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit d4f89d2aeefa9e762d5b3403bd41c604a70ce250
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 17 12:01:53 2014 -0400
+
+    changed menu location
+
+commit af72d9314e3dd54c158be56b9647fcb94b0a6f86
+Merge: 10970fc 3fa07da
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 01:02:49 2014 -0400
+
+    Working Battle
+
+commit 10970fcafd66a1a8d6557bf65d94039dda54064e
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 00:58:31 2014 -0400
+
+    Working Battle
+
+commit ab88dbe85262a4d430b43f10de65455a5b2c344d
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 00:50:34 2014 -0400
+
+    Player battle!
+
+commit 3fa07dac9cc975741aff7d9330a495e5b9879553
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 17 00:23:29 2014 -0400
+
+    Cleanup work.
+
+commit 95fc2cd321c25590c9e454be6fa9d34007d00031
+Merge: 4174e91 14a61ec
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 17 00:20:29 2014 -0400
+
+    ds
+
+commit 4174e9150dd27fff7e7056bdb3520cf4804811cc
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Thu Apr 17 00:18:50 2014 -0400
+
+    ssa
+
+commit 14a61ecfa0d7e893b33407f0cb02b24002a9fece
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 17 00:17:53 2014 -0400
+
+    Player moves work
+
+commit 3aabae8fa14c5b7c8f65926d76ac34558a75d2b2
+Merge: d1e8662 3d1cd93
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 23:52:45 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    MERGE
+
+commit d1e86621c7c0ffe4589a9b08958600456d682c5f
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 23:52:24 2014 -0400
+
+    Player stuff
+
+commit 3d1cd9396bd72388f388a876cd8cdc5b0b9aea6d
+Merge: f173f7f f26861e
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 23:25:46 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit f173f7f715019c24e741f3f2aa73a29da4b94916
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 23:25:42 2014 -0400
+
+    d
+
+commit f26861ef99852c5b9d5d15fc695216d6195b0942
+Merge: b57d99f 9252aec
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 23:24:40 2014 -0400
+
+    Range is displayed.
+
+commit b57d99fa82ef6378af75072024f367bc3f411f5d
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 23:22:58 2014 -0400
+
+    Range is displayed.
+
+commit 9252aec244cbbc675e4a97740d51753ef472ecd3
+Merge: f18526b 466835a
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 23:21:28 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit f18526beec1d0d616b6a2b54c6f4c57adb89e7cf
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 23:21:14 2014 -0400
+
+    added another cha
+
+commit 466835a37d6b12191fe7503af0603233dda47fe6
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 16 23:20:19 2014 -0400
+
+    No longer deletes characters when you click on them twice
+
+commit 1abc88f27fbafd8290efe901f77cf9398a6b935c
+Merge: 0f1dfd8 e67be2a
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 23:13:57 2014 -0400
+
+    added character
+
+commit 0f1dfd8496837a9d7d2b0298fc5b3898da7ad61a
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 23:13:25 2014 -0400
+
+    added character
+
+commit e67be2a34f3d385d6f3f69635683147102d44342
+Merge: fb26ee5 edafe77
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 16 23:12:27 2014 -0400
+
+    movement
+
+commit fb26ee522a75de2a25eaed15177d319301bd138b
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 16 22:58:28 2014 -0400
+
+    halfway through implementing movement
+
+commit edafe77aa4e43129ca5f4464743a2d930ab2883b
+Merge: be2bbb8 d38a8fa
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 22:56:54 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Merge
+
+commit be2bbb86b6371cdad0f46552466aebaae01f6d73
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 22:56:44 2014 -0400
+
+    Added battle and move to model
+
+commit d38a8fa575c7fb6a1da537e813b98cfa2f05e7f7
+Merge: 5f7637f 365b035
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 22:55:32 2014 -0400
+
+    dfs
+
+commit 5f7637f7da5889532504efd599ce072d1e6f7e79
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 22:53:36 2014 -0400
+
+    D
+
+commit 365b0358ea5adbf1f264080c68be3ae6c9450155
+Merge: 8b61b15 ee83ebf
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 22:53:04 2014 -0400
+
+    Fixing merges.
+
+commit 8b61b154a338a04849bfd218d67746f607af09bd
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 22:51:53 2014 -0400
+
+    Area successful.
+
+commit ee83ebf087032436c7293a831970f6617f459f9a
+Merge: a454c5e 3b5702b
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 22:38:51 2014 -0400
+
+    Added battle and move to model
+
+commit a454c5ef03abba0c22c733b25369d5929a561a49
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 22:38:04 2014 -0400
+
+    Added battle and move to model
+
+commit 3b5702b653a9dec29d83a325cf7a2d48b1f33baf
+Merge: df8e7ae 5090385
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 16 22:37:20 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 50903851d9b16cb757384c08c0fbe96ee7693757
+Merge: 3b74ba6 838da93
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 22:36:10 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 3b74ba64fc3acd801423cbec2e6eb48220a2cb46
+Merge: b360053 ef167a5
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 22:36:05 2014 -0400
+
+    D
+
+commit df8e7ae5f7b02149858dd0957d4eab7664422592
+Merge: 132e698 838da93
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 16 22:34:52 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 132e698139a4458c5cf11be2b743af299e8ffeb3
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Apr 16 22:34:48 2014 -0400
+
+    starting to get movement working
+
+commit b36005315f6dbe38c71073b037742fc649df5da8
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 22:34:11 2014 -0400
+
+    dsa
+
+commit 838da93242eb98e5a574ff4cc93e84974b4cc979
+Merge: a52a364 ef167a5
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 22:34:08 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    MERGING
+
+commit a52a3642878f8b777341e0c0bd5bf3d5ffa7968c
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 22:34:06 2014 -0400
+
+    Added battle and move to model
+
+commit ef167a50cd0c9f63cad4ea928e1f81dc33bad256
+Merge: 683f481 a44a4f9
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 22:33:22 2014 -0400
+
+    Fucking merges.
+
+commit 683f481ec7cfe7b4d5193b554d49e74779b192d9
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 22:31:46 2014 -0400
+
+    For Julian.
+
+commit a44a4f9303f77856790350326ed9afdd85a3fc0e
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 22:06:52 2014 -0400
+
+    Added battle and move to model
+
+commit f7639a303f9c9819d589750378946de79cdfc20b
+Merge: 94d09fc ecea52d
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 21:51:17 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    merge
+
+commit 94d09fcd2afcb262c2d45c1de6940ca286312a82
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Wed Apr 16 21:50:54 2014 -0400
+
+    Added battle and move to model
+
+commit ecea52de4c69bdcd130c7e321f9e610b3cf8984b
+Merge: 926776b b3778eb
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 16 21:43:56 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit b3778eba8b24fa15b9b8da6606c55e40b60c1084
+Merge: 327b78c ae28920
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 21:39:49 2014 -0400
+
+    Test.
+
+commit 327b78c8dfc8ff067791bbec4cf4ec978a4cca11
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Wed Apr 16 21:38:07 2014 -0400
+
+    Trying to fix a merge issue.
+
+commit ae289204944a24e979028044ef6ca3b3657398f8
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 14 15:48:31 2014 -0400
+
+    merges
+
+commit 770cc248d24e4affbbadcc89217a1f3f41cd5eae
+Merge: 2e31841 3e6ab6f
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 14 15:47:29 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 2e3184175e08bebe332fa48bf0f2dddc438ff22a
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 14 15:47:17 2014 -0400
+
+    ADDED CLICK FOR STATS
+
+commit 926776bd57db3ba4f81b56d971452c9389c430e6
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Mon Apr 14 15:24:17 2014 -0400
+
+    ds
+
+commit 3e6ab6fc5229f102bdf394f8b2f85606ea71de48
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 15:19:17 2014 -0400
+
+    some changes
+
+commit 96785d7623425a4d38435f6d1c4784ec287e149f
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 15:10:37 2014 -0400
+
+    some changes
+
+commit d1612e017e651b996cf70c853d123c94a024a066
+Merge: fae8761 574ad6b
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 15:06:36 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    merge
+
+commit fae87611cb973836e78fdd5b370ddc7634467e81
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 15:05:47 2014 -0400
+
+    some changes
+
+commit 574ad6bc1146eaa69ca6b56c47e557a740b887d6
+Merge: dfb1736 9a2b050
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Mon Apr 14 15:02:46 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit dfb17365229f007a65823126c1e909559b676260
+Merge: fa37e7c 4dc563b
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Mon Apr 14 15:01:51 2014 -0400
+
+    sl
+
+commit 9a2b050a94ca3520d1851e69f7711f7fbae82344
+Merge: dea56e6 686395b
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 14:55:44 2014 -0400
+
+    some changes
+
+commit dea56e6649d3ab29c6395a000f994da6789c06f9
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 14:54:24 2014 -0400
+
+    some changes
+
+commit 686395bcceb01ac563da0e1ad4509b3a7bee890d
+Merge: c36fe9b 75c8017
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Mon Apr 14 14:51:23 2014 -0400
+
+    Is it fixed yet?
+
+commit 9a72960ea31e585187647c811159772eb412d7fc
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 14:50:37 2014 -0400
+
+    some changes
+
+commit c36fe9b0b26d11b040a1d59465a37bed2c6fdf4d
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Mon Apr 14 14:49:32 2014 -0400
+
+    Committing changes for a merge.
+
+commit 75c80176717affe142d0ea4b02efe7f5f45931dd
+Merge: d9d479b f49e829
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 14 14:47:43 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit d9d479b5cc18f53bfb142753d053283554e96f71
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 14 14:44:01 2014 -0400
+
+    added click display stats
+
+commit f49e829dfa61e83cc8e59838f1c943bbf658248b
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 14:38:37 2014 -0400
+
+    some changes
+
+commit fa37e7c1c5beb8993425ff71e1d2cbd62ef1c5a2
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Mon Apr 14 14:38:20 2014 -0400
+
+    ds
+
+commit 0e22cc4de03e20836fe800abdabbcf6726dc04e8
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 14 14:09:50 2014 -0400
+
+    some changes
+
+commit 4dc563b1ae0e681118488aaa44cc2600c0f4edc6
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sun Apr 13 23:05:15 2014 -0400
+
+    displaying Julian
+
+commit 91ab3e0cf617bfe3e37684fdf2299748429e4491
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 12 23:03:03 2014 -0400
+
+    Draws the movement availability
+
+commit e695c32a8667753f881b905c307d6e02ed7e0b6b
+Merge: 5d3450c ee2824a
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Sat Apr 12 21:49:32 2014 -0400
+
+    Merge fixed.
+
+commit 5d3450c87cbd4f615916e7fe9fd6a24c0416266f
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Sat Apr 12 21:48:53 2014 -0400
+
+    Selections working.
+
+commit ee2824a04e012630ebeeb2a01a3f4faf529ad656
+Merge: e81ae22 03be5d6
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 12 21:39:35 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit e81ae22456a7c520fef15f6f4bdc877e9701adf3
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 12 21:39:26 2014 -0400
+
+    added stats corner
+
+commit 03be5d604f3b7401da8f8889421e0919e5c937de
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 12 21:19:40 2014 -0400
+
+    added startscreen
+
+commit 429f8b3529ce1854bd1214126a82151a5e57fa7a
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 12 20:51:21 2014 -0400
+
+    sdfs
+
+commit 42a2055708a7a3d0c6c77aaeba7a3c9536b53813
+Author: H. David Zhu <huanzhendavidzhu@gmail.com>
+Date:   Sat Apr 12 19:59:30 2014 -0400
+
+    Untested distance function created.
+
+commit 2b13e3d3101093f6c8c87b2eb7d39dec5bc35a46
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 10 23:37:07 2014 -0400
+
+    added anne
+
+commit 6f726983215e5bfe3a7dfd5d1dca8e794fe5dd3f
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 10 23:36:48 2014 -0400
+
+    added rudi text
+
+commit 24a0c1cca486ba763b2b2d72c476b229e1eabc5c
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 10 16:03:08 2014 -0400
+
+    added bot
+
+commit 7f95f6d5f79f1dd6731e72886f6ac1c3f23c5a37
+Merge: 0e49ad7 3498e69
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Thu Apr 10 15:19:33 2014 -0400
+
+    Second merge fixed.
+
+commit 0e49ad7c9d6f727419997f5a4b6b5b97546fc3d5
+Merge: 3c9ee47 4e8bf9a
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Thu Apr 10 15:17:49 2014 -0400
+
+    Merge fixed.
+
+commit 3498e6914b0e93d421cc0172764fd22e512ff2d5
+Merge: 89d68df 4e8bf9a
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 10 15:16:36 2014 -0400
+
+    merges
+
+commit 89d68df86965469947308c1fb15c8b6c75588a40
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 10 15:15:48 2014 -0400
+
+    Draws characters
+
+commit 3c9ee47db0906c8162028b7f8a129e6e684b1f58
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Thu Apr 10 15:15:10 2014 -0400
+
+    Code with errors.
+
+commit 4e8bf9a8b848e7cd20aaeb6e807060995c551671
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 15:14:41 2014 -0400
+
+    some changes
+
+commit 9ad1a73fa5bc7830f9eca53b2f3bf68ebb037cd9
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 15:06:11 2014 -0400
+
+    some changes
+
+commit c39bbc82f1241697a9e6c5f005a4a89824fd5a7e
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 14:54:54 2014 -0400
+
+    some changes
+
+commit 136491bcb174e8efceb6fa4f2aa77d0914671156
+Merge: 642488d bf4502a
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 14:47:09 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    yeah
+
+commit 642488dedc335e6a0a214e2360f3f75941ac903a
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 14:46:54 2014 -0400
+
+    some changes
+
+commit bf4502ae7f4678196e21e9276dbb277a0d74c003
+Merge: 6f57000 061595f
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 10 14:37:47 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 6f5700052841bdfbe8353d8bc66efe4a9c7387fd
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 10 14:37:34 2014 -0400
+
+    blocks are in the right place
+
+commit 061595fed0ee3784443938957191b4beb998f806
+Author: H. David Zhu <hdzhu5@users.noreply.github.com>
+Date:   Thu Apr 10 14:18:31 2014 -0400
+
+    Delete battle.py
+    
+    This has been moved to model.
+
+commit 679d192fc0aef84be28147f7f88683a39a69da6c
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Thu Apr 10 14:15:11 2014 -0400
+
+    battle.py relocated to model.
+
+commit baf4ec9c2317aff72c5d31f922d8fd9d76f7f45f
+Merge: 6326cfa a39c601
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Thu Apr 10 14:13:54 2014 -0400
+
+    Merge branch 'master' of github.com:CharlieMouton/FE_Final_Project
+
+commit a39c6010d94e6a67e51acb45070845453e3f4b60
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 14:13:38 2014 -0400
+
+    some changes
+
+commit 6326cfacbcb67b338414ec1b89cd52a9578e6f31
+Merge: 0466d9f b6d919a
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Thu Apr 10 14:13:35 2014 -0400
+
+    Merge branch 'master' of github.com:CharlieMouton/FE_Final_Project
+
+commit 0466d9f9399acf12f2ea50391780fa903253d207
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Thu Apr 10 14:13:28 2014 -0400
+
+    Renamed.
+
+commit b6d919aebdedbd96afd2afb084b609660900e1fc
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 14:10:30 2014 -0400
+
+    some changes
+
+commit 585036c3ae3cd8828ca255391d62037a84454333
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 14:06:41 2014 -0400
+
+    some changes
+
+commit 892536aa34841d117c230129d81b84d00291df87
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 14:01:19 2014 -0400
+
+    some changes
+
+commit 50458cc474c31c053b48b2d5214d35ead5bb92c5
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 10 03:16:55 2014 -0400
+
+    some changes
+
+commit e5452ef4f688dba7acf409ed9a4a36830f102857
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 9 12:25:50 2014 -0400
+
+    sds
+
+commit 6dbcd1dec83e6161f4c00156adc8dbb6b311f87f
+Merge: 0b31eb4 ac2a6a0
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 9 11:00:07 2014 -0400
+
+    sa
+
+commit 0b31eb4f5abc880ae9e181b1dafe426587f8f19b
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Wed Apr 9 10:58:26 2014 -0400
+
+    battle stuff
+
+commit ac2a6a03d49c06b4f51568bd8867005a5408a3da
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Tue Apr 8 19:47:36 2014 -0400
+
+    added water
+
+commit 79f9cebde3cdde625968c6ec8a0c743f06fed78e
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Tue Apr 8 15:12:52 2014 -0400
+
+    pictures work now
+
+commit f2197c8cf984d96aa598dc602d1cca92fe994d16
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Tue Apr 8 14:41:20 2014 -0400
+
+    Updated Block.py to inherit and remove sprites
+
+commit 071e78645237338af394762ab7c44c21914c3e01
+Author: hzhu <hzhu@hzhu.(none)>
+Date:   Tue Apr 8 13:46:23 2014 -0400
+
+    Mouse works like magic (almost).
+
+commit da83972446101b55bd837838ebed4bc5d65b44b7
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Tue Apr 8 13:10:47 2014 -0400
+
+    Boxes are starting to disappear. Not comepletely functional. Run main.py to figure it out.
+
+commit 9ebbf074b02716db6e923b17ae0ae6e800a0719a
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Tue Apr 8 12:46:42 2014 -0400
+
+    Now they can communicate with each other.
+
+commit 16c8569b495e9ae86399fb96189643f7cefb74b5
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 22:08:30 2014 -0400
+
+    Final final fix.
+
+commit ce4732a79c5570612688e3ed2f09426f3363117d
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 22:07:11 2014 -0400
+
+    Final fix.
+
+commit d9508d37195633ef1baccfa77a054b35f61743db
+Merge: 110edfa 2e8f16d
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 22:05:16 2014 -0400
+
+    Merge branch 'master' of github.com:CharlieMouton/FE_Final_Project
+
+commit 110edfa0ce0a723c7e51496d65e46a63ecf58814
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 22:05:02 2014 -0400
+
+    Trying to remove old stuff.
+
+commit 2e8f16dab23e9ec18c4a8ed47582b44680423a8b
+Author: H. David Zhu <hdzhu5@users.noreply.github.com>
+Date:   Mon Apr 7 22:02:44 2014 -0400
+
+    Delete __init__.py
+
+commit e9bd1afd59f90eb04f92895bf60319c27a1fac0b
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 21:57:42 2014 -0400
+
+    Everything is fixed.
+
+commit 624c80adfa41086a13ebdada3ff8ba29b66eb6e4
+Merge: 07c3480 db9c23f
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 19:36:39 2014 -0400
+
+    Merge branch 'master' of github.com:CharlieMouton/FE_Final_Project
+
+commit 07c348009739a4bb44b451222299017c9c118982
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 19:35:28 2014 -0400
+
+    Trying to fix the branching issues.
+
+commit db9c23f0137a44419523029fef48467c057e9da0
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 7 17:16:29 2014 -0400
+
+    deleted a temp file
+
+commit daa38db8d588573a2b43006c37c9c921e20b124f
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 7 17:15:49 2014 -0400
+
+    Added Bob
+
+commit df8bec5b5ee0a95e96e8ab26e16dcf61f75c9365
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 7 16:46:33 2014 -0400
+
+    A little more work
+
+commit 663c7446a224b2e8e94ddca349551b55263e5ad0
+Merge: 9528c3d d6e6be4
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 7 16:16:02 2014 -0400
+
+    merges
+
+commit 9528c3d1851c212451ba4b79d32e48def97ddaea
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Mon Apr 7 16:09:35 2014 -0400
+
+    Added a grass field
+
+commit d6e6be4bb7b5ea7bc6a696e4ec0d5de4d649bd0c
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 7 14:52:50 2014 -0400
+
+    Block Class
+
+commit 9f9bffdb0e5bc41e888de2cab83e6d77ad0c7f14
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 7 14:48:32 2014 -0400
+
+    Main Class
+
+commit 22b28d46b6ff8dc5119d95ce2471ffe298fc96cd
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 7 14:47:24 2014 -0400
+
+    Main Class
+
+commit ed944801ed5dc3fb172169568160f3b6c943d279
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Mon Apr 7 14:43:23 2014 -0400
+
+    Main Class
+
+commit 5a7c3ad3f35141918c505400cd7c5604773a988c
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 14:01:00 2014 -0400
+
+    Checkpoint.
+
+commit 3b4c4fd8299b6a1ec3749af4d7c47501d6baa42c
+Merge: 7cdadaa a117f65
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Mon Apr 7 13:15:23 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 7cdadaa8dd1ecd15b00cbc54d6abd13ee2b8cb81
+Merge: 9be08e0 d5f5fc1
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Mon Apr 7 13:15:18 2014 -0400
+
+    sdfs
+
+commit a117f65191e45ba7763c5435a082dab328866b9a
+Merge: 650dd2d dead779
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 10:49:56 2014 -0400
+
+    Merge branch 'master' of github.com:CharlieMouton/FE_Final_Project
+
+commit 650dd2de6f815606af804ca0b987fe84961fdadb
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Mon Apr 7 10:49:45 2014 -0400
+
+    Started with controller and mouse functions.
+
+commit dead779daa3d9f966bffe324220122c71371df4c
+Author: H. David Zhu <hdzhu5@users.noreply.github.com>
+Date:   Mon Apr 7 10:49:19 2014 -0400
+
+    Delete World.pyc
+
+commit bd7f7f8766c4155157056c3c95e804de1f4675c2
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 22:41:26 2014 -0400
+
+    Characters defined
+
+commit 9be08e0303a126076cdd31dc0a8dc5f9f57e4735
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 22:19:44 2014 -0400
+
+    d
+
+commit d5f5fc1b0f8526f573f94259772c1143084fba95
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 22:15:38 2014 -0400
+
+    Conflict
+
+commit 506f74c7a7c114d490b2f76f85b995d2f616028f
+Merge: 029a02e e13d71e
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 22:14:28 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Merge
+
+commit 029a02e70e9e8ff0238c4ce4c6943ca4f9ddf0a0
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 22:14:12 2014 -0400
+
+    Updating the Main file
+
+commit e13d71e3673caf548ac5b0e616ed7115a26225b7
+Merge: 81c3948 4c514d5
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 22:08:24 2014 -0400
+
+    sd
+
+commit 81c39480f93de19ee8125f4810312806979b49a0
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 22:06:11 2014 -0400
+
+    dss
+
+commit 4c514d55cdda77117228aea410307cf5a3803a01
+Merge: 971de68 3083a2e
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 22:05:37 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Merge
+
+commit 971de686117a11c0caaded0db2c1cf5f68d3e32e
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 22:05:21 2014 -0400
+
+    Updating the Main file
+
+commit 3083a2e357edcb7e38c2c38b2ffea86ab7de086d
+Merge: 9d1eac4 acd87b2
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 22:01:55 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 9d1eac4db0f98bcd7936f05c20c73c3d05544a5a
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 22:01:38 2014 -0400
+
+    got a basic iso grid working
+
+commit acd87b2532187ff5a20df141f0e5d527ee8214af
+Merge: af939a5 baadc12
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:59:32 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Merge
+
+commit af939a5efe73340cc2a053688d58e93b3d164c53
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:59:19 2014 -0400
+
+    Updating the Main file
+
+commit baadc12eacd46c9882134acd5ec819328b2481ea
+Merge: 6773e63 797ce38
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 21:55:37 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 797ce38fc6031a22cfbb62e41976467f8d763007
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:55:08 2014 -0400
+
+    Updating the Main file
+
+commit 73cb1d740c15d0b5b5e7dad19819cdf683ab7698
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:54:19 2014 -0400
+
+    Updating the Main file
+
+commit 2fc2d01d5fed7ef437e7b582d7ab6c575d6915e2
+Merge: 5d417c7 4368cc0
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:53:20 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Merging
+
+commit 5d417c7464a689307103de4b64bf5f5f2df86257
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:52:44 2014 -0400
+
+    Updating the Main file
+
+commit 6773e631975690c2b9ba829c7ff310ba0fda7cf7
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 21:52:40 2014 -0400
+
+    conflicts
+
+commit 456b56ee1d0f8b32f214111d6deb0548dd34848e
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:51:26 2014 -0400
+
+    Updating the Main file
+
+commit 4368cc0a4a12d94f31a444e945e0db0570680dad
+Merge: 0cfae01 d3d9792
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 21:48:14 2014 -0400
+
+    dssa
+
+commit 0cfae01cf873bf793425b5e74fd72b4c55d29c9e
+Merge: 3231966 fc24b41
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 21:47:34 2014 -0400
+
+    das
+
+commit d3d97926b4e7281d00130ef59bc40064f628a336
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:46:56 2014 -0400
+
+    Updating the Main file
+
+commit 52f27c0d4ee72af42266b6bf7a339bc06e87e371
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:46:38 2014 -0400
+
+    Updating the Main file
+
+commit 056111ea04a4c20248400011921d0261aad8be84
+Merge: 4c285e4 be56cfb
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:34:34 2014 -0400
+
+    Conflicts
+
+commit 4c285e4e5cbeece449027b00b2ee38f4b8cf916d
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:33:52 2014 -0400
+
+    Conflicts
+
+commit be56cfb0cbfde201f67f295528b080f15cf779b7
+Merge: ecb9db0 fc24b41
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 21:33:19 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit ecb9db0d1dfaf42e2e3395e9932906b5d6d88796
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 21:32:51 2014 -0400
+
+    Working with our world.
+
+commit 32319661a1e0aaf7fdc027ea837e9412471e1924
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 21:25:29 2014 -0400
+
+    dsad
+
+commit fc24b4119b9285e6a8131fc306c3ec958cc5dda9
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:20:51 2014 -0400
+
+    Working through conflicts
+
+commit 17ff990a7a6987ec850c36454327513c431085e0
+Merge: ae8072c 48b75de
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 21:19:00 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit ae8072c625fe5c009a7f630c7e1412d043980056
+Merge: 3425eca 806a651
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 21:18:53 2014 -0400
+
+    Removing bad things.
+
+commit 3425ecac6a72add2b1a9771aa8a7029089a87c93
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Sat Apr 5 21:14:17 2014 -0400
+
+    Getting view working a little better
+
+commit 48b75de5afbbfe407cc115f24571a39b4e5600de
+Merge: 9d54eb5 806a651
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:13:47 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 9d54eb5c76b5b6fb82ac557258c7cf0b5f32901b
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:13:31 2014 -0400
+
+    Working through conflicts
+
+commit 806a651a22eb98f59c4d94751b9ce0cddd078d20
+Merge: f643138 fabcbeb
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Sat Apr 5 21:12:35 2014 -0400
+
+    Removed useless stuff.
+
+commit f64313812c34d7a835da01ddf1a0b7d055bd0670
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Sat Apr 5 21:08:34 2014 -0400
+
+    Trying to merge.
+
+commit fabcbebfd5ba159f98456e78162ff194f8d6323a
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:06:50 2014 -0400
+
+    Working through conflicts
+
+commit 36aea022aaaa7832a5ad1c23be7c10421993b330
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 21:01:21 2014 -0400
+
+    Working through conflicts
+
+commit 316824dc6b47e6d7557c8d6f041113c2fc6cb348
+Merge: a78d819 57ab853
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 20:52:37 2014 -0400
+
+    blocks
+
+commit a78d819fe59a84a1e75eeb7a5914f174561c793d
+Merge: 34c8f46 3ab2425
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 20:51:14 2014 -0400
+
+    blocks
+
+commit 57ab853d976a97d16520c9212389de3716888984
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 20:46:48 2014 -0400
+
+    Working through conflicts
+
+commit 34c8f46d5bcae1693ee0fc5c509e0bc1a6860e96
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Sat Apr 5 20:46:11 2014 -0400
+
+    changed stuff
+
+commit afdf75674b01a4f4fdbff3502980d47f8c48021d
+Merge: 01718ec 3ab2425
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 20:44:00 2014 -0400
+
+    yeah
+
+commit 01718ecb6790db33ee505badec610909fc1924e3
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Sat Apr 5 20:42:51 2014 -0400
+
+    Block conflick
+
+commit 3ab24254166204e1b0d9c7e2a29144d5a47ec9e0
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Sat Apr 5 20:34:09 2014 -0400
+
+    Removed extra spaces.
+
+commit f1d44886a02d5f844a86178382159efd064db0fa
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Sat Apr 5 20:30:44 2014 -0400
+
+    Added a .gitignore.
+
+commit f92dfc72139cedc3a730e981420cd3bf911855d2
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Sat Apr 5 20:28:49 2014 -0400
+
+    All merge conflicts fixed.
+
+commit 758aa1658ccf06f47fb97b034e52adc9635d0df3
+Merge: 38f2f00 a6888eb
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Sat Apr 5 20:26:45 2014 -0400
+
+    This is empty.
+
+commit 38f2f00753837e172d39d5cc4fa2ef686b919e9b
+Author: hzhu <hzhu@hzhu.olin.edu>
+Date:   Sat Apr 5 20:16:08 2014 -0400
+
+    Committing.
+
+commit a6888ebca54e6d9b859c064a1ac169d065d30261
+Merge: 99124ab bd96d06
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 3 15:14:16 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 99124ab1c32c3b8d49db602397e2f20185dfb1da
+Merge: 53bdf93 c4596ec
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 3 15:13:54 2014 -0400
+
+    took in changes
+
+commit bd96d06c11d4b106d7526e1b349f306d7df97471
+Merge: 9901d9f c4596ec
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 15:12:42 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    look it
+
+commit 53bdf93066199d36a05798d435f399a8da2593af
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 3 15:12:12 2014 -0400
+
+    test drawing and added CartToIso Function.
+
+commit 9901d9f0763abcef616533a729b626a60cdbf22b
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 15:12:10 2014 -0400
+
+    Updated Character with move and LEVEL
+
+commit c4596ec126df7a7947fcbcd9520dd87a3a0cb523
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 3 15:08:33 2014 -0400
+
+    added grass
+
+commit 95086f8061c2f4a235d3efb6fc1eb804042c4138
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Apr 3 15:06:50 2014 -0400
+
+    Blocks.py
+
+commit 38949a5c1ca338dc8a041453c0188483184c29b5
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 14:46:38 2014 -0400
+
+    Clearing up class imports
+
+commit ca69a57b3eae5ac4c954dff74dedab671e39e298
+Merge: 72afb3a 02908bf
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 14:37:01 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+    Charlie uploaded without pulling
+
+commit 02908bf9e32fd64d1662af6f6c92157ece642fcc
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 3 14:35:44 2014 -0400
+
+    adding game.py
+
+commit 72afb3ac285b5035ac6e23320ba922b520652a67
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 14:34:25 2014 -0400
+
+    changed world file
+
+commit 83b22a1448ef4947b74bbeec812ddd8c0ae3511c
+Merge: 084b27f ed5543d
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 3 14:32:43 2014 -0400
+
+    merging my stuff
+
+commit ed5543d2e9af31985e6692c5fe3cc4c8114be41f
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 14:30:05 2014 -0400
+
+    Added scripts file
+
+commit 69f3f0df7021dc71ae5e0f2b2f972b8338f2f759
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 14:27:42 2014 -0400
+
+    Fixed Wall file
+
+commit 832d706ad56a39f953ed2037ea97af22a31d76b7
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 14:26:42 2014 -0400
+
+    Fixed Wall file
+
+commit 084b27f723f182d73a82a8e0c8b7f52aa12165f0
+Merge: 899a25d 34b10d1
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 3 14:26:07 2014 -0400
+
+    Merge branch 'master' of https://github.com/CharlieMouton/FE_Final_Project
+
+commit 899a25d6141fa64409ddde43e2f981d51cd1d7af
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Thu Apr 3 14:25:49 2014 -0400
+
+    Starting to work with view
+
+commit 34b10d17dc7227d7feabf96823a5fbd36d8302e9
+Author: Jacob Riedel <Jacob.Riedel@students.olin.edu>
+Date:   Thu Apr 3 14:23:08 2014 -0400
+
+    Split up the main file into class files.  Multiple people can now work at once
+
+commit e4b126394237f1e4dbb29b0a28f4b1495f56d3ba
+Author: Julian <julian@julian-Latitude-E6420.(none)>
+Date:   Thu Mar 27 15:13:34 2014 -0400
+
+    Fire_emblem.py
+
+commit ad4971da89a31a7f13508d18ef35839afe029dfc
+Author: CharlieMouton <Charlie@Moutons.org>
+Date:   Wed Mar 26 16:14:55 2014 -0700
+
+    Initial commit
