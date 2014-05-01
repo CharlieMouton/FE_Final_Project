@@ -42,7 +42,7 @@ class Model:
         """This function creates all players and places them within teams."""
         self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', team = 1, can_move = True)
         self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', team = 1, can_move = True)
-        self.character[(400,550)] = character.Archer(self,location=(400,550), name='Charlie', team  = 2)
+        self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', team  = 2)
         self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', team  = 3)
         
         for point in self.character:
