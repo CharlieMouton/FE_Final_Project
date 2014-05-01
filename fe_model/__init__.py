@@ -20,10 +20,7 @@ class Model:
         self.grid = {}
         self.character ={}
         self.turn = 0
-        self.team1 = []
-        self.team2 = []
-        self.team3 = []
-        self.teams = [self.team1, self.team2, self.team3]
+        self.teams = [[],[],[]]
 
         # Generate map.
         for x in range(0, self.swidth, self.ref):
