@@ -6,7 +6,7 @@ sys.path.append(lib_path)
 from var_scripts import ref
 
 class Character:
-    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location, team = 1, can_move = True):
+    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weaponrange,location, dodge = 5 , crit=5, team = 1, can_move = True):
         self.model = model
         self.name=name
         
