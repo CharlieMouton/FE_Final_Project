@@ -1,5 +1,5 @@
 import pygame
-import os, sys
+import os, sys, time
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
@@ -41,6 +41,23 @@ class View:
             # HP = myfont.render("(%d)" % current.HP, 1, (255,255,0))
             # screen.blit(HP, (CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5))
 
+        pygame.display.update()
+
+    def crit(self,charnum):
+        critpopup = pygame.image.load("fe_model/images/crit.png")
+        print charnum
+        if str(charnum) == '1':
+            self.screen.blit(critpopup,(425,500))
+        elif str(charnum) == '2':
+            self.screen.blit(critpopup,(700,500))
+        pygame.display.update()
+
+    def dodge(self,charnum):
+        dodgepopup = pygame.image.load("fe_model/images/dodge.png")
+        if charnum == '1':
+            self.screen.blit(dodgepopup,(425,530))
+        elif charnum == '2':
+            self.screen.blit(dodgepopup,(700,530))
         pygame.display.update()
 
     def battlestats(self,(char1,char2)):
