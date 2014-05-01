@@ -10,7 +10,9 @@ from fe_view import *
 from images import *
 
 class Model:
-    """Encodes game state."""
+    """
+    This class encodes the game state.
+    """
     def __init__(self):
         self.running = True
 
@@ -20,7 +22,7 @@ class Model:
         self.grid = {}
         self.character ={}
         self.turn = 0
-        self.teams = [[],[],[]]
+        self.teams = []
 
         # Generate map.
         for x in range(0, self.swidth, self.ref):
@@ -36,23 +38,40 @@ class Model:
 
         # Create players.
         self.populatePlayers()
+        self.organize_teams()
 
     def populatePlayers(self):
-        """This function creates all players and places them within teams."""
+        """
+        This function creates all players and places them within teams.
+
+        Inputs: Model
+        Outputs: None
+        """
         self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
         self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
-        self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 100, crit=5, team  = 1)
+        self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5, crit=5, team  = 2)
         self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', dodge = 5 , crit=5, team  = 2)
-        
+
+    def organize_teams(self):
+        """
+        This function places all players into the right teams.
+
+        Inputs: Model
+        Outputs: None
+        """
         for point in self.character:
             if self.character[point] != None:
+                if self.character[point].team >= len(self.teams):
+                    for adding in range(self.character[point].team - len(self.teams) + 1):
+                        self.teams.append([])
                 self.teams[self.character[point].team].append(self.character[point])
 
     def updateCharLocation(self, x, y):
-        """'x' and 'y' are both input list of all locations along the path
-        that the character is moving.  'x' and 'y' must be the same length.
+        """
+        This function updates the character location.
 
-        returns the direction the character should be facing after the move."""
+        Inputs: 'x' and 'y' are both input list of all locations along the path that the character is moving.  'x' and 'y' must be the same length.
+        Outputs: the direction the character should be facing after the move."""
         for i in range(len(x)):
             if i>0:
                 if self.character[(x[i],y[i])] == None:
@@ -74,7 +93,12 @@ class Model:
                     return direction
 
     def battleCall(self,player1, player2):
-        """This function allows for two characters to engage combat."""
+        """
+        This function allows for two characters to engage combat.
+
+        Inputs: Model, two characters
+        Outputs: None
+        """
         if not player1.hasAttacked:
             x = player1.battle(player2)
             if player1.CurrentHP == 0:
@@ -84,25 +108,6 @@ class Model:
             print x
             return x
 
-    # def team_turn_check(self, team = None):
-    #     """
-    #     Tests if a team can still move.
-    #     Returns a boolean True or False depending on if the team can still move.
-    #     """
-    #     if len(team) == 0:
-    #         return False
-    #     else:
-    #         for character in team:
-    #             if character.can_move == True:
-    #                 return True
-
-    #         return False
-
-    # def reset_can_move_to_team(self, choice):
-    #     """Considers whose turn it is, and resets which team has moving abilities."""
-    #     for character in self.teams[choice]:
-    #         character.can_move = True
-
     def next_turn(self):
         """
         This function, when called, ends the turn of the current team.
@@ -110,12 +115,15 @@ class Model:
         Inputs: the model 
         Outputs: None
         """
+        for character in self.teams[self.turn % 3]:
+            character.can_move = False
+
         self.turn += 1
-        choice = teams[self.turn % 3]
-        for character in choice:
+        for character in self.teams[self.turn % 3]:
             character.can_move = True
             character.hasAttacked = False
-
+            character.movementleft = character.movement
+        
     def update(self):
         """
         update is constantly run to keep check of what happens during the game.
@@ -124,7 +132,8 @@ class Model:
         Outputs: None
         """
         for character in self.teams[self.turn%3]:
-            character.available_locations()
+            if character.can_move == True:
+                character.generate_availabilities()
             character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
