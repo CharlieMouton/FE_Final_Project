@@ -123,6 +123,8 @@ class Model:
 
         if self.team_turn_check(current_team) == False:
             self.turn += 1
+            for character in current_team:
+                character.hasAttacked=False
             choice = self.turn % 3
             current_team = self.teams[choice]
             self.reset_can_move_to_team(choice)
