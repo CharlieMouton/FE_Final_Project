@@ -64,35 +64,39 @@ class Controller:
         cartX, cartY = IsoToCart(mx, my)
         temp_x = math.floor(cartX / ref) * ref
         temp_y = math.floor(cartY / ref) * ref
-
-        # If the place the character is moving to is empty,
-        if self.model.character[(temp_x,temp_y)] == None:
-            # If the character can reach this block,
-            player.clickTwice=False
-            if (temp_x,temp_y) in player.availabilities:
-                # Update to that location.
-                 player.orient = self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
-
-            else:
-                # Remove character selection.
-                self.charselected = None
-
-        # Fighting situation.
-        elif self.model.character[(temp_x,temp_y)] != None and self.model.character[(temp_x,temp_y)] != player:
-            if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50)<=player.weaponrange:
-                if player.clickTwice:
-                    self.model.battleCall(player,self.model.character[(temp_x,temp_y)])
-                    self.view.battlescreen = (player,self.model.character[(temp_x,temp_y)])
-                    player.clickTwice=False
-                    player.movementleft=0
+        
+        if player.movementleft==0:
+            self.view.statselect = self.model.character[(temp_x,temp_y)]
+            self.charselected = self.model.character[(temp_x,temp_y)]
+        else:
+            # If the place the character is moving to is empty,
+            if self.model.character[(temp_x,temp_y)] == None:
+                # If the character can reach this block,
+                player.clickTwice=False
+                if (temp_x,temp_y) in player.availabilities:
+                    # Update to that location.
+                     player.orient = self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
+    
                 else:
-                    self.view.battlescreen = (player,self.model.character[(temp_x,temp_y)])
-                    player.clickTwice=True
-            else:
-                # Remove character selection.
-                self.view.statselect = self.model.character[(temp_x,temp_y)]
-                self.charselected = self.model.character[(temp_x,temp_y)]
-                self.model.character[(temp_x,temp_y)].orient = 's'
+                    # Remove character selection.
+                    self.charselected = None
+    
+            # Fighting situation.
+            elif self.model.character[(temp_x,temp_y)] != None and self.model.character[(temp_x,temp_y)] != player:
+                if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50) == player.weaponrange:
+                    if player.clickTwice:
+                        self.model.battleCall(player,self.model.character[(temp_x,temp_y)])
+                        self.view.battlescreen = (player,self.model.character[(temp_x,temp_y)])
+                        player.clickTwice=False
+                        player.movementleft=0
+                    else:
+                        self.view.battlescreen = (player,self.model.character[(temp_x,temp_y)])
+                        player.clickTwice=True
+                else:
+                    # Remove character selection.
+                    self.view.statselect = self.model.character[(temp_x,temp_y)]
+                    self.charselected = self.model.character[(temp_x,temp_y)]
+                    self.model.character[(temp_x,temp_y)].orient = 's'
 
     def char_reset(self, character):
         print character.o_location
