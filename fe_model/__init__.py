@@ -43,7 +43,7 @@ class Model:
         self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', team = 1, can_move = True)
         self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', team = 1, can_move = True)
         self.character[(400,550)] = character.Archer(self,location=(400,550), name='Charlie', team  = 2)
-        self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', team  = 2)
+        self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', team  = 3)
         
         for point in self.character:
             if self.character[point] != None:
@@ -98,29 +98,40 @@ class Model:
         Tests if a team can still move.
         Returns a boolean True or False depending on if the team can still move.
         """
-        for character in team:
-            return character.can_move
+        if len(team) == 0:
+            return False
+        else:
+            for character in team:
+                if character.can_move == True:
+                    return True
+
+            return False
 
     def reset_can_move_to_team(self, choice):
         """Considers whose turn it is, and resets which team has moving abilities."""
         for character in self.teams[choice]:
-            character.can_move == True
+            character.can_move = True
 
     def update(self):
         """[Add docstring here.]"""
         choice = self.turn % 3
         current_team = self.teams[choice]
+        
+        for character in current_team:
+            character.available_locations()
+
         if self.team_turn_check(current_team) == False:
             self.turn += 1
+            choice = self.turn % 3
+            current_team = self.teams[choice]
             self.reset_can_move_to_team(choice)
 
-            for character in current_team:
+            for character in self.teams[choice]:
+                character.availabilities = {}
                 character.movementleft = character.movement
-                character.available_locations()
+
         else:
             for character in current_team:
-                # This line should not be used.
-                character.available_locations()
                 character.image = character.images[character.orient]
                 if character.CurrentHP <= 0:
                     character = None
