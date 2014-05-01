@@ -36,6 +36,7 @@ class Model:
 
         # Create players.
         self.populatePlayers()
+        self.organize_teams()
 
     def populatePlayers(self):
         """This function creates all players and places them within teams."""
@@ -44,15 +45,19 @@ class Model:
         self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5 , crit=5, team  = 1)
         self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', dodge = 5 , crit=5, team  = 2)
 
-        # Allocate characters into teams. 
+    def organize_teams(self):
+        """
+        This function places all players into the right teams.
+
+        Inputs: the model
+        Outputs: None
+        """
         for point in self.character:
             if self.character[point] != None:
                 if self.character[point].team >= len(self.teams):
                     for adding in range(self.character[point].team - len(self.teams) + 1):
                         self.teams.append([])
                 self.teams[self.character[point].team].append(self.character[point])
-
-        print self.teams
 
     def updateCharLocation(self, x, y):
         """'x' and 'y' are both input list of all locations along the path
@@ -92,14 +97,6 @@ class Model:
         """
         This function, when called, ends the turn of the current team.
 
-
-        if self.team_turn_check(current_team) == False:
-            self.turn += 1
-            for character in current_team:
-                character.hasAttacked=False
-            choice = self.turn % 3
-            current_team = self.teams[choice]
-            self.reset_can_move_to_team(choice)
         Inputs: the model 
         Outputs: None
         """
@@ -110,9 +107,8 @@ class Model:
         for character in self.teams[self.turn % 3]:
             character.can_move = True
             character.hasAttacked = False
-
-        print self.turn
-
+            character.movementleft = character.movement
+        
     def update(self):
         """
         update is constantly run to keep check of what happens during the game.
@@ -121,7 +117,8 @@ class Model:
         Outputs: None
         """
         for character in self.teams[self.turn%3]:
-            character.available_locations()
+            if character.can_move == True:
+                character.generate_availabilities()
             character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None

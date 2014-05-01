@@ -18,23 +18,23 @@ class Character:
     '''        
     def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weapontype,location, dodge = 5 , crit=5, team = 1, can_move = True, hasAttacked=False):
         self.model = model
-        self.name=name
+        self.name = name
         
-        self.level=level
-        self.xp=0
-        self.xpToNextLevel=xpToNextLevel
-        self.clickTwice=False
-        self.MaxHP=HP
-        self.CurrentHP=HP
-        self.strength=strength
-        self.defense=defense
-        self.agility=agility
-        self.intelligence=intelligence
-        self.movement=movement
-        self.movementleft=movement   
-        self.weaponrange=weapontype.weaponrange
-        self.dodge = dodge
-        self.crit = crit
+        self.level = level
+        self.xp = 0
+        self.xpToNextLevel = xpToNextLevel
+        self.clickTwice = False
+        self.MaxHP = HP
+        self.CurrentHP = HP
+        self.strength = strength
+        self.defense = defense
+        self.agility = agility
+        self.intelligence = intelligence
+        self.movement = movement
+        self.movementleft = movement   
+        self.weaponrange = weapontype.weaponrange
+        self.dodge  =  dodge
+        self.crit  =  crit
 
         self.location = location
         self.o_location = location
@@ -67,25 +67,17 @@ class Character:
         self.movement+=LvlUp[5]
         self.weaponrange+=LvlUp[6]
 
-    def available_locations(self):
+    def generate_availabilities(self):
         """
-        Generates a set of available locations to where the charater can move.
-        
+        Generates a set of availabilities for a given character.
+
         Inputs: A character
-        Outputs: A list of available locations where the character can move
+        Outputs: That character's availabilities and attackrange
         """
-        if self.can_move == False:
-            self.availabilities = {self.location: self.location} 
-        
-        # Could be false?
-        # if self.availabilities == {self.location: self.location}:
-        #     self.can_move = False   
-        # else:
-        # Save current location
         self.availabilities={}
         current_positions = {self.location: self.location}
+        
         # Iterate throughout the map to find available positions.
-
         for step in range(int(self.movementleft)+int(self.weaponrange)):
             temp_buffer = {}
             for current_position in current_positions:
