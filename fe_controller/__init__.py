@@ -103,4 +103,4 @@ class Controller:
         print character.location
         character.orient = "s"
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
-        character.movementleft=character.movement        
+        character.movementleft=character.movement
