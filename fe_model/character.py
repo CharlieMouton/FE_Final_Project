@@ -13,7 +13,7 @@ class Character:
         self.level=level
         self.xp=0
         self.xpToNextLevel=xpToNextLevel
-
+        self.clickTwice=False
         self.MaxHP=HP
         self.CurrentHP=HP
         self.strength=strength
@@ -116,7 +116,7 @@ class Character:
                 pass
             else:
                 if random.randint(1,100) <= self.crit:
-                    self.player2.CurrentHP-=(self.strength*3-self.player2.defense)
+                    self.player2.CurrentHP-=(self.strength-self.player2.defense)*3
                 else:
                     self.player2.CurrentHP-=(self.strength-self.player2.defense)
         if self.player2.CurrentHP<=0:
@@ -133,7 +133,7 @@ class Character:
                         pass
                     else:
                         if random.randint(1,100) <= self.player2.crit:
-                            self.CurrentHP-=(self.player2.strength*3-self.defense)
+                            self.CurrentHP-=(self.player2.strength-self.defense)*3
                         else:
                             self.CurrentHP-=(self.player2.strength-self.defense)
             if self.CurrentHP<=0:
@@ -149,7 +149,7 @@ class Character:
                     pass
                 else:
                     if random.randint(1,100) <= self.crit:
-                        self.player2.CurrentHP-=(self.strength*3-self.player2.defense)
+                        self.player2.CurrentHP-=(self.strength-self.player2.defense)*3
                     else:
                         self.player2.CurrentHP-=(self.strength-self.player2.defense)
             if self.player2.CurrentHP<=0:

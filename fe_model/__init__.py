@@ -87,11 +87,12 @@ class Model:
 
     def battleCall(self,player1, player2):
         """This function allows for two characters to engage combat."""
-        player1.battle(player2)
-        if player1.CurrentHP == 0:
-            self.character[player1.location]=None
-        if player2.CurrentHP == 0:
-            self.character[player2.location]=None
+        if not player1.hasAttacked:
+            player1.battle(player2)
+            if player1.CurrentHP == 0:
+                self.character[player1.location]=None
+            if player2.CurrentHP == 0:
+                self.character[player2.location]=None
 
     def team_turn_check(self, team = None):
         """
