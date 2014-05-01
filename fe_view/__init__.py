@@ -49,14 +49,16 @@ class View:
         self.screen.blit(battlestatpage,(char1.location[0],char1.location[1]))
         healthblock = pygame.image.load("fe_model/images/healthblock.png")
         emptyhealthblock = pygame.image.load("fe_model/images/emptyhealthblock.png")
-
+        if char1 == None or char2 == None:
+            self.battlescreen = None
+            return
         name = myfont.render(str(char1.name), 1, (0,0,0))
         self.screen.blit(name,(char1.location[0]+120,char1.location[1]+25))
-        hit = myfont.render(str(100-char2.dodge), 1, (255,255,255))
+        hit = myfont.render(str(100-char2.dodge), 1, (0,0,0))
         self.screen.blit(hit,(char1.location[0]+50,char1.location[1]+2))
-        dmg = myfont.render(str(char1.strength-char2.defense), 1, (255,255,255))
+        dmg = myfont.render(str(char1.strength-char2.defense), 1, (0,0,0))
         self.screen.blit(dmg,(char1.location[0]+50,char1.location[1]+17))
-        crit = myfont.render(str(char1.crit), 1, (255,255,255))
+        crit = myfont.render(str(char1.crit), 1, (0,0,0))
         self.screen.blit(crit,(char1.location[0]+50,char1.location[1]+32))
         CurrHP = myfont.render(str(char1.CurrentHP), 1, (255,255,255))
         self.screen.blit(CurrHP,(char1.location[0]+25,char1.location[1]+65))
@@ -67,11 +69,11 @@ class View:
         
         name = myfont.render(str(char2.name), 1, (0,0,0))
         self.screen.blit(name,(char1.location[0]+300,char1.location[1]+25))
-        hit = myfont.render(str(100-char1.dodge), 1, (255,255,255))
+        hit = myfont.render(str(100-char1.dodge), 1, (0,0,0))
         self.screen.blit(hit,(char1.location[0]+450,char1.location[1]+2))
-        dmg = myfont.render(str(char2.strength-char1.defense), 1, (255,255,255))
+        dmg = myfont.render(str(char2.strength-char1.defense), 1, (0,0,0))
         self.screen.blit(dmg,(char1.location[0]+450,char1.location[1]+17))
-        crit = myfont.render(str(char2.crit), 1, (255,255,255))
+        crit = myfont.render(str(char2.crit), 1, (0,0,0))
         self.screen.blit(crit,(char1.location[0]+450,char1.location[1]+32))
         CurrHP = myfont.render(str(char2.CurrentHP), 1, (255,255,255))
         self.screen.blit(CurrHP,(char1.location[0]+270,char1.location[1]+65))
