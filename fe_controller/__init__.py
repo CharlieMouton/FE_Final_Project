@@ -1,5 +1,5 @@
 import pygame
-import os, sys
+import os, sys, time
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 from var_scripts import *
@@ -45,6 +45,7 @@ class Controller:
         elif self.model.character[(temp_x,temp_y)] != None and self.model.character[(temp_x,temp_y)] != player:
             if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50)<=player.weaponrange:
                 self.model.battleCall(player,self.model.character[(temp_x,temp_y)])
+                self.view.battlescreen = (player,self.model.character[(temp_x,temp_y)])
             else:
                 # Remove character selection.
                 self.view.statselect = self.model.character[(temp_x,temp_y)]
