@@ -95,6 +95,8 @@ class Controller:
                         x = self.model.battleCall(player,self.model.character[(corner_x,corner_y)])
                         self.view.battlescreen = (player,self.model.character[(corner_x,corner_y)])
                         self.view.battlestats(self.view.battlescreen)
+
+                        # Why is this here?
                         self.view.draw
                         if x != []:
                             for event in x:
@@ -123,3 +125,7 @@ class Controller:
         character.orient = "s"
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
         character.movementleft=character.movement
+
+class AI:
+    def __init__(self):
+        pass
