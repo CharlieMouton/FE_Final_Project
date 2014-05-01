@@ -54,7 +54,6 @@ class Outeredge(Block):
         super(Outeredge,self).__init__(x,y)
         self.movementcost = 100
         
-   
 #class Forest(pygame.sprite.Sprite):
 class Forrest(Block):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
