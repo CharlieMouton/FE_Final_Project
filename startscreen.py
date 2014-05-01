@@ -1,14 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Apr 12 20:55:13 2014
-
-@author: julian
-"""
-
-"""Used code from the website below for the menu of this game.
-http://nebelprog.wordpress.com/2013/09/02/create-a-simple-game-menu-with-pygame-pt-4-connecting-it-to-functions/
-"""
-
 import sys
 import pygame
  

@@ -48,7 +48,7 @@ class Controller:
                 if self.charselected.hasAttacked != True:
                     self.char_reset(self.charselected)
 
-    def box_select(self, ):
+    def box_select(self):
         """
         Generates coordinates of a selected box after mouse selection.
 
