@@ -29,12 +29,11 @@ class Character:
         self.location = location
         self.o_location = location
 
-        self.availabilities = []
-        self.attackrange=[]
         self.availabilities = {}
+        self.attackrange = {}
         self.can_move = can_move
         self.orient = 's'
-        self.hasAttacked=hasAttacked            
+        self.hasAttacked = hasAttacked            
             
         self.team = team
 

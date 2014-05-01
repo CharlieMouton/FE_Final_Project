@@ -9,36 +9,18 @@ if __name__ == '__main__':
     pygame.init()
     
     #Setup.
-    model = Model()
     screen = pygame.display.set_mode(size)
+    
+    model = Model()
     view=View(model,screen)
     controller = Controller(model,view)
      
-    running = True
-    while running:
+    while model.running:
 
-        # View
         model.update()
         view.draw()
+        running = controller.control()
         
-        # Controller
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                running = False
-
-            # Model
-            if event.type == MOUSEBUTTONDOWN:
-                if controller.charselected != None:
-                    controller.move(event,controller.charselected)
-                else:
-                    controller.charselect(event)
-
-            if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
-                    if controller.charselected != None:
-                        if controller.charselected.hasAttacked != True:
-                            controller.char_reset(controller.charselected)
-
         time.sleep(.01)
 
     pygame.quit()

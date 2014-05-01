@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 import os, sys, time
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
@@ -9,6 +10,25 @@ class Controller:
         self.model = model
         self.view = view
         self.charselected = None
+
+    def control(self):
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                self.model.running = False
+
+            # Model
+            if event.type == MOUSEBUTTONDOWN:
+                if self.charselected != None:
+                    self.move(event,self.charselected)
+                else:
+                    self.charselect(event)
+
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    if self.charselected != None:
+                        if self.charselected.hasAttacked != True:
+                            self.char_reset(self.charselected)
+                # if event.key == K_SPACE:
 
     def charselect(self, event):
         mx, my = pygame.mouse.get_pos()
@@ -67,4 +87,9 @@ class Controller:
         character.movementleft=character.movement        
         
     def handle_keyboard_event(self, event):
+        """
+        This function handles all keyboard events and translates the information into the model.
+        """
         pass
+        # if 
+        # self.model.next_turn
