@@ -23,18 +23,49 @@ class Model:
         self.character ={}
         self.turn = 0
         self.teams = []
+        self.level = 0
 
         # Generate map.
-        for x in range(0, self.swidth, self.ref):
-            for y in range(0, self.sheight, self.ref):
-                node = block.Grass(x,y)
-                self.grid[(x,y)] = node
-                self.character[(x,y)]=None
-        for x in range(0, self.swidth, self.ref):
-            for y in range(0, self.sheight, self.ref):
-                if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
-                    boundary = block.Outeredge(x,y)
-                    self.grid[(boundary.x,boundary.y)] = boundary
+        if self.level == 0:
+            for x in range(0, self.swidth, self.ref):
+                for y in range(0, self.sheight, self.ref):
+                    node = block.Grass(x,y)
+                    self.grid[(x,y)] = node
+                    self.character[(x,y)]=None
+            for x in range(0, self.swidth, self.ref):
+                for y in range(0, self.sheight, self.ref):
+                    if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
+                        boundary = block.Outeredge(x,y)
+                        self.grid[(boundary.x,boundary.y)] = boundary
+
+        if self.level == 1:
+            #grass populate everything
+            for x in range(0, self.swidth, self.ref):
+                for y in range(0, self.sheight, self.ref):
+                    self.grid[(x,y)] = block.Grass(x,y)
+                    self.character[(x,y)]=None
+
+            #add water
+            for y in range(9):
+                self.grid[(0,y*ref)] = block.Outeredge(0,y*ref)
+            for x in range(2,5):
+                self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
+            for x in [6,7,8,10,11]:
+                self.grid[(x*ref,8*ref)] = block.Outeredge(x*ref,8*ref)
+
+            #add wall
+            for x in [2,4,5,8,9,10]:
+                self.grid[(x*ref,2*ref)] = block.Outeredge(x*ref,2*ref)
+            for y in [4,5,6,8,9]:
+                self.grid[(3,y*ref)] = block.Outeredge(3,y*ref)
+            for y in [4,5]:
+                self.grid[(10,y*ref)] = block.Outeredge(10,y*ref)
+
+
+
+            print self.grid
+
+
 
         # Create players.
         self.populatePlayers()

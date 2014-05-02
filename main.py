@@ -11,7 +11,6 @@ if __name__ == '__main__':
     
     #Setup.
     screen = pygame.display.set_mode(size)
-    
     model = Model()
     view=View(model,screen)
     controller = Controller(model,view)
