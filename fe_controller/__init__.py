@@ -48,7 +48,7 @@ class Controller:
                 if self.charselected.hasAttacked != True:
                     self.char_reset(self.charselected)
 
-    def box_select(self, ):
+    def box_select(self):
         """
         Generates coordinates of a selected box after mouse selection.
 
@@ -65,6 +65,7 @@ class Controller:
     def charselect(self):
         """
         """
+        self.view.battlescreen = None
         corner_x, corner_y = self.box_select()
         if self.model.character[(corner_x,corner_y)] !=  None:
             self.view.statselect = self.model.character[(corner_x,corner_y)]
@@ -72,35 +73,31 @@ class Controller:
             self.model.character[(corner_x,corner_y)].orient = 's'
 
     def move(self,event,player):
-        # This should not be here. Refactor and move out of controller.
-        mx, my = pygame.mouse.get_pos()
-        cartX, cartY = IsoToCart(mx, my)
-        temp_x = math.floor(cartX / ref) * ref
-        temp_y = math.floor(cartY / ref) * ref
-
+        corner_x, corner_y = self.box_select()
         if player.movementleft==0:
-            self.view.statselect = self.model.character[(temp_x,temp_y)]
-            self.charselected = self.model.character[(temp_x,temp_y)]
+            self.view.statselect = self.model.character[(corner_x,corner_y)]
+            self.charselected = self.model.character[(corner_x,corner_y)]
         else:
             # If the place the character is moving to is empty,
-            if self.model.character[(temp_x,temp_y)] == None:
+            if self.model.character[(corner_x,corner_y)] == None:
                 # If the character can reach this block,
                 player.clickTwice=False
-                if (temp_x,temp_y) in player.availabilities:
+                if (corner_x,corner_y) in player.availabilities:
                     # Update to that location.
-                     player.orient = self.model.updateCharLocation([player.location[0],temp_x],[player.location[1],temp_y])
-    
+                     player.orient = self.model.updateCharLocation([player.location[0],corner_x],[player.location[1],corner_y])
                 else:
                     # Remove character selection.
                     self.charselected = None
     
             # Fighting situation.
-            elif self.model.character[(temp_x,temp_y)] != None and self.model.character[(temp_x,temp_y)] != player:
-                if int((abs(self.model.character[(temp_x,temp_y)].location[0]-player.location[0])+abs(self.model.character[(temp_x,temp_y)].location[1]-player.location[1]))/50) == player.weaponrange:
+            elif self.model.character[(corner_x,corner_y)] != None and self.model.character[(corner_x,corner_y)] != player:
+                if int((abs(self.model.character[(corner_x,corner_y)].location[0]-player.location[0])+abs(self.model.character[(corner_x,corner_y)].location[1]-player.location[1]))/50) == player.weaponrange:
                     if player.clickTwice:
-                        x = self.model.battleCall(player,self.model.character[(temp_x,temp_y)])
-                        self.view.battlescreen = (player,self.model.character[(temp_x,temp_y)])
+                        x = self.model.battleCall(player,self.model.character[(corner_x,corner_y)])
+                        self.view.battlescreen = (player,self.model.character[(corner_x,corner_y)])
                         self.view.battlestats(self.view.battlescreen)
+
+                        # Why is this here?
                         self.view.draw
                         if x != []:
                             for event in x:
@@ -110,18 +107,16 @@ class Controller:
                                 elif 'crit' in event:
                                     print 'crit'
                                     self.view.crit(event[-1])
-                        time.sleep(2) 
                         player.clickTwice=False
                         player.movementleft=0
-                        self.view.battlescreen = None
                     else:
-                        self.view.battlescreen = (player,self.model.character[(temp_x,temp_y)])
+                        self.view.battlescreen = (player,self.model.character[(corner_x,corner_y)])
                         player.clickTwice=True
                 else:
                     # Remove character selection.
-                    self.view.statselect = self.model.character[(temp_x,temp_y)]
-                    self.charselected = self.model.character[(temp_x,temp_y)]
-                    self.model.character[(temp_x,temp_y)].orient = 's'
+                    self.view.statselect = self.model.character[(corner_x,corner_y)]
+                    self.charselected = self.model.character[(corner_x,corner_y)]
+                    self.model.character[(corner_x,corner_y)].orient = 's'
 
     def char_reset(self, character):
         """
@@ -129,3 +124,7 @@ class Controller:
         character.orient = "s"
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
         character.movementleft=character.movement
+
+class AI:
+    def __init__(self):
+        pass

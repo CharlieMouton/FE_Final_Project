@@ -31,6 +31,9 @@ class Grass(Block):
     def interaction(self,character):
         self.character.movementleft-=1
 
+class HighGrass(Grass):
+    pass
+
 
 #class Outeredge(pygame.sprite.Sprite):
 class Outeredge(Block):
@@ -51,7 +54,6 @@ class Outeredge(Block):
         super(Outeredge,self).__init__(x,y)
         self.movementcost = 100
         
-   
 #class Forest(pygame.sprite.Sprite):
 class Forrest(Block):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""

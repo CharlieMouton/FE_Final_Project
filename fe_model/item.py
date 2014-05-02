@@ -1,5 +1,3 @@
-
-
 class Item():
     def __init__(self, usable=False, canBeSold=False):
         self.usable=usable

@@ -75,6 +75,7 @@ class Character:
         Outputs: That character's availabilities and attackrange
         """
         self.availabilities={}
+        self.attackrange={}
         current_positions = {self.location: self.location}
         
         # Iterate throughout the map to find available positions.
@@ -82,20 +83,17 @@ class Character:
             temp_buffer = {}
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
-                next_positions = [block for block in blocks if (block not in self.availabilities and self.model.grid[block].movementcost <= self.movementleft - step)]
-
-                # if step< self.movementleft:
-                #     self.availabilities += [current_position]
-                #     temp_buffer += next_positions
-                # else:
-                #     self.attackrange += [current_position]
-                #     temp_buffer += next_positions
+                next_positions = [block for block in blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
 
                 next_positions_dict = {}
                 for next_position in next_positions:
                     next_positions_dict[next_position] = current_position
 
-                self.availabilities[current_position] = current_positions[current_position]
+                if step < self.movementleft:
+                    self.availabilities[current_position] = current_positions[current_position]
+                else:
+                    self.attackrange[current_position] = current_positions[current_position]
+
                 temp_buffer.update(next_positions_dict)
             
             current_positions = temp_buffer
@@ -115,6 +113,22 @@ class Character:
                 return_blocks += [block]
 
         return return_blocks
+
+    def generate_path(self, original_availabilities, end_location):
+        """
+        Generates the path which the character took to get to the location.
+
+        Inputs: Character, original availabilities, end location
+        Outputs: list of tuples that represent progression of the character's movement
+        """
+        path = []
+
+        location = end_location
+        while original_availabilities[location] != start_location:
+            path.append(location)
+            location = original_availabilities[location]
+
+        return path
 
     def battle(self, player2):
         """
