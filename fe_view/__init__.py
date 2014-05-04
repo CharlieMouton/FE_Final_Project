@@ -32,7 +32,16 @@ class View:
         ordchar = sorted(self.model.character, key=itemgetter(0,1))
         for point in ordchar:
             if self.model.character[point] != None:
-                self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
+                if str(self.model.character[point].__class__)[19:len(str(self.model.character[point].__class__))] != "ock.Wall'>":
+                    self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
+                else:
+                    self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
+
+        # for point in ordchar:  
+        #     tempobj = self.model.character[point]    
+        #     if self.model.character[point] != None:
+        #         if str(tempobj.__class__)[19:len(str(tempobj.__class__))] == "ock.Wall'>":
+        #             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-60))
 
         if self.model.battlescreen != None:
             self.battlestats(self.model.battlescreen)
@@ -44,6 +53,10 @@ class View:
                         self.crit(string_of_actions[-1])
 
         pygame.display.update()
+
+    def attackanim(self,char1,char2):
+        for n in range(10):
+            self.screen.blit(char1.image,char1.location[0])
 
     def crit(self,charnum):
         critpopup = pygame.image.load("fe_model/images/crit.png")

@@ -12,14 +12,14 @@ if __name__ == '__main__':
     #Setup.
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption('Pyre Emblem')
-    
+
     model = Model()
     view=View(model,screen)
     controller = Controller(model,view)
      
     while model.running:
-
-        model.update()
+ 
+        model.update() 
         view.draw()
         controller.control()
         
