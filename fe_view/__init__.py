@@ -46,7 +46,7 @@ class View:
         if self.model.battlescreen != None:
             self.battlestats(self.model.battlescreen)
             if self.model.strings_of_actions != []:
-                for action in x:
+                for action in strings_of_actions:
                     if 'dodge' in string_of_actions:
                         self.dodge(string_of_actions[-1])
                     elif 'crit' in string_of_actions:
