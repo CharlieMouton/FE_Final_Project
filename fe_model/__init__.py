@@ -23,6 +23,10 @@ class Model:
         self.character ={}
         self.turn = 0
         self.teams = []
+        self.charselected = None
+        self.statselect = None
+        self.battlescreen = None
+        self.strings_of_actions = []
 
         # Generate map.
         for x in range(0, self.swidth, self.ref):
@@ -95,21 +99,19 @@ class Model:
                     self.character[(x[i-1],y[i-1])]=None
                     return direction
 
-    def battleCall(self,player1, player2):
+    def battle_call(self,player1, player2):
         """
-        This function allows for two characters to engage combat.
+        This function allows for two characters to engage combat. It also checks to see if a character dies.
 
         Inputs: Model, two characters
         Outputs: None
         """
         if not player1.hasAttacked:
-            x = player1.battle(player2)
+            self.strings_of_actions = player1.battle(player2)
             if player1.CurrentHP == 0:
                 self.character[player1.location]=None
             if player2.CurrentHP == 0:
                 self.character[player2.location]=None
-            print x
-            return x
 
     def next_turn(self):
         """
@@ -126,7 +128,77 @@ class Model:
             character.can_move = True
             character.hasAttacked = False
             character.movementleft = character.movement
-        
+
+    def charselect(self, corner_x, corner_y):
+        """
+        """
+        if self.character[(corner_x,corner_y)] !=  None:
+            self.statselect = self.character[(corner_x,corner_y)]
+            self.charselected = self.character[(corner_x,corner_y)]
+            self.character[(corner_x,corner_y)].orient = 's'
+
+    def char_reset(self, character):
+        """
+        """
+        character.orient = "s"
+        self.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
+        character.movementleft=character.movement
+
+    def move(self, player, corner_x, corner_y):
+        if player.movementleft==0:
+            self.statselect = self.character[(corner_x,corner_y)]
+            self.charselected = self.character[(corner_x,corner_y)]
+        else:
+            # If the place the character is moving to is empty,
+            if self.character[(corner_x,corner_y)] == None:
+                player.clickTwice = False
+                self.jump_to(player, corner_x, corner_y)
+    
+            # Fighting situation.
+            elif self.character[(corner_x,corner_y)] != None and self.character[(corner_x,corner_y)] != player:
+                self.complete_fighting_situation(player, corner_x, corner_y)
+
+    def reset_charselect(self):
+        """
+        This function resets character selection.
+        """
+        self.charselected = None
+
+    def jump_to(self, player, corner_x, corner_y):
+        """
+        This function jumps a character to the selected location.
+        """
+        # If the character can reach this block,
+        if (corner_x,corner_y) in player.availabilities:
+            # Update to that location.
+            player.orient = self.updateCharLocation([player.location[0],corner_x],[player.location[1],corner_y])
+        else:
+            self.reset_charselect()
+
+    def complete_fighting_situation(self, player, corner_x, corner_y):
+
+        # If two players are within weaponrange,
+        if int((abs(self.character[(corner_x,corner_y)].location[0]-player.location[0])+abs(self.character[(corner_x,corner_y)].location[1]-player.location[1]))/50) == player.weaponrange:
+
+            # If the player has a clicktwice state,
+            if player.clickTwice:
+                strings_of_actions = self.battle_call(player,self.character[(corner_x,corner_y)])
+                self.battlescreen = (player,self.character[(corner_x,corner_y)])
+
+                player.clickTwice = False
+                player.movementleft=0
+                self.battlescreen = None
+            
+            else:
+                self.battlescreen = (player,self.character[(corner_x,corner_y)])
+                player.clickTwice=True
+            
+        else:
+            # Remove character selection.
+            self.statselect = self.character[(corner_x,corner_y)]
+            self.charselected = self.character[(corner_x,corner_y)]
+            self.character[(corner_x,corner_y)].orient = 's'
+            
     def update(self):
         """
         update is constantly run to keep check of what happens during the game.

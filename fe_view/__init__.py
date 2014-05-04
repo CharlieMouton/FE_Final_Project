@@ -16,8 +16,6 @@ class View:
         self.centery = centery
         self.model= model
         self.screen = screen
-        self.statselect = None
-        self.battlescreen = None
 
     def draw(self):
         self.screen.fill(pygame.Color(255,255,255))
@@ -27,8 +25,8 @@ class View:
             tempobj = self.model.grid[point]
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
 
-        if self.statselect != None:
-            self.char_select(self.statselect)
+        if self.model.statselect != None:
+            self.char_select(self.model.statselect)
 
         # This lines draws the characters in the wrong order.
         ordchar = sorted(self.model.character, key=itemgetter(0,1))
@@ -36,10 +34,14 @@ class View:
             if self.model.character[point] != None:
                 self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
 
-        if self.battlescreen != None:
-            self.battlestats(self.battlescreen)
-            # HP = myfont.render("(%d)" % current.HP, 1, (255,255,0))
-            # screen.blit(HP, (CartToIso(self.x,self.y,0)[0]-20,CartToIso(point[0],point[1],0)[1]+5))
+        if self.model.battlescreen != None:
+            self.battlestats(self.model.battlescreen)
+            if self.model.strings_of_actions != []:
+                for action in x:
+                    if 'dodge' in string_of_actions:
+                        self.dodge(string_of_actions[-1])
+                    elif 'crit' in string_of_actions:
+                        self.crit(string_of_actions[-1])
 
         pygame.display.update()
 
