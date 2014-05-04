@@ -59,12 +59,12 @@ class Controller:
         cartX, cartY = IsoToCart(mx, my)
         corner_x = math.floor(cartX / ref) * ref
         corner_y = math.floor(cartY / ref) * ref
-
         return corner_x, corner_y
 
     def charselect(self):
         """
         """
+        self.view.battlescreen = None
         corner_x, corner_y = self.box_select()
         if self.model.character[(corner_x,corner_y)] !=  None:
             self.view.statselect = self.model.character[(corner_x,corner_y)]
@@ -112,7 +112,6 @@ class Controller:
                         time.sleep(2) 
                         player.clickTwice=False
                         player.movementleft=0
-                        self.view.battlescreen = None
                     else:
                         self.view.battlescreen = (player,self.model.character[(corner_x,corner_y)])
                         player.clickTwice=True

@@ -32,7 +32,17 @@ class Grass(Block):
         self.character.movementleft-=1
 
 class HighGrass(Grass):
-    pass
+    def __init__(self,x,y):
+        self.image = pygame.image.load("fe_model/images/grass.png")
+        self.imagesupp = pygame.image.load("fe_model/images/highgrass.png")
+        super(HighGrass,self).__init__(x,y)
+
+class Bridge(Grass):
+    def __init__(self,x,y):
+        super(Bridge,self).__init__(x,y)
+        self.image = pygame.image.load("fe_model/images/bridge.png")
+
+
 
 
 #class Outeredge(pygame.sprite.Sprite):
@@ -93,4 +103,12 @@ class Fortress(Block):
         self.image = pygame.image.load('fe_model/images/grass.png')
         super(Fortress,self).__init__(x,y)
         self.movementcost=0
+
+
+class Wall(Block):
+    """ A basic wall structure that stops the character."""
+    def __init__(self, x, y):
+        Block.__init__(self, x, y)
+        self.image = pygame.image.load('fe_model/images/wall.png')
+        self.movementcost = 100
         
