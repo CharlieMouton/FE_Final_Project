@@ -97,25 +97,25 @@ class Model:
         """
         if self.level==0:
             
-            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 1)
-            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 2)
-            self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team  = 1)
-            self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team  = 2)
+            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
+            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
+            self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team = 0)
+            self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team = 1)
         
         if self.level==1:
 
-            self.character[(ref*5,ref*0)] = character.Warrior(self,location=(ref*5,ref*0), name='Julian', dodge = 5 , crit=5, team = 1)
-            self.character[(ref*7,ref*0)] = character.Warrior(self,location=(ref*7,ref*0), name='David', dodge = 5 , crit=5, team = 1)
-            self.character[(ref*8,ref*1)] = character.Warrior(self,location=(ref*8,ref*1), name='Charlie', dodge = 5, crit=5, team  = 1)
-            self.character[(ref*7,ref*1)] = character.Warrior(self,location=(ref*7,ref*1), name='Jacob', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*5,ref*10)] = character.Warrior(self,location=(ref*5,ref*10), name='Bob', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*6,ref*11)] = character.Warrior(self,location=(ref*6,ref*11), name='Tom', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*7,ref*10)] = character.Warrior(self,location=(ref*7,ref*10), name='Pierre', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*8,ref*11)] = character.Warrior(self,location=(ref*8,ref*11), name='Fishhead', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*6,ref*0)] = character.Archer(self,location=(ref*6,ref*0), name='Babe', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team  = 2)
+            self.character[(ref*5,ref*0)] = character.Warrior(self,location=(ref*5,ref*0), name='Julian', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*7,ref*0)] = character.Warrior(self,location=(ref*7,ref*0), name='David', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*8,ref*1)] = character.Warrior(self,location=(ref*8,ref*1), name='Charlie', dodge = 5, crit=5, team = 0)
+            self.character[(ref*7,ref*1)] = character.Warrior(self,location=(ref*7,ref*1), name='Jacob', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*5,ref*10)] = character.Warrior(self,location=(ref*5,ref*10), name='Bob', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*6,ref*11)] = character.Warrior(self,location=(ref*6,ref*11), name='Tom', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*7,ref*10)] = character.Warrior(self,location=(ref*7,ref*10), name='Pierre', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*8,ref*11)] = character.Warrior(self,location=(ref*8,ref*11), name='Fishhead', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*6,ref*0)] = character.Archer(self,location=(ref*6,ref*0), name='Babe', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team = 1)
 
         # print self.character[(300,300)].weaponrange
         # print self.character[(400,500)].weaponrange
@@ -135,6 +135,9 @@ class Model:
                         for adding in range(self.character[point].team - len(self.teams) + 1):
                             self.teams.append([])
                     self.teams[self.character[point].team].append(self.character[point])
+
+        for character in self.teams[0]:
+            character.can_move = True
 
     def location_update(self, list_of_locations):
         for index in range(len(list_of_locations)):
@@ -176,6 +179,9 @@ class Model:
             character.movementleft = character.movement
 
         self.turn += 1
+        while self.teams[self.turn % len(self.teams)] == []:
+            self.turn += 1
+
         for character in self.teams[self.turn % len(self.teams)]:
             character.can_move = True
             character.hasAttacked = False
@@ -256,24 +262,24 @@ class Model:
             self.charselected = self.character[(corner_x,corner_y)]
             self.character[(corner_x,corner_y)].orient = 's'
             
-    def endgame(self):   
-        team1wins=False
-        team2wins=False
-        numberofcharacterin1=0
-        for character in self.teams[1]:
-            print self.teams[0]
-            if character in self.character.itervalues():
-                numberofcharacterin1+=1
-            if numberofcharacterin1==0:
-                team2wins=True
+    # def endgame(self):   
+    #     team1wins=False
+    #     team2wins=False
+    #     numberofcharacterin1=0
+    #     for character in self.teams[1]:
+    #         print self.teams[0]
+    #         if character in self.character.itervalues():
+    #             numberofcharacterin1+=1
+    #         if numberofcharacterin1==0:
+    #             team2wins=True
      
-        numberofcharacterin2=0
-        for character in self.teams[2]:
-            if character in self.character.itervalues():
-                numberofcharacterin2+=1
-            if numberofcharacterin2==0:
-                team1wins=True        
-        return (team1wins,team2wins)
+    #     numberofcharacterin2=0
+    #     for character in self.teams[2]:
+    #         if character in self.character.itervalues():
+    #             numberofcharacterin2+=1
+    #         if numberofcharacterin2==0:
+    #             team1wins=True        
+    #     return (team1wins,team2wins)
     
     def update(self):
         """
@@ -286,18 +292,18 @@ class Model:
             if str(self.character[point].__class__)[19:len(str(self.character[point].__class__))] != "ock.Wall'>":
                 self.character[point].generate_availabilities()
         
-        for character in self.teams[self.turn%3]:
+        for character in self.teams[self.turn%len(self.teams)]:
             if character.can_move == True:
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
         
-        result=self.endgame()
+        # result=self.endgame()
         
-        if result==(True,False):
-            print "Team 1 wins!"
-            self.gameover=1
+        # if result==(True,False):
+        #     print "Team 1 wins!"
+        #     self.gameover=1
         
-        if result==(False, True):
-            print "Team 2 wins!"
-            self.gameover=2
+        # if result==(False, True):
+        #     print "Team 2 wins!"
+        #     self.gameover=2
