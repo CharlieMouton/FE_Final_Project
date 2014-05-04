@@ -61,7 +61,7 @@ class View:
                     else:
                         self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-50,CartToIso(point[0]+ref,point[1]+ref,0)[1]-40))
 
-
+        self.turn_display()
 
         # for point in ordchar:  
         #     tempobj = self.model.character[point]    
@@ -89,7 +89,6 @@ class View:
 
     def crit(self,charnum):
         critpopup = pygame.image.load("fe_model/images/crit.png")
-        print charnum
         if str(charnum) == '1':
             self.screen.blit(critpopup,(425,500))
         elif str(charnum) == '2':
@@ -180,12 +179,14 @@ class View:
 
     def turn_display(self):
         """Displays the turn which the game is currently in."""
-        myfont = pygame.font.SysFont("arial", 24)
+        myfont = pygame.font.SysFont("arial", 48)
+        turndisp = myfont.render("Player %s's Turn"%(self.model.turn%len(self.model.teams)+1), 1, (0,0,0))
+        self.screen.blit(turndisp,(10,10))
         
     def gameover(self,team):
         if team !=None:
             myfont = pygame.font.SysFont("arial", 128)
-            message=myfont.render("Team %s wins"%(team), 1, (255,255,255))
+            message=myfont.render("Team %s wins"%(team), 1, (0,0,0)) #255,255,255
             self.screen.blit(message, (12*ref,10*ref))
             
             
