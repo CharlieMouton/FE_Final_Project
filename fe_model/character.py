@@ -90,14 +90,14 @@ class Character:
                 new_blocks = [block for block in blocks if block in self.model.grid and block not in other_teams_location]
 
                 next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
-
+                
                 next_positions_dict = {}
                 for next_position in next_positions:
                     next_positions_dict[next_position] = current_position
 
                 if step < self.movementleft:
                     self.availabilities[current_position] = current_positions[current_position]
-                else:
+                elif step == self.movementleft+self.weaponrange-1:
                     self.attackrange[current_position] = current_positions[current_position]
 
                 temp_buffer.update(next_positions_dict)
