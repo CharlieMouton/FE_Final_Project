@@ -138,20 +138,20 @@ class Character:
         attack a second time if its agility is high enough.
         
         Inputs: Player1, Player2
-        Outputs: Player1 after battle, Player2 after battle
+        Outputs: List of strings displaying what happened during battle.
         """
-        x = []
+        strings_of_actions = []
         self.hasAttacked=True        
         
         self.player2=player2
         #Player1 Attack
         if self.strength>=self.player2.defense:
             if random.randint(1,100) <= self.player2.dodge:
-                x.append("dodge2")
+                strings_of_actions.append("dodge2")
                 pass
             else:
                 if random.randint(1,100) <= self.crit:
-                    x.append("crit1")
+                    strings_of_actions.append("crit1")
                     self.player2.CurrentHP-=(self.strength-self.player2.defense)*3
                 else:
                     self.player2.CurrentHP-=(self.strength-self.player2.defense)
@@ -166,11 +166,11 @@ class Character:
             if self.weaponrange<=self.player2.weaponrange:
                 if self.player2.strength>=self.defense:
                     if random.randint(1,100) <= self.dodge:
-                        x.append("dodge1")
+                        strings_of_actions.append("dodge1")
                         pass
                     else:
                         if random.randint(1,100) <= self.player2.crit:
-                            x.append("crit2")
+                            strings_of_actions.append("crit2")
                             self.CurrentHP-=(self.player2.strength-self.defense)*3
                         else:
                             self.CurrentHP-=(self.player2.strength-self.defense)
@@ -196,7 +196,7 @@ class Character:
                     self.LEVEL
                     self.xp=self.xp-self.xpToNextLevel
                     self.xpToNextLevel+=5
-        return x
+        return strings_of_actions
          
     def __str__(self):
         """
