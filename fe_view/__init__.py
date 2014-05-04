@@ -17,11 +17,13 @@ class View:
         self.model= model
         self.screen = screen
         self.surfaceObjects={}
+        self.characters={}
 
     def draw(self):
         self.screen.fill(pygame.Color(255,255,255))
         movesquare = pygame.image.load("fe_model/images/GreenSquare.png")
         for key,value in self.model.character.iteritems():
+            self.characters[key]=self.model.character[key]
             self.surfaceObjects[key]=self.model.character[key]
         for key,value in self.model.otherObject.iteritems():
             self.surfaceObjects[key]=self.model.otherObject[key]
@@ -35,13 +37,12 @@ class View:
         if self.model.statselect != None and self.model.charselected != None:
             self.char_select(self.model.statselect)
 
-        ordchar = sorted(self.surfaceObjects, key=itemgetter(0,1))
+        ordchar = sorted(self.characters, key=itemgetter(0,1))
         for point in ordchar:
-            if self.surfaceObjects[point] != None:
                 if str(self.surfaceObjects[point].__class__)[19:len(str(self.surfaceObjects[point].__class__))] == "ock.Wall'>":
                     self.screen.blit(self.surfaceObjects[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
                 elif self.model.character[point]!= None:
-                    self.screen.blit(self.surfaceObjects[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
+                        self.screen.blit(self.characters[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
                 if str(self.surfaceObjects[point].__class__)[19:len(str(self.surfaceObjects[point].__class__))] == "ock.HighGrass'>":
                     self.screen.blit(self.surfaceObjects[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
 #
