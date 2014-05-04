@@ -83,7 +83,7 @@ class Character:
             temp_buffer = {}
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
-                new_blocks = [block for block in blocks if block in self.model.grid]
+                new_blocks = [block for block in blocks if block in self.model.grid and (self.model.character[block]==None or self.team==self.model.character[block].team)]
 
                 next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
 
@@ -230,7 +230,7 @@ class Warrior(Character):
     Inputs: The same things that go into the Character class
     Outputs: A Warrior character type
     """
-    def __init__(self, model, name='Warrior', level=1, HP=9,strength=2,defense=2,agility=1,intelligence=1,movement=3, xpToNextLevel=100, weapontype=item.Sword(), location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
+    def __init__(self, model, name='Warrior', level=1, HP=9,strength=5,defense=2,agility=1,intelligence=1,movement=3, xpToNextLevel=100, weapontype=item.Sword(), location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
         Character.__init__(self,model, name,level, HP,strength,defense,agility,intelligence,movement, xpToNextLevel,weapontype,location, dodge, crit, team)
         self.images = {'s':pygame.image.load('fe_model/images/Bot_stationary.png'),'w':pygame.transform.flip(pygame.image.load('fe_model/images/Bot_stationary.png'),True,False),'n':pygame.transform.flip(pygame.image.load('fe_model/images/bot_Stationary_Back.png'),True,False),'e':pygame.image.load('fe_model/images/bot_Stationary_Back.png')}
         self.image = self.images[self.orient]
@@ -243,7 +243,7 @@ class Horseman(Character):
     Inputs: The same things that go into the Character class
     Outputs: A Horseman character type
     """
-    def __init__(self, x,y, name='Horsemen', level=1, HP=8,strength=1,defense=3,agility=2,intelligence=2,movement=3, xpToNextLevel=100, weapontype=item.Lance(), location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
+    def __init__(self, x,y, name='Horsemen', level=1, HP=8,strength=3,defense=3,agility=2,intelligence=2,movement=3, xpToNextLevel=100, weapontype=item.Lance(), location=(2*ref,3*ref), dodge = 5 , crit=5, team=1, can_move = False):
         Character.__init__(self,model, name,level, HP,strength,defense,agility,intelligence,movement, xpToNextLevel,weapontype,location, dodge, crit, team)
         self.images = {'s':pygame.image.load('fe_model/images/Anne.png'),'w':pygame.transform.flip(pygame.image.load('fe_model/images/Anne.png'),True,False),'n':pygame.transform.flip(pygame.image.load('fe_model/images/Anne_Back.png'),True,False),'e':pygame.image.load('fe_model/images/Anne_Back.png')}
         self.image = self.images[self.orient]
