@@ -18,8 +18,8 @@ if __name__ == '__main__':
     controller = Controller(model,view)
      
     while model.running:
-
-        model.update()
+ 
+        model.update() 
         view.draw()
         controller.control()
         

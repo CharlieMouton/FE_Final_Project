@@ -93,4 +93,12 @@ class Fortress(Block):
         self.image = pygame.image.load('fe_model/images/grass.png')
         super(Fortress,self).__init__(x,y)
         self.movementcost=0
+
+
+class Wall(Block):
+    """ A basic wall structure that stops the character."""
+    def __init__(self, x, y):
+        Block.__init__(self, x, y)
+        self.image = pygame.image.load('fe_model/images/wall.png')
+        self.movementcost = 100
         
