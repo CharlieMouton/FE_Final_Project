@@ -140,3 +140,36 @@ class Model:
             character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
+        
+        i=1
+        for team in self.teams:
+            numberofcharacter=0
+            for character in team:
+                if character in self.character.itervalues():
+                    numberofcharacter+=1
+                if numberofcharacter==0:
+                    print "Team %s wins" %(i)
+            i+=1
+                    
+                
+                
+            
+            
+            
+   
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
