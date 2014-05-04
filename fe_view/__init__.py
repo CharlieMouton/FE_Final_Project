@@ -46,12 +46,12 @@ class View:
         if self.model.battlescreen != None:
             self.battlestats(self.model.battlescreen)
             if self.model.strings_of_actions != []:
-                for action in strings_of_actions:
-                    if 'dodge' in string_of_actions:
-                        self.dodge(string_of_actions[-1])
-                    elif 'crit' in string_of_actions:
-                        self.crit(string_of_actions[-1])
-
+                for action in self.model.strings_of_actions:
+                    if 'dodge' in self.model.strings_of_actions:
+                        self.dodge(self.model.strings_of_actions[-1])
+                    elif 'crit' in self.model.strings_of_actions:
+                        self.crit(self.model.strings_of_actions[-1])
+        self.gameover(self.model.gameover)
         pygame.display.update()
 
     def attackanim(self,char1,char2):
@@ -152,3 +152,30 @@ class View:
     def turn_display(self):
         """Displays the turn which the game is currently in."""
         myfont = pygame.font.SysFont("arial", 24)
+        
+    def gameover(self,team):
+        if team !=None:
+            myfont = pygame.font.SysFont("arial", 24)
+            message=myfont.render("Team %s wins"%(team), 1, (255,255,255))
+            self.screen.blit(message, (12*ref,10*ref))
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
