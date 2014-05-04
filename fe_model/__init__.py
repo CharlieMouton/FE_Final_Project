@@ -27,7 +27,7 @@ class Model:
         self.statselect = None
         self.battlescreen = None
         self.strings_of_actions = []
-        self.level = 1
+        self.level = 0
 
 
         # Generate map.
