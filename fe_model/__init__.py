@@ -173,16 +173,22 @@ class Model:
         Inputs: the model 
         Outputs: None
         """
+        choice = self.turn % len(self.teams)
+        old_choice = choice
         self.charselected = None
-        for character in self.teams[self.turn % len(self.teams)]:
+        for character in self.teams[choice]:
             character.can_move = False
             character.movementleft = character.movement
 
         self.turn += 1
-        while self.teams[self.turn % len(self.teams)] == []:
+        while self.turn % len(self.teams) == []:
             self.turn += 1
+        
+        choice = self.turn % len(self.teams)
+        if choice == old_choice:
+            self.end_game()
 
-        for character in self.teams[self.turn % len(self.teams)]:
+        for character in self.teams[choice]:
             character.can_move = True
             character.hasAttacked = False
             character.movementleft = character.movement
@@ -262,24 +268,11 @@ class Model:
             self.charselected = self.character[(corner_x,corner_y)]
             self.character[(corner_x,corner_y)].orient = 's'
             
-    # def endgame(self):   
-    #     team1wins=False
-    #     team2wins=False
-    #     numberofcharacterin1=0
-    #     for character in self.teams[1]:
-    #         print self.teams[0]
-    #         if character in self.character.itervalues():
-    #             numberofcharacterin1+=1
-    #         if numberofcharacterin1==0:
-    #             team2wins=True
-     
-    #     numberofcharacterin2=0
-    #     for character in self.teams[2]:
-    #         if character in self.character.itervalues():
-    #             numberofcharacterin2+=1
-    #         if numberofcharacterin2==0:
-    #             team1wins=True        
-    #     return (team1wins,team2wins)
+    def end_game(self):
+        """
+        This function ends the game.
+        """
+        print "Game Ended."
     
     def update(self):
         """
@@ -297,13 +290,3 @@ class Model:
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
-        
-        # result=self.endgame()
-        
-        # if result==(True,False):
-        #     print "Team 1 wins!"
-        #     self.gameover=1
-        
-        # if result==(False, True):
-        #     print "Team 2 wins!"
-        #     self.gameover=2
