@@ -93,9 +93,6 @@ class Controller:
                 if int((abs(self.model.character[(corner_x,corner_y)].location[0]-player.location[0])+abs(self.model.character[(corner_x,corner_y)].location[1]-player.location[1]))/50) == player.weaponrange:
                     if player.clickTwice:
                         x = self.model.battleCall(player,self.model.character[(corner_x,corner_y)])
-                        self.view.battlescreen = (player,self.model.character[(corner_x,corner_y)])
-                        self.view.battlestats(self.view.battlescreen)
-                        self.view.draw
                         if x != []:
                             for event in x:
                                 if 'dodge' in event:
@@ -104,6 +101,9 @@ class Controller:
                                 elif 'crit' in event:
                                     print 'crit'
                                     self.view.crit(event[-1])
+                        self.view.battlescreen = (player,self.model.character[(corner_x,corner_y)])
+                        self.view.battlestats(self.view.battlescreen)
+                        self.view.draw
                         time.sleep(2) 
                         player.clickTwice=False
                         player.movementleft=0
