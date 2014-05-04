@@ -25,7 +25,7 @@ class View:
             tempobj = self.model.grid[point]
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
 
-        if self.model.statselect != None:
+        if self.model.statselect != None and self.model.charselected != None:
             self.char_select(self.model.statselect)
 
         ordchar = sorted(self.model.character, key=itemgetter(0,1))
@@ -38,7 +38,7 @@ class View:
 
         for point in ordgrid:
             if str(self.model.grid[point].__class__)[19:len(str(self.model.grid[point].__class__))] == "ock.HighGrass'>":
-                self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-20))
+                self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
                 if self.model.character[(point[0],point[1]+ref)] != None:
                     if str(self.model.character[(point[0],point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0],point[1]+ref)].__class__))] != "ock.Wall'>":
                         self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-25,CartToIso(point[0],point[1]+ref,0)[1]-55))
