@@ -104,16 +104,16 @@ class Model:
 
             self.character[(ref*5,ref*0)] = character.Warrior(self,location=(ref*5,ref*0), name='Julian', dodge = 5 , crit=5, team = 1)
             self.character[(ref*7,ref*0)] = character.Warrior(self,location=(ref*7,ref*0), name='David', dodge = 5 , crit=5, team = 1)
-            self.character[(ref*8,ref*1)] = character.Warrior(self,location=(ref*8,ref*1), name='Charlie', dodge = 5, crit=5, team  = 1)
-            self.character[(ref*7,ref*1)] = character.Warrior(self,location=(ref*7,ref*1), name='Jacob', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*5,ref*10)] = character.Warrior(self,location=(ref*5,ref*10), name='Bob', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*6,ref*11)] = character.Warrior(self,location=(ref*6,ref*11), name='Tom', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*7,ref*10)] = character.Warrior(self,location=(ref*7,ref*10), name='Pierre', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*8,ref*11)] = character.Warrior(self,location=(ref*8,ref*11), name='Fishhead', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*6,ref*0)] = character.Archer(self,location=(ref*6,ref*0), name='Babe', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team  = 2)
+            self.character[(ref*8,ref*1)] = character.Warrior(self,location=(ref*8,ref*1), name='Charlie', dodge = 5, crit=5, team = 1)
+            self.character[(ref*7,ref*1)] = character.Warrior(self,location=(ref*7,ref*1), name='Jacob', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*5,ref*10)] = character.Warrior(self,location=(ref*5,ref*10), name='Bob', dodge = 5 , crit=5, team = 2)
+            self.character[(ref*6,ref*11)] = character.Warrior(self,location=(ref*6,ref*11), name='Tom', dodge = 5 , crit=5, team = 2)
+            self.character[(ref*7,ref*10)] = character.Warrior(self,location=(ref*7,ref*10), name='Pierre', dodge = 5 , crit=5, team = 2)
+            self.character[(ref*8,ref*11)] = character.Warrior(self,location=(ref*8,ref*11), name='Fishhead', dodge = 5 , crit=5, team = 2)
+            self.character[(ref*6,ref*0)] = character.Archer(self,location=(ref*6,ref*0), name='Babe', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team = 2)
+            self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team = 2)
 
         # print self.character[(300,300)].weaponrange
         # print self.character[(400,500)].weaponrange
@@ -133,44 +133,6 @@ class Model:
                         for adding in range(self.character[point].team - len(self.teams) + 1):
                             self.teams.append([])
                     self.teams[self.character[point].team].append(self.character[point])
-
-    # def updateCharLocation(self, x, y):
-    #     """
-    #     This function updates the character location.
-
-    #     Inputs: 'x' and 'y' are both input list of all locations along the path that the character is moving.  'x' and 'y' must be the same length.
-    #     Outputs: the direction the character should be facing after the move."""
-    #     for i in range(len(x)):
-    #         if i>0:
-    #             # If the location of this thingy does not have a character,
-    #             if self.character[(x[i],y[i])] == None:
-    #                 # Jump character from old location into new location.
-    #                 self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
-    #                 # Update location.
-    #                 self.character[(x[i],y[i])].location=(x[i],y[i])
-    #                 # Moved is the distance from the old x to new x and old y to new y. 
-    #                 moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
-                    
-    #                 # Direction
-    #                 if abs(x[i]-x[i-1]) > abs(y[i]-y[i-1]):
-    #                     if x[i]-x[i-1] < 0:
-    #                         direction = 'n'
-    #                     else:
-    #                         direction = 's'
-    #                 else:
-    #                     if y[i]-y[i-1] < 0:
-    #                         direction = 'e'
-    #                     else:
-    #                         direction = 'w'
-
-    #                 # Updates character location for movement left
-    #                 self.character[(x[i],y[i])].movementleft-=moved
-
-    #                 # Delete old character in that location.
-    #                 self.character[(x[i-1],y[i-1])]=None
-
-    #                 # Returns the direction.
-    #                 return direction
 
     def location_update(self, list_of_locations):
         for index in range(len(list_of_locations)):
