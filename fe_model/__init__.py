@@ -270,7 +270,7 @@ class Model:
             
     def end_game(self):
         """
-        This function ends the game.
+        This function ends the gameself.
         """
         print "Game Ended."
     
