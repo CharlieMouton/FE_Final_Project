@@ -16,9 +16,11 @@ class View:
         self.centery = centery
         self.model= model
         self.screen = screen
+        
 
     def draw(self):
         self.screen.fill(pygame.Color(255,255,255))
+        movesquare = pygame.image.load("fe_model/images/GreenSquare.png")
 
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
@@ -28,10 +30,14 @@ class View:
         if self.model.statselect != None and self.model.charselected != None:
             self.char_select(self.model.statselect)
 
+
+
         ordchar = sorted(self.model.character, key=itemgetter(0,1))
         for point in ordchar:
             if self.model.character[point] != None:
                 if str(self.model.character[point].__class__)[19:len(str(self.model.character[point].__class__))] != "ock.Wall'>":
+                    if self.model.character[point].can_move and self.model.character[point] != self.model.charselected:
+                        self.screen.blit(movesquare,(CartToIso(point[0],point[1],0)[0]-48,CartToIso(point[0],point[1],0)[1]-9))
                     self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
                 else:
                     self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
@@ -64,6 +70,7 @@ class View:
         #             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-60))
 
         if self.model.battlescreen != None:
+            self.attackanim(self.model.battlescreen)
             self.battlestats(self.model.battlescreen)
             if self.model.strings_of_actions != []:
                 for action in self.model.strings_of_actions:
@@ -74,9 +81,11 @@ class View:
         self.gameover(self.model.gameover)
         pygame.display.update()
 
-    def attackanim(self,char1,char2):
-        for n in range(10):
-            self.screen.blit(char1.image,char1.location[0])
+    def attackanim(self,(char1,char2)):
+        pass
+        # for n in range(10):
+        #     self.screen.blit(char1.image,(CartToIso(char1.location[0],char1.location[1],0)[0]-25+n,CartToIso(char1.location[0],char1.location[1],0)[1]-55-n))
+        #     time.sleep(.1)
 
     def crit(self,charnum):
         critpopup = pygame.image.load("fe_model/images/crit.png")
@@ -98,12 +107,12 @@ class View:
     def battlestats(self,(char1,char2)):
         myfont = pygame.font.SysFont("arial", 16)
         battlestatpage = pygame.image.load("fe_model/images/BattleScreen.png")
-        self.screen.blit(battlestatpage,(400,625))
         healthblock = pygame.image.load("fe_model/images/healthblock.png")
         emptyhealthblock = pygame.image.load("fe_model/images/emptyhealthblock.png")
-        if char1 == None or char2 == None:
+        if char1 == None or char2 == None or char1.team == char2.team:
             self.battlescreen = None
             return
+        self.screen.blit(battlestatpage,(400,625))
         name = myfont.render(str(char1.name), 1, (0,0,0))
         self.screen.blit(name,(400+120,625+25))
         hit = myfont.render(str(100-char2.dodge), 1, (0,0,0))
@@ -175,7 +184,7 @@ class View:
         
     def gameover(self,team):
         if team !=None:
-            myfont = pygame.font.SysFont("arial", 24)
+            myfont = pygame.font.SysFont("arial", 128)
             message=myfont.render("Team %s wins"%(team), 1, (255,255,255))
             self.screen.blit(message, (12*ref,10*ref))
             

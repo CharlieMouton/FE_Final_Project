@@ -148,7 +148,8 @@ class Character:
         """
         strings_of_actions = []
         self.hasAttacked=True        
-        
+        if self.team == player2.team:
+            return strings_of_actions
         self.player2=player2
         #Player1 Attack
         if self.strength>=self.player2.defense:
