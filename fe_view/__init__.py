@@ -16,9 +16,14 @@ class View:
         self.centery = centery
         self.model= model
         self.screen = screen
+        self.surfaceObjects={}
 
     def draw(self):
         self.screen.fill(pygame.Color(255,255,255))
+        for key,value in self.model.character.iteritems():
+            self.surfaceObjects[key]=self.model.character[key]
+        for key,value in self.model.otherObject.iteritems():
+            self.surfaceObjects[key]=self.model.otherObject[key]
 
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
@@ -28,32 +33,34 @@ class View:
         if self.model.statselect != None and self.model.charselected != None:
             self.char_select(self.model.statselect)
 
-        ordchar = sorted(self.model.character, key=itemgetter(0,1))
+        ordchar = sorted(self.surfaceObjects, key=itemgetter(0,1))
         for point in ordchar:
-            if self.model.character[point] != None:
-                if str(self.model.character[point].__class__)[19:len(str(self.model.character[point].__class__))] != "ock.Wall'>":
-                    self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
+            if self.surfaceObjects[point] != None:
+                if str(self.surfaceObjects[point].__class__)[19:len(str(self.surfaceObjects[point].__class__))] == "ock.Wall'>":
+                    self.screen.blit(self.surfaceObjects[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
+                elif str(self.surfaceObjects[point].__class__)[19:len(str(self.surfaceObjects[point].__class__))] == "ock.HighGrass'>":
+                    self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
                 else:
-                    self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
-
-        for point in ordgrid:
-            if str(self.model.grid[point].__class__)[19:len(str(self.model.grid[point].__class__))] == "ock.HighGrass'>":
-                self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
-                if self.model.character[(point[0],point[1]+ref)] != None:
-                    if str(self.model.character[(point[0],point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0],point[1]+ref)].__class__))] != "ock.Wall'>":
-                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-25,CartToIso(point[0],point[1]+ref,0)[1]-55))
-                    else:
-                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-50,CartToIso(point[0],point[1]+ref,0)[1]-40))
-                if self.model.character[(point[0]+ref,point[1])] != None:
-                    if str(self.model.character[(point[0]+ref,point[1])].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1])].__class__))] != "ock.Wall'>":
-                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-25,CartToIso(point[0]+ref,point[1],0)[1]-55))
-                    else:
-                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-50,CartToIso(point[0]+ref,point[1],0)[1]-40))
-                if self.model.character[(point[0]+ref,point[1]+ref)] != None:
-                    if str(self.model.character[(point[0]+ref,point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1]+ref)].__class__))] != "ock.Wall'>":
-                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-25,CartToIso(point[0]+ref,point[1]+ref,0)[1]-55))
-                    else:
-                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-50,CartToIso(point[0]+ref,point[1]+ref,0)[1]-40))
+                    self.screen.blit(self.surfaceObjects[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
+#
+#        for point in ordgrid:
+#            if str(self.model.grid[point].__class__)[19:len(str(self.model.grid[point].__class__))] == "ock.HighGrass'>":
+#                self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
+#                if self.model.character[(point[0],point[1]+ref)] != None:
+#                    if str(self.model.character[(point[0],point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0],point[1]+ref)].__class__))] != "ock.Wall'>":
+#                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-25,CartToIso(point[0],point[1]+ref,0)[1]-55))
+#                    else:
+#                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-50,CartToIso(point[0],point[1]+ref,0)[1]-40))
+#                if self.model.character[(point[0]+ref,point[1])] != None:
+#                    if str(self.model.character[(point[0]+ref,point[1])].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1])].__class__))] != "ock.Wall'>":
+#                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-25,CartToIso(point[0]+ref,point[1],0)[1]-55))
+#                    else:
+#                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-50,CartToIso(point[0]+ref,point[1],0)[1]-40))
+#                if self.model.character[(point[0]+ref,point[1]+ref)] != None:
+#                    if str(self.model.character[(point[0]+ref,point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1]+ref)].__class__))] != "ock.Wall'>":
+#                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-25,CartToIso(point[0]+ref,point[1]+ref,0)[1]-55))
+#                    else:
+#                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-50,CartToIso(point[0]+ref,point[1]+ref,0)[1]-40))
 
 
 

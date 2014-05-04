@@ -15,12 +15,12 @@ class Model:
     """
     def __init__(self):
         self.running = True
-
         self.ref = ref
         self.swidth = swidth
         self.sheight = sheight
         self.grid = {}
         self.character ={}
+        self.otherObject={}
         self.turn = 0
         self.teams = []
         self.charselected = None
@@ -48,7 +48,7 @@ class Model:
                 for y in range(0, self.sheight-2*ref, self.ref):
                     self.grid[(x,y)] = block.Grass(x,y)
                     self.character[(x,y)]=None
-
+                    
             #add water
             for y in range(10):
                 self.grid[(0,y*ref)] = block.Outeredge(0,y*ref)
@@ -59,30 +59,33 @@ class Model:
 
             #add wall
             for x in [2,4,5,8,9,10]:
-                self.character[(x*ref,2*ref)] = block.Wall(x*ref,2*ref)
+                self.otherObject[(x*ref,2*ref)] = block.Wall(x*ref,2*ref)
             for y in [3,4,5,7,8]:
-                self.character[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
+                self.otherObject[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
             for y in [4,5]:
-                self.character[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
+                self.otherObject[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
 
             #add high grass
             for y in [5,6,7]:
-                self.grid[(4*ref,y*ref)] = block.HighGrass(4*ref,y*ref)
+                self.otherObject[(4*ref,y*ref)] = block.HighGrass(4*ref,y*ref)
             for x in [3,4]:
-                self.grid[(x*ref,1*ref)] = block.HighGrass(x*ref,1*ref)
+                self.otherObject[(x*ref,1*ref)] = block.HighGrass(x*ref,1*ref)
             for x in [6,8]:
-                self.grid[(x*ref,4*ref)] = block.HighGrass(x*ref,4*ref)
+                self.otherObject[(x*ref,4*ref)] = block.HighGrass(x*ref,4*ref)
             for x in [6,8,10]:
-                self.grid[(x*ref,6*ref)] = block.HighGrass(x*ref,6*ref)
+                self.otherObject[(x*ref,6*ref)] = block.HighGrass(x*ref,6*ref)
             for x in [7,9]:
-                self.grid[(x*ref,9*ref)] = block.HighGrass(x*ref,9*ref)
-            self.grid[(9*ref,0*ref)] = block.HighGrass(9*ref,0*ref)
-            self.grid[(7*ref,9*ref)] = block.HighGrass(7*ref,9*ref)
-            self.grid[(10*ref,10*ref)] = block.HighGrass(10*ref,10*ref)
+                self.otherObject[(x*ref,9*ref)] = block.HighGrass(x*ref,9*ref)
+            self.otherObject[(9*ref,0*ref)] = block.HighGrass(9*ref,0*ref)
+            self.otherObject[(7*ref,9*ref)] = block.HighGrass(7*ref,9*ref)
+            self.otherObject[(10*ref,10*ref)] = block.HighGrass(10*ref,10*ref)
             
             #add bridge
             self.grid[(ref,9*ref)] = block.Bridge(ref,9*ref)
             self.grid[(9*ref,8*ref)] = block.Bridge(9*ref,8*ref)
+            
+            for key, value in self.otherObject.iteritems():
+                self.grid[key]=self.otherObject[key]
 
         # Create players.
         self.populatePlayers()
