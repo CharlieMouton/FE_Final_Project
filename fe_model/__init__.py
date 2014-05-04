@@ -58,11 +58,11 @@ class Model:
 
             #add wall
             for x in [2,4,5,8,9,10]:
-                self.character[(x*ref,2*ref)] = block.Wall(x*ref,2*ref)
+                self.grid[(x*ref,2*ref)] = block.Wall(x*ref,2*ref)
             for y in [3,4,5,7,8]:
-                self.character[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
+                self.grid[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
             for y in [4,5]:
-                self.character[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
+                self.grid[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
 
             #add high grass
             for y in [5,6,7]:
