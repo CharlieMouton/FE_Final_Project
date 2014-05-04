@@ -70,13 +70,13 @@ class Model:
             for y in [5,6,7]:
                 self.grid[(4*ref,y*ref)] = block.HighGrass(4*ref,y*ref)
             for x in [3,4]:
-                self.grid[(1*ref,y*ref)] = block.HighGrass(1*ref,y*ref)
+                self.grid[(x*ref,1*ref)] = block.HighGrass(x*ref,1*ref)
             for x in [6,8]:
-                self.grid[(4*ref,y*ref)] = block.HighGrass(4*ref,y*ref)
+                self.grid[(x*ref,4*ref)] = block.HighGrass(x*ref,4*ref)
             for x in [6,8,10]:
-                self.grid[(6*ref,y*ref)] = block.HighGrass(6*ref,y*ref)
+                self.grid[(x*ref,6*ref)] = block.HighGrass(x*ref,6*ref)
             for x in [7,9]:
-                self.grid[(9*ref,y*ref)] = block.HighGrass(9*ref,y*ref)
+                self.grid[(x*ref,9*ref)] = block.HighGrass(x*ref,9*ref)
             self.grid[(9*ref,0*ref)] = block.HighGrass(9*ref,0*ref)
             self.grid[(7*ref,9*ref)] = block.HighGrass(7*ref,9*ref)
             self.grid[(10*ref,10*ref)] = block.HighGrass(10*ref,10*ref)
@@ -109,7 +109,7 @@ class Model:
         if self.level==1:
             self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
             self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
-            self.character[(350,450)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5, crit=5, team  = 2)
+            self.character[(350,450)] = character.Archer(self,location=(350,450), name='Charlie', dodge = 5, crit=5, team  = 2)
             self.character[(400,500)] = character.Archer(self,location=(400,500), name='Jacob', dodge = 5 , crit=5, team  = 2)
         # print self.character[(300,300)].weaponrange
         # print self.character[(400,500)].weaponrange
