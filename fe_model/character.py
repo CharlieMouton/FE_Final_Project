@@ -83,7 +83,9 @@ class Character:
             temp_buffer = {}
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
-                next_positions = [block for block in blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
+                new_blocks = [block for block in blocks if block in self.model.grid]
+
+                next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
 
                 next_positions_dict = {}
                 for next_position in next_positions:

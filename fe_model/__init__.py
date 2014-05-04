@@ -29,7 +29,6 @@ class Model:
         self.strings_of_actions = []
         self.level = 1
 
-
         # Generate map.
 
         for x in range(0, self.swidth, self.ref):
@@ -86,10 +85,6 @@ class Model:
             self.grid[(ref,9*ref)] = block.Bridge(ref,9*ref)
             self.grid[(9*ref,8*ref)] = block.Bridge(9*ref,8*ref)
 
-
-
-
-
         # Create players.
         self.populatePlayers()
         self.organize_teams()
@@ -123,6 +118,7 @@ class Model:
             self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team  = 2)
         # print self.character[(300,300)].weaponrange
         # print self.character[(400,500)].weaponrange
+
 
     def organize_teams(self):
         """
@@ -172,6 +168,7 @@ class Model:
         Inputs: the model 
         Outputs: None
         """
+        self.charselected = None
         for character in self.teams[self.turn % 3]:
             character.can_move = False
 
@@ -234,12 +231,12 @@ class Model:
 
             # If the player has a clicktwice state,
             if player.clickTwice:
-                if not player1.hasAttacked:
-                    self.strings_of_actions = player1.battle(player2)
-                    if player1.CurrentHP == 0:
-                        self.character[player1.location]=None
-                    if player2.CurrentHP == 0:
-                        self.character[player2.location]=None
+                if not player.hasAttacked:
+                    self.strings_of_actions = player.battle(self.character[(corner_x, corner_y)])
+                    if player.CurrentHP == 0:
+                        self.character[player.location]=None
+                    if self.character[(corner_x, corner_y)].CurrentHP == 0:
+                        self.character[self.character[(corner_x, corner_y)].location]=None
                 
                 self.battlescreen = (player,self.character[(corner_x,corner_y)])
 
