@@ -114,7 +114,7 @@ class Model:
             self.character[(ref*8,ref*11)] = character.Warrior(self,location=(ref*8,ref*11), name='Fishhead', dodge = 5 , crit=5, team  = 2)
             self.character[(ref*6,ref*0)] = character.Archer(self,location=(ref*6,ref*0), name='Babe', dodge = 5 , crit=5, team  = 1)
             self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team  = 1)
+            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team  = 2)
             self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team  = 2)
 
         # print self.character[(300,300)].weaponrange
