@@ -23,7 +23,7 @@ class Model:
         self.character ={}
         self.turn = 0
         self.teams = []
-        self.level = 1
+        self.level = 0
 
         # Generate map.
         if self.level == 0:
@@ -40,8 +40,8 @@ class Model:
 
         if self.level == 1:
             #grass populate everything
-            for x in range(0, self.swidth, self.ref):
-                for y in range(0, self.sheight, self.ref):
+            for x in range(0, self.swidth-2*ref, self.ref):
+                for y in range(0, self.sheight-2*ref, self.ref):
                     self.grid[(x,y)] = block.Grass(x,y)
                     self.character[(x,y)]=None
 
@@ -60,6 +60,14 @@ class Model:
                 self.character[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
             for y in [4,5]:
                 self.character[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
+
+            #add high grass
+            # self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
+            # self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
+
+            #add bridge
+            self.grid[(ref,9*ref)] = block.Bridge(ref,9*ref)
+            self.grid[(9*ref,8*ref)] = block.Bridge(9*ref,8*ref)
 
 
 

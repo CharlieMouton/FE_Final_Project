@@ -23,11 +23,10 @@ class View:
         self.screen.fill(pygame.Color(255,255,255))
 
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
-
         for point in ordgrid:
             tempobj = self.model.grid[point]
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
-
+        
         if self.statselect != None:
             self.char_select(self.statselect)
 

@@ -59,7 +59,6 @@ class Controller:
         cartX, cartY = IsoToCart(mx, my)
         corner_x = math.floor(cartX / ref) * ref
         corner_y = math.floor(cartY / ref) * ref
-
         return corner_x, corner_y
 
     def charselect(self):

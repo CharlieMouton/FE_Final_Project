@@ -32,7 +32,17 @@ class Grass(Block):
         self.character.movementleft-=1
 
 class HighGrass(Grass):
-    pass
+    def __init__(self,x,y):
+        self.image = pygame.image.load("fe_model/images/grass.png")
+        self.imagesupp = pygame.image.load("fe_model/images/highgrass.png")
+        super(HighGrass,self).__init__(x,y)
+
+class Bridge(Grass):
+    def __init__(self,x,y):
+        super(Bridge,self).__init__(x,y)
+        self.image = pygame.image.load("fe_model/images/bridge.png")
+
+
 
 
 #class Outeredge(pygame.sprite.Sprite):
