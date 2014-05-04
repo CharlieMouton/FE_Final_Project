@@ -31,6 +31,18 @@ class Model:
 
 
         # Generate map.
+
+        for x in range(0, self.swidth, self.ref):
+            for y in range(0, self.sheight, self.ref):
+                node = block.Grass(x,y)
+                self.grid[(x,y)] = node
+                self.character[(x,y)]=None
+        for x in range(0, self.swidth, self.ref):
+            for y in range(0, self.sheight, self.ref):
+                if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
+                    boundary = block.Outeredge(x,y)
+                    self.grid[(boundary.x,boundary.y)] = boundary
+
         if self.level == 0:
             for x in range(0, self.swidth, self.ref):
                 for y in range(0, self.sheight, self.ref):
@@ -73,6 +85,7 @@ class Model:
             #add bridge
             self.grid[(ref,9*ref)] = block.Bridge(ref,9*ref)
             self.grid[(9*ref,8*ref)] = block.Bridge(9*ref,8*ref)
+
 
 
 
@@ -249,3 +262,36 @@ class Model:
             character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
+        
+        i=1
+        for team in self.teams:
+            numberofcharacter=0
+            for character in team:
+                if character in self.character.itervalues():
+                    numberofcharacter+=1
+                if numberofcharacter==0:
+                    print "Team %s wins" %(i)
+            i+=1
+                    
+                
+                
+            
+            
+            
+   
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
