@@ -25,7 +25,7 @@ class View:
             tempobj = self.model.grid[point]
             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-10))
 
-        if self.model.statselect != None:
+        if self.model.statselect != None and self.model.charselected != None:
             self.char_select(self.model.statselect)
 
         # This lines draws the characters in the wrong order.
