@@ -157,6 +157,7 @@ class Model:
         Inputs: the model 
         Outputs: None
         """
+        self.charselected = None
         for character in self.teams[self.turn % 3]:
             character.can_move = False
 

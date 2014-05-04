@@ -49,6 +49,8 @@ class Controller:
             if self.model.charselected != None:
                 if self.model.charselected.hasAttacked != True:
                     self.model.char_reset(self.model.charselected)
+            else:
+                pass
 
     def box_select(self):
         """
