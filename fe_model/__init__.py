@@ -186,6 +186,7 @@ class Model:
         for character in self.teams[choice]:
             character.can_move = False
             character.movementleft = character.movement
+            character.o_location = character.location
 
         self.turn += 1
         while self.turn % len(self.teams) == []:
@@ -224,12 +225,19 @@ class Model:
             if player.movementleft==0:
                 self.statselect = self.character[(corner_x,corner_y)]
                 self.charselected = self.character[(corner_x,corner_y)]
+            
+            elif self.character[(corner_x, corner_y)]!=None:
+                if player.team == self.character[(corner_x, corner_y)].team:
+                    player.clickTwice = False
+                    self.charselected = self.character[(corner_x, corner_y)]
+                    self.statselect = self.character[(corner_x,corner_y)]
+            
             else:
                 # If the place the character is moving to is empty,
                 if self.character[(corner_x,corner_y)] == None:
                     player.clickTwice = False
                     self.jump_to(player, corner_x, corner_y)
-        
+                    
                 # Fighting situation.
                 elif self.character[(corner_x,corner_y)] != None and self.character[(corner_x,corner_y)] != player:
                     self.complete_fighting_situation(player, corner_x, corner_y)
@@ -253,16 +261,14 @@ class Model:
         if int((abs(self.character[(corner_x,corner_y)].location[0]-player.location[0])+abs(self.character[(corner_x,corner_y)].location[1]-player.location[1]))/50) == player.weaponrange:
 
             # If the player has a clicktwice state,
-            print player.team
-            print self.character[(corner_x, corner_y)].team
             if player.clickTwice:
                 if not player.hasAttacked:
                     if player.team != self.character[(corner_x, corner_y)].team:
                         self.strings_of_actions = player.battle(self.character[(corner_x, corner_y)])
                         
-                        if player.CurrentHP == 0:
+                        if player.CurrentHP <= 0:
                             self.character[player.location]=None
-                        if self.character[(corner_x, corner_y)].CurrentHP == 0:
+                        if self.character[(corner_x, corner_y)].CurrentHP <= 0:
                             self.character[self.character[(corner_x, corner_y)].location]=None
                 
                         self.battlescreen = (player,self.character[(corner_x,corner_y)])
