@@ -32,6 +32,7 @@ class Grass(Block):
         self.character.movementleft-=1
 
 class HighGrass(Grass):
+<<<<<<< HEAD
     def __init__(self, x, y):
         super(HighGrass, self).__init__(x,y)
         
@@ -40,6 +41,18 @@ class HighGrass(Grass):
     def interaction(self,character):
         self.character.movementleft-=2
         self.character.dodge+=5
+=======
+    def __init__(self,x,y):
+        self.image = pygame.image.load("fe_model/images/grass.png")
+        self.imagesupp = pygame.image.load("fe_model/images/highgrass.png")
+        super(HighGrass,self).__init__(x,y)
+
+class Bridge(Grass):
+    def __init__(self,x,y):
+        super(Bridge,self).__init__(x,y)
+        self.image = pygame.image.load("fe_model/images/bridge.png")
+
+>>>>>>> fa6d21eedd1ae482c8db42a0a35a20b122848631
 
 
         
@@ -101,4 +114,12 @@ class Fortress(Block):
         self.image = pygame.image.load('fe_model/images/grass.png')
         super(Fortress,self).__init__(x,y)
         self.movementcost=0
+
+
+class Wall(Block):
+    """ A basic wall structure that stops the character."""
+    def __init__(self, x, y):
+        Block.__init__(self, x, y)
+        self.image = pygame.image.load('fe_model/images/wall.png')
+        self.movementcost = 100
         

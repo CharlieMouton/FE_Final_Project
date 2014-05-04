@@ -23,8 +23,10 @@ class Model:
         self.character ={}
         self.turn = 0
         self.teams = []
+        self.level = 1
 
         # Generate map.
+<<<<<<< HEAD
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 node = block.Grass(x,y)
@@ -35,6 +37,53 @@ class Model:
                 if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
                     boundary = block.Water(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
+=======
+        if self.level == 0:
+            for x in range(0, self.swidth, self.ref):
+                for y in range(0, self.sheight, self.ref):
+                    node = block.Grass(x,y)
+                    self.grid[(x,y)] = node
+                    self.character[(x,y)]=None
+            for x in range(0, self.swidth, self.ref):
+                for y in range(0, self.sheight, self.ref):
+                    if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
+                        boundary = block.Outeredge(x,y)
+                        self.grid[(boundary.x,boundary.y)] = boundary
+
+        if self.level == 1:
+            #grass populate everything
+            for x in range(0, self.swidth-2*ref, self.ref):
+                for y in range(0, self.sheight-2*ref, self.ref):
+                    self.grid[(x,y)] = block.Grass(x,y)
+                    self.character[(x,y)]=None
+
+            #add water
+            for y in range(10):
+                self.grid[(0,y*ref)] = block.Outeredge(0,y*ref)
+            for x in range(2,6):
+                self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
+            for x in [6,7,8,10,11]:
+                self.grid[(x*ref,8*ref)] = block.Outeredge(x*ref,8*ref)
+
+            #add wall
+            for x in [2,4,5,8,9,10]:
+                self.character[(x*ref,2*ref)] = block.Wall(x*ref,2*ref)
+            for y in [3,4,5,7,8]:
+                self.character[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
+            for y in [4,5]:
+                self.character[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
+
+            #add high grass
+            # self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
+            # self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
+
+            #add bridge
+            self.grid[(ref,9*ref)] = block.Bridge(ref,9*ref)
+            self.grid[(9*ref,8*ref)] = block.Bridge(9*ref,8*ref)
+
+
+
+>>>>>>> fa6d21eedd1ae482c8db42a0a35a20b122848631
 
         # Create players.
         self.populatePlayers()
@@ -47,11 +96,18 @@ class Model:
         Inputs: Model
         Outputs: None
         """
-        self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
-        self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
-        self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5, crit=5, team  = 2)
-        self.character[(400,500)] = character.Archer(self,location=(400,500), name='Charlie', dodge = 5 , crit=5, team  = 2)
-
+        if self.level==0:
+            
+            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
+            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
+            self.character[(350,400)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5, crit=5, team  = 2)
+            self.character[(400,500)] = character.Archer(self,location=(400,500), name='Jacob', dodge = 5 , crit=5, team  = 2)
+        
+        if self.level==1:
+            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
+            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
+            self.character[(350,450)] = character.Archer(self,location=(350,400), name='Charlie', dodge = 5, crit=5, team  = 2)
+            self.character[(400,500)] = character.Archer(self,location=(400,500), name='Jacob', dodge = 5 , crit=5, team  = 2)
         # print self.character[(300,300)].weaponrange
         # print self.character[(400,500)].weaponrange
 
@@ -64,10 +120,11 @@ class Model:
         """
         for point in self.character:
             if self.character[point] != None:
-                if self.character[point].team >= len(self.teams):
-                    for adding in range(self.character[point].team - len(self.teams) + 1):
-                        self.teams.append([])
-                self.teams[self.character[point].team].append(self.character[point])
+                if str(self.character[point].__class__)[19:len(str(self.character[point].__class__))] != "ock.Wall'>":
+                    if self.character[point].team >= len(self.teams):
+                        for adding in range(self.character[point].team - len(self.teams) + 1):
+                            self.teams.append([])
+                    self.teams[self.character[point].team].append(self.character[point])
 
     def updateCharLocation(self, x, y):
         """
