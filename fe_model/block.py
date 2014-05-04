@@ -32,11 +32,19 @@ class Grass(Block):
         self.character.movementleft-=1
 
 class HighGrass(Grass):
-    pass
+    def __init__(self, x, y):
+        super(HighGrass, self).__init__(x,y)
+        
+        self.movementcost=2
+        
+    def interaction(self,character):
+        self.character.movementleft-=2
+        self.character.dodge+=5
 
 
-#class Outeredge(pygame.sprite.Sprite):
-class Outeredge(Block):
+        
+
+class Water(Block):
     """This class encodes the state of the outer edge of the screen. It is just a black outer edge."""
     def __init__ (self,x,y):
         """
@@ -51,7 +59,7 @@ class Outeredge(Block):
 
         """
         self.image = pygame.image.load('fe_model/images/water_new.png')
-        super(Outeredge,self).__init__(x,y)
+        super(Water,self).__init__(x,y)
         self.movementcost = 100
         
    

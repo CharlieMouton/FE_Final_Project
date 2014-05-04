@@ -33,7 +33,7 @@ class Model:
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
-                    boundary = block.Outeredge(x,y)
+                    boundary = block.Water(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
 
         # Create players.
