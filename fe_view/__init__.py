@@ -64,6 +64,7 @@ class View:
         #             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-60))
 
         if self.model.battlescreen != None:
+            self.attackanim(self.model.battlescreen)
             self.battlestats(self.model.battlescreen)
             if self.model.strings_of_actions != []:
                 for action in strings_of_actions:
@@ -74,9 +75,10 @@ class View:
 
         pygame.display.update()
 
-    def attackanim(self,char1,char2):
+    def attackanim(self,(char1,char2)):
         for n in range(10):
-            self.screen.blit(char1.image,char1.location[0])
+            self.screen.blit(char1.image,(CartToIso(char1.location[0],char1.location[1],0)[0]-25+n,CartToIso(char1.location[0],char1.location[1],0)[1]-55-n))
+            time.sleep(.1)
 
     def crit(self,charnum):
         critpopup = pygame.image.load("fe_model/images/crit.png")
