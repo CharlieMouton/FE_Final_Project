@@ -85,8 +85,6 @@ class Character:
                 blocks = self.surroundings(current_position)
                 new_blocks = [block for block in blocks if block in self.model.grid]
 
-                print new_blocks
-
                 next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
 
                 next_positions_dict = {}
