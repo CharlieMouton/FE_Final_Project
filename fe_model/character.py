@@ -16,7 +16,7 @@ class Character:
             and if they can move or attack.
     Outputs: A fully built character, ready for battle!
     '''        
-    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weapontype,location, dodge = 5 , crit=5, team = 1, can_move = True, hasAttacked=False):
+    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weapontype,location, dodge = 5 , crit=5, team = 1, can_move = False, hasAttacked=False):
         self.model = model
         self.name = name
         
