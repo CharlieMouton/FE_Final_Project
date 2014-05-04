@@ -48,7 +48,7 @@ class Controller:
                 if self.charselected.hasAttacked != True:
                     self.char_reset(self.charselected)
 
-    def box_select(self, ):
+    def box_select(self):
         """
         Generates coordinates of a selected box after mouse selection.
 
@@ -93,6 +93,11 @@ class Controller:
                 if int((abs(self.model.character[(corner_x,corner_y)].location[0]-player.location[0])+abs(self.model.character[(corner_x,corner_y)].location[1]-player.location[1]))/50) == player.weaponrange:
                     if player.clickTwice:
                         x = self.model.battleCall(player,self.model.character[(corner_x,corner_y)])
+                        self.view.battlescreen = (player,self.model.character[(corner_x,corner_y)])
+                        self.view.battlestats(self.view.battlescreen)
+
+                        # Why is this here?
+                        self.view.draw
                         if x != []:
                             for event in x:
                                 if 'dodge' in event:
@@ -123,3 +128,7 @@ class Controller:
         character.orient = "s"
         self.model.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
         character.movementleft=character.movement
+
+class AI:
+    def __init__(self):
+        pass
