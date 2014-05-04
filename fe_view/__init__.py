@@ -39,17 +39,17 @@ class View:
         for point in ordgrid:
             if str(self.model.grid[point].__class__)[19:len(str(self.model.grid[point].__class__))] == "ock.HighGrass'>":
                 self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
-                if self.model.character[(point[0],point[1]+ref)] != None:
+                if (point[0],point[1]+ref) in self.model.character:
                     if str(self.model.character[(point[0],point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0],point[1]+ref)].__class__))] != "ock.Wall'>":
                         self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-25,CartToIso(point[0],point[1]+ref,0)[1]-55))
                     else:
                         self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-50,CartToIso(point[0],point[1]+ref,0)[1]-40))
-                if self.model.character[(point[0]+ref,point[1])] != None:
+                if (point[0]+ref,point[1]) in self.model.character:
                     if str(self.model.character[(point[0]+ref,point[1])].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1])].__class__))] != "ock.Wall'>":
                         self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-25,CartToIso(point[0]+ref,point[1],0)[1]-55))
                     else:
                         self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-50,CartToIso(point[0]+ref,point[1],0)[1]-40))
-                if self.model.character[(point[0]+ref,point[1]+ref)] != None:
+                if (point[0]+ref,point[1]+ref) in self.model.character:
                     if str(self.model.character[(point[0]+ref,point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1]+ref)].__class__))] != "ock.Wall'>":
                         self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-25,CartToIso(point[0]+ref,point[1]+ref,0)[1]-55))
                     else:
@@ -67,12 +67,12 @@ class View:
             self.attackanim(self.model.battlescreen)
             self.battlestats(self.model.battlescreen)
             if self.model.strings_of_actions != []:
-                for action in strings_of_actions:
-                    if 'dodge' in string_of_actions:
-                        self.dodge(string_of_actions[-1])
-                    elif 'crit' in string_of_actions:
-                        self.crit(string_of_actions[-1])
-
+                for action in self.model.strings_of_actions:
+                    if 'dodge' in self.model.strings_of_actions:
+                        self.dodge(self.model.strings_of_actions[-1])
+                    elif 'crit' in self.model.strings_of_actions:
+                        self.crit(self.model.strings_of_actions[-1])
+        self.gameover(self.model.gameover)
         pygame.display.update()
 
     def attackanim(self,(char1,char2)):
@@ -174,3 +174,30 @@ class View:
     def turn_display(self):
         """Displays the turn which the game is currently in."""
         myfont = pygame.font.SysFont("arial", 24)
+        
+    def gameover(self,team):
+        if team !=None:
+            myfont = pygame.font.SysFont("arial", 24)
+            message=myfont.render("Team %s wins"%(team), 1, (255,255,255))
+            self.screen.blit(message, (12*ref,10*ref))
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
