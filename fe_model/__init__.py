@@ -31,24 +31,11 @@ class Model:
         self.level = 1
 
         # Generate map.
-
-        for x in range(0, self.swidth, self.ref):
-            for y in range(0, self.sheight, self.ref):
-                node = block.Grass(x,y)
-                self.grid[(x,y)] = node
-                self.character[(x,y)]=None
-        for x in range(0, self.swidth, self.ref):
-            for y in range(0, self.sheight, self.ref):
-                if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
-                    boundary = block.Outeredge(x,y)
-                    self.grid[(boundary.x,boundary.y)] = boundary
-
         if self.level == 0:
             for x in range(0, self.swidth, self.ref):
                 for y in range(0, self.sheight, self.ref):
                     node = block.Grass(x,y)
                     self.grid[(x,y)] = node
-                    self.character[(x,y)]=None
             for x in range(0, self.swidth, self.ref):
                 for y in range(0, self.sheight, self.ref):
                     if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
@@ -60,7 +47,6 @@ class Model:
             for x in range(0, self.swidth-2*ref, self.ref):
                 for y in range(0, self.sheight-2*ref, self.ref):
                     self.grid[(x,y)] = block.Grass(x,y)
-                    self.character[(x,y)]=None
 
             #add water
             for y in range(10):
@@ -79,9 +65,20 @@ class Model:
                 self.character[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
 
             #add high grass
-            # self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
-            # self.grid[(x*ref,9*ref)] = block.Outeredge(x*ref,9*ref)
-
+            for y in [5,6,7]:
+                self.grid[(4*ref,y*ref)] = block.HighGrass(4*ref,y*ref)
+            for x in [3,4]:
+                self.grid[(x*ref,1*ref)] = block.HighGrass(x*ref,1*ref)
+            for x in [6,8]:
+                self.grid[(x*ref,4*ref)] = block.HighGrass(x*ref,4*ref)
+            for x in [6,8,10]:
+                self.grid[(x*ref,6*ref)] = block.HighGrass(x*ref,6*ref)
+            for x in [7,9]:
+                self.grid[(x*ref,9*ref)] = block.HighGrass(x*ref,9*ref)
+            self.grid[(9*ref,0*ref)] = block.HighGrass(9*ref,0*ref)
+            self.grid[(7*ref,9*ref)] = block.HighGrass(7*ref,9*ref)
+            self.grid[(10*ref,10*ref)] = block.HighGrass(10*ref,10*ref)
+            
             #add bridge
             self.grid[(ref,9*ref)] = block.Bridge(ref,9*ref)
             self.grid[(9*ref,8*ref)] = block.Bridge(9*ref,8*ref)
@@ -105,6 +102,7 @@ class Model:
             self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team  = 2)
         
         if self.level==1:
+
             self.character[(ref*5,ref*0)] = character.Warrior(self,location=(ref*5,ref*0), name='Julian', dodge = 5 , crit=5, team = 1)
             self.character[(ref*7,ref*0)] = character.Warrior(self,location=(ref*7,ref*0), name='David', dodge = 5 , crit=5, team = 1)
             self.character[(ref*8,ref*1)] = character.Warrior(self,location=(ref*8,ref*1), name='Charlie', dodge = 5, crit=5, team  = 1)
@@ -117,6 +115,7 @@ class Model:
             self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team  = 1)
             self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team  = 1)
             self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team  = 2)
+
         # print self.character[(300,300)].weaponrange
         # print self.character[(400,500)].weaponrange
 
@@ -136,30 +135,69 @@ class Model:
                             self.teams.append([])
                     self.teams[self.character[point].team].append(self.character[point])
 
-    def updateCharLocation(self, x, y):
-        """
-        This function updates the character location.
+    # def updateCharLocation(self, x, y):
+    #     """
+    #     This function updates the character location.
 
-        Inputs: 'x' and 'y' are both input list of all locations along the path that the character is moving.  'x' and 'y' must be the same length.
-        Outputs: the direction the character should be facing after the move."""
-        for i in range(len(x)):
-            if i>0:
-                if self.character[(x[i],y[i])] == None:
-                    self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
-                    self.character[(x[i],y[i])].location=(x[i],y[i])
-                    moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
-                    if abs(x[i]-x[i-1]) > abs(y[i]-y[i-1]):
-                        if x[i]-x[i-1] < 0:
+    #     Inputs: 'x' and 'y' are both input list of all locations along the path that the character is moving.  'x' and 'y' must be the same length.
+    #     Outputs: the direction the character should be facing after the move."""
+    #     for i in range(len(x)):
+    #         if i>0:
+    #             # If the location of this thingy does not have a character,
+    #             if self.character[(x[i],y[i])] == None:
+    #                 # Jump character from old location into new location.
+    #                 self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
+    #                 # Update location.
+    #                 self.character[(x[i],y[i])].location=(x[i],y[i])
+    #                 # Moved is the distance from the old x to new x and old y to new y. 
+    #                 moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
+                    
+    #                 # Direction
+    #                 if abs(x[i]-x[i-1]) > abs(y[i]-y[i-1]):
+    #                     if x[i]-x[i-1] < 0:
+    #                         direction = 'n'
+    #                     else:
+    #                         direction = 's'
+    #                 else:
+    #                     if y[i]-y[i-1] < 0:
+    #                         direction = 'e'
+    #                     else:
+    #                         direction = 'w'
+
+    #                 # Updates character location for movement left
+    #                 self.character[(x[i],y[i])].movementleft-=moved
+
+    #                 # Delete old character in that location.
+    #                 self.character[(x[i-1],y[i-1])]=None
+
+    #                 # Returns the direction.
+    #                 return direction
+
+    def location_update(self, list_of_locations):
+        for index in range(len(list_of_locations)):
+            if len(list_of_locations) > 0:
+                if list_of_locations[index] not in self.character:
+                    self.character[list_of_locations[index]]=self.character[list_of_locations[index-1]]
+                    self.character[list_of_locations[index]].location= list_of_locations[index]
+                    moved=int((abs(list_of_locations[index][0]-list_of_locations[index-1][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
+
+                    if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
+                        if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
                             direction = 'n'
                         else:
                             direction = 's'
                     else:
-                        if y[i]-y[i-1] < 0:
+                        if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
                             direction = 'e'
                         else:
                             direction = 'w'
-                    self.character[(x[i],y[i])].movementleft-=moved
-                    self.character[(x[i-1],y[i-1])]=None
+
+                    self.character[list_of_locations[index]].movementleft-=moved
+
+                    # Delete old character in that location.
+                    del self.character[list_of_locations[index-1]]
+
+                    # Returns the direction.
                     return direction
 
     def next_turn(self):
@@ -182,7 +220,7 @@ class Model:
     def charselect(self, corner_x, corner_y):
         """
         """
-        if self.character[(corner_x,corner_y)] !=  None:
+        if (corner_x,corner_y) in self.character:
             self.statselect = self.character[(corner_x,corner_y)]
             self.charselected = self.character[(corner_x,corner_y)]
             self.character[(corner_x,corner_y)].orient = 's'
@@ -191,7 +229,7 @@ class Model:
         """
         """
         character.orient = "s"
-        self.updateCharLocation([character.location[0], character.o_location[0]], [character.location[1],character.o_location[1]])
+        self.location_update([character.location, character.o_location])
         character.movementleft=character.movement
 
     def move(self, player, corner_x, corner_y):
@@ -200,19 +238,13 @@ class Model:
             self.charselected = self.character[(corner_x,corner_y)]
         else:
             # If the place the character is moving to is empty,
-            if self.character[(corner_x,corner_y)] == None:
+            if (corner_x,corner_y) not in self.character:
                 player.clickTwice = False
                 self.jump_to(player, corner_x, corner_y)
     
             # Fighting situation.
-            elif self.character[(corner_x,corner_y)] != None and self.character[(corner_x,corner_y)] != player:
+            elif (corner_x,corner_y) in self.character and self.character[(corner_x,corner_y)] != player:
                 self.complete_fighting_situation(player, corner_x, corner_y)
-
-    def reset_charselect(self):
-        """
-        This function resets character selection.
-        """
-        self.charselected = None
 
     def jump_to(self, player, corner_x, corner_y):
         """
@@ -221,9 +253,9 @@ class Model:
         # If the character can reach this block,
         if (corner_x,corner_y) in player.availabilities:
             # Update to that location.
-            player.orient = self.updateCharLocation([player.location[0],corner_x],[player.location[1],corner_y])
+            player.orient = self.location_update([player.location, (corner_x, corner_y)])
         else:
-            self.reset_charselect()
+            self.charselected = None
 
     def complete_fighting_situation(self, player, corner_x, corner_y):
 
@@ -291,11 +323,10 @@ class Model:
         for character in self.teams[self.turn%3]:
             if character.can_move == True:
                 character.generate_availabilities()
-            character.image = character.images[character.orient]
+                character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
         result=self.endgame()
-        print result
         if result==(True,False):
             print "Team 1 wins!"
             self.gameover=1
@@ -365,3 +396,14 @@ class Model:
             
             
             
+=======
+        i=1
+        for team in self.teams:
+            numberofcharacter=0
+            for character in team:
+                if character in self.character.itervalues():
+                    numberofcharacter+=1
+                if numberofcharacter==0:
+                    print "Team %s wins" %(i)
+            i+=1
+>>>>>>> 1be02662826bd156f58f6353b2f70b88298c866e

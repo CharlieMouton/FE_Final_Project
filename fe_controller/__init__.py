@@ -34,7 +34,9 @@ class Controller:
         """
         corner_x, corner_y = self.box_select()
         if self.model.charselected != None:
+            print 1
             self.model.move(self.model.charselected, corner_x, corner_y)
+            print 2
 
         else:
             self.model.charselect(corner_x, corner_y)

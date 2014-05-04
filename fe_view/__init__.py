@@ -28,7 +28,6 @@ class View:
         if self.model.statselect != None and self.model.charselected != None:
             self.char_select(self.model.statselect)
 
-        # This lines draws the characters in the wrong order.
         ordchar = sorted(self.model.character, key=itemgetter(0,1))
         for point in ordchar:
             if self.model.character[point] != None:
@@ -36,6 +35,27 @@ class View:
                     self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
                 else:
                     self.screen.blit(self.model.character[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
+
+        for point in ordgrid:
+            if str(self.model.grid[point].__class__)[19:len(str(self.model.grid[point].__class__))] == "ock.HighGrass'>":
+                self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
+                if (point[0],point[1]+ref) in self.model.character:
+                    if str(self.model.character[(point[0],point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0],point[1]+ref)].__class__))] != "ock.Wall'>":
+                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-25,CartToIso(point[0],point[1]+ref,0)[1]-55))
+                    else:
+                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-50,CartToIso(point[0],point[1]+ref,0)[1]-40))
+                if (point[0]+ref,point[1]) in self.model.character:
+                    if str(self.model.character[(point[0]+ref,point[1])].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1])].__class__))] != "ock.Wall'>":
+                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-25,CartToIso(point[0]+ref,point[1],0)[1]-55))
+                    else:
+                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-50,CartToIso(point[0]+ref,point[1],0)[1]-40))
+                if (point[0]+ref,point[1]+ref) in self.model.character:
+                    if str(self.model.character[(point[0]+ref,point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1]+ref)].__class__))] != "ock.Wall'>":
+                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-25,CartToIso(point[0]+ref,point[1]+ref,0)[1]-55))
+                    else:
+                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-50,CartToIso(point[0]+ref,point[1]+ref,0)[1]-40))
+
+
 
         # for point in ordchar:  
         #     tempobj = self.model.character[point]    
