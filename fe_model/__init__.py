@@ -144,20 +144,6 @@ class Model:
                     self.character[(x[i-1],y[i-1])]=None
                     return direction
 
-    def battle_call(self,player1, player2):
-        """
-        This function allows for two characters to engage combat. It also checks to see if a character dies.
-
-        Inputs: Model, two characters
-        Outputs: None
-        """
-        if not player1.hasAttacked:
-            self.strings_of_actions = player1.battle(player2)
-            if player1.CurrentHP == 0:
-                self.character[player1.location]=None
-            if player2.CurrentHP == 0:
-                self.character[player2.location]=None
-
     def next_turn(self):
         """
         This function, when called, ends the turn of the current team.
@@ -227,7 +213,13 @@ class Model:
 
             # If the player has a clicktwice state,
             if player.clickTwice:
-                strings_of_actions = self.battle_call(player,self.character[(corner_x,corner_y)])
+                if not player1.hasAttacked:
+                    self.strings_of_actions = player1.battle(player2)
+                    if player1.CurrentHP == 0:
+                        self.character[player1.location]=None
+                    if player2.CurrentHP == 0:
+                        self.character[player2.location]=None
+                
                 self.battlescreen = (player,self.character[(corner_x,corner_y)])
 
                 player.clickTwice = False
