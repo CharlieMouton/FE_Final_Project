@@ -31,7 +31,7 @@ class Model:
 
 
         # Generate map.
-<<<<<<< HEAD
+
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 node = block.Grass(x,y)
@@ -40,9 +40,9 @@ class Model:
         for x in range(0, self.swidth, self.ref):
             for y in range(0, self.sheight, self.ref):
                 if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
-                    boundary = block.Water(x,y)
+                    boundary = block.Outeredge(x,y)
                     self.grid[(boundary.x,boundary.y)] = boundary
-=======
+
         if self.level == 0:
             for x in range(0, self.swidth, self.ref):
                 for y in range(0, self.sheight, self.ref):
@@ -88,7 +88,7 @@ class Model:
 
 
 
->>>>>>> fa6d21eedd1ae482c8db42a0a35a20b122848631
+
 
         # Create players.
         self.populatePlayers()
