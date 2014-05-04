@@ -171,11 +171,12 @@ class Model:
         Outputs: None
         """
         self.charselected = None
-        for character in self.teams[self.turn % 3]:
+        for character in self.teams[self.turn % len(self.teams)]:
             character.can_move = False
+            character.movementleft = character.movement
 
         self.turn += 1
-        for character in self.teams[self.turn % 3]:
+        for character in self.teams[self.turn % len(self.teams)]:
             character.can_move = True
             character.hasAttacked = False
             character.movementleft = character.movement
@@ -191,6 +192,8 @@ class Model:
     def char_reset(self, character):
         """
         """
+        if character.can_move == False:
+            return
         character.orient = "s"
         self.location_update([character.location, character.o_location])
         character.movementleft=character.movement
@@ -214,6 +217,8 @@ class Model:
         This function jumps a character to the selected location.
         """
         # If the character can reach this block,
+        if player.can_move == False:
+            return
         if (corner_x,corner_y) in player.availabilities:
             # Update to that location.
             player.orient = self.location_update([player.location, (corner_x, corner_y)])
@@ -251,9 +256,6 @@ class Model:
             self.charselected = self.character[(corner_x,corner_y)]
             self.character[(corner_x,corner_y)].orient = 's'
             
-    
-    
-    
     def endgame(self):   
         team1wins=False
         team2wins=False
@@ -273,10 +275,6 @@ class Model:
                 team1wins=True        
         return (team1wins,team2wins)
     
-    
-    
-    
-    
     def update(self):
         """
         update is constantly run to keep check of what happens during the game.
@@ -284,13 +282,18 @@ class Model:
         Inputs: the model
         Outputs: None
         """
+        for point in self.character:
+            if str(self.character[point].__class__)[19:len(str(self.character[point].__class__))] != "ock.Wall'>":
+                self.character[point].generate_availabilities()
+        
         for character in self.teams[self.turn%3]:
             if character.can_move == True:
-                character.generate_availabilities()
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
+        
         result=self.endgame()
+        
         if result==(True,False):
             print "Team 1 wins!"
             self.gameover=1
