@@ -21,7 +21,7 @@ class View:
 
     def draw(self):
         self.screen.fill(pygame.Color(255,255,255))
-        # movesquare = pygame.image.load("fe_model/images/GreenSquare.png")
+        movesquare = pygame.image.load("fe_model/images/GreenSquare.png")
         for key,value in self.model.character.iteritems():
             self.characters[key]=self.model.character[key]
             self.surfaceObjects[key]=self.model.character[key]
@@ -36,44 +36,18 @@ class View:
         if self.model.statselect != None and self.model.charselected != None:
             self.char_select(self.model.statselect)
 
-        ordchar = sorted(self.characters, key=itemgetter(0,1))
+        ordchar = sorted(self.surfaceObjects, key=itemgetter(0,1))
         for point in ordchar:
                 if str(self.surfaceObjects[point].__class__)[19:len(str(self.surfaceObjects[point].__class__))] == "ock.Wall'>":
-                    print self.model.character
+                    self.screen.blit(self.surfaceObjects[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
+                elif point in self.model.character:
                     if self.model.character[point].can_move and self.model.character[point] != self.model.charselected:
                         self.screen.blit(movesquare,(CartToIso(point[0],point[1],0)[0]-48,CartToIso(point[0],point[1],0)[1]-9))
-                    self.screen.blit(self.surfaceObjects[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
-                elif self.model.character[point]!= None:
-                        self.screen.blit(self.characters[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
+                    self.screen.blit(self.characters[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
                 if str(self.surfaceObjects[point].__class__)[19:len(str(self.surfaceObjects[point].__class__))] == "ock.HighGrass'>":
                     self.screen.blit(self.surfaceObjects[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
-#
-#        for point in ordgrid:
-#            if str(self.model.grid[point].__class__)[19:len(str(self.model.grid[point].__class__))] == "ock.HighGrass'>":
-#                self.screen.blit(self.model.grid[point].imagesupp,(CartToIso(point[0],point[1],0)[0]-45,CartToIso(point[0],point[1],0)[1]-25))
-#                if self.model.character[(point[0],point[1]+ref)] != None:
-#                    if str(self.model.character[(point[0],point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0],point[1]+ref)].__class__))] != "ock.Wall'>":
-#                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-25,CartToIso(point[0],point[1]+ref,0)[1]-55))
-#                    else:
-#                        self.screen.blit(self.model.character[(point[0],point[1]+ref)].image,(CartToIso(point[0],point[1]+ref,0)[0]-50,CartToIso(point[0],point[1]+ref,0)[1]-40))
-#                if self.model.character[(point[0]+ref,point[1])] != None:
-#                    if str(self.model.character[(point[0]+ref,point[1])].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1])].__class__))] != "ock.Wall'>":
-#                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-25,CartToIso(point[0]+ref,point[1],0)[1]-55))
-#                    else:
-#                        self.screen.blit(self.model.character[(point[0]+ref,point[1])].image,(CartToIso(point[0]+ref,point[1],0)[0]-50,CartToIso(point[0]+ref,point[1],0)[1]-40))
-#                if self.model.character[(point[0]+ref,point[1]+ref)] != None:
-#                    if str(self.model.character[(point[0]+ref,point[1]+ref)].__class__)[19:len(str(self.model.character[(point[0]+ref,point[1]+ref)].__class__))] != "ock.Wall'>":
-#                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-25,CartToIso(point[0]+ref,point[1]+ref,0)[1]-55))
-#                    else:
-#                        self.screen.blit(self.model.character[(point[0]+ref,point[1]+ref)].image,(CartToIso(point[0]+ref,point[1]+ref,0)[0]-50,CartToIso(point[0]+ref,point[1]+ref,0)[1]-40))
 
         self.turn_display()
-
-        # for point in ordchar:  
-        #     tempobj = self.model.character[point]    
-        #     if self.model.character[point] != None:
-        #         if str(tempobj.__class__)[19:len(str(tempobj.__class__))] == "ock.Wall'>":
-        #             self.screen.blit(tempobj.image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-60))
 
         if self.model.battlescreen != None:
             self.attackanim(self.model.battlescreen)

@@ -129,12 +129,11 @@ class Model:
         Outputs: None
         """
         for point in self.character:
-            if self.character[point] != None:
-                if str(self.character[point].__class__)[19:len(str(self.character[point].__class__))] != "ock.Wall'>":
-                    if self.character[point].team >= len(self.teams):
-                        for adding in range(self.character[point].team - len(self.teams) + 1):
-                            self.teams.append([])
-                    self.teams[self.character[point].team].append(self.character[point])
+            if str(self.character[point].__class__)[19:len(str(self.character[point].__class__))] != "ock.Wall'>":
+                if self.character[point].team >= len(self.teams):
+                    for adding in range(self.character[point].team - len(self.teams) + 1):
+                        self.teams.append([])
+                self.teams[self.character[point].team].append(self.character[point])
 
         for character in self.teams[0]:
             character.can_move = True
@@ -142,30 +141,29 @@ class Model:
     def location_update(self, list_of_locations):
         for index in range(len(list_of_locations)):
             if len(list_of_locations) > 0:
-                if list_of_locations[index] in self.character:
-                    if self.character[list_of_locations[index]]== None :
-                        self.character[list_of_locations[index]]=self.character[list_of_locations[index-1]]
-                        self.character[list_of_locations[index]].location= list_of_locations[index]
-                        moved=int((abs(list_of_locations[index][0]-list_of_locations[index-1][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
-    
-                        if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
-                            if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
-                                direction = 'n'
-                            else:
-                                direction = 's'
+                if list_of_locations[index] not in self.character:
+                    self.character[list_of_locations[index]]=self.character[list_of_locations[index-1]]
+                    self.character[list_of_locations[index]].location= list_of_locations[index]
+                    moved=int((abs(list_of_locations[index][0]-list_of_locations[index-1][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
+
+                    if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
+                        if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
+                            direction = 'n'
                         else:
-                            if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
-                                direction = 'e'
-                            else:
-                                direction = 'w'
-    
-                        self.character[list_of_locations[index]].movementleft-=moved
-    
-                        # Delete old character in that location.
-                        self.character[list_of_locations[index-1]]=None
-    
-                        # Returns the direction.
-                        return direction
+                            direction = 's'
+                    else:
+                        if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
+                            direction = 'e'
+                        else:
+                            direction = 'w'
+
+                    self.character[list_of_locations[index]].movementleft-=moved
+
+                    # Delete old character in that location.
+                    del self.character[list_of_locations[index-1]]
+
+                    # Returns the direction.
+                    return direction
 
     def next_turn(self):
         """
@@ -199,10 +197,9 @@ class Model:
         """
         """
         if (corner_x, corner_y) in self.character:
-            if self.character[(corner_x,corner_y)] != None:
-                self.statselect = self.character[(corner_x,corner_y)]
-                self.charselected = self.character[(corner_x,corner_y)]
-                self.character[(corner_x,corner_y)].orient = 's'
+            self.statselect = self.character[(corner_x,corner_y)]
+            self.charselected = self.character[(corner_x,corner_y)]
+            self.character[(corner_x,corner_y)].orient = 's'
 
     def char_reset(self, character):
         """
@@ -215,27 +212,24 @@ class Model:
             character.movementleft=character.movement
 
     def move(self, player, corner_x, corner_y):
-        print "is it here"
         if (corner_x, corner_y) in self.character:
             if player.movementleft==0:
                 self.statselect = self.character[(corner_x,corner_y)]
                 self.charselected = self.character[(corner_x,corner_y)]
-            
-            elif self.character[(corner_x, corner_y)]!=None:
+            elif (corner_x, corner_y) in self.character:
                 if player.team == self.character[(corner_x, corner_y)].team:
                     player.clickTwice = False
                     self.charselected = self.character[(corner_x, corner_y)]
                     self.statselect = self.character[(corner_x,corner_y)]
             
-            else:
-                # If the place the character is moving to is empty,
-                if (corner_x,corner_y) not in self.character:
-                    player.clickTwice = False
-                    self.jump_to(player, corner_x, corner_y)
-                    
                 # Fighting situation.
-                elif (corner_x,corner_y) in self.character and self.character[(corner_x,corner_y)] != player:
+                elif self.character[(corner_x,corner_y)] != player:
                     self.complete_fighting_situation(player, corner_x, corner_y)
+                    
+        # If the place the character is moving to is empty,
+        elif (corner_x,corner_y) not in self.character:
+            player.clickTwice = False
+            self.jump_to(player, corner_x, corner_y)
 
     def jump_to(self, player, corner_x, corner_y):
         """
@@ -247,6 +241,7 @@ class Model:
         if (corner_x,corner_y) in player.availabilities:
             # Update to that location.
             player.orient = self.location_update([player.location, (corner_x, corner_y)])
+
         else:
             self.charselected = None
 
@@ -297,8 +292,7 @@ class Model:
         Outputs: None
         """
         for point in self.character:
-            if self.character[point] != None:
-                self.character[point].generate_availabilities()
+            self.character[point].generate_availabilities()
         
         for character in self.teams[self.turn%len(self.teams)]:
             if character.can_move == True:
