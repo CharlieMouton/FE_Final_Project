@@ -16,7 +16,7 @@ class Character:
             and if they can move or attack.
     Outputs: A fully built character, ready for battle!
     '''        
-    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weapontype,location, dodge = 5 , crit=5, team = 1, can_move = True, hasAttacked=False):
+    def __init__(self, model, name,level,HP,strength,defense,agility,intelligence,movement,xpToNextLevel, weapontype,location, dodge = 5 , crit=5, team = 1, can_move = False, hasAttacked=False):
         self.model = model
         self.name = name
         
@@ -77,6 +77,8 @@ class Character:
         self.availabilities={}
         self.attackrange={}
         current_positions = {self.location: self.location}
+        other_teams = [team for team in self.model.teams if self.model.teams.index(team) != self.team]
+        other_teams_location = [team_member.location for team in other_teams for team_member in team]
         
         # Iterate throughout the map to find available positions.
         for step in range(int(self.movementleft)+int(self.weaponrange)):
@@ -84,17 +86,18 @@ class Character:
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
                 # new_blocks = [block for block in blocks if block in self.model.grid]
-                new_blocks = [block for block in blocks if block in self.model.grid and block not in self.model.character]
+
+                new_blocks = [block for block in blocks if block in self.model.grid and block not in other_teams_location]
 
                 next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
-
+                
                 next_positions_dict = {}
                 for next_position in next_positions:
                     next_positions_dict[next_position] = current_position
 
                 if step < self.movementleft:
                     self.availabilities[current_position] = current_positions[current_position]
-                else:
+                elif step == self.movementleft+self.weaponrange-1:
                     self.attackrange[current_position] = current_positions[current_position]
 
                 temp_buffer.update(next_positions_dict)
@@ -145,7 +148,8 @@ class Character:
         """
         strings_of_actions = []
         self.hasAttacked=True        
-        
+        if self.team == player2.team:
+            return strings_of_actions
         self.player2=player2
         #Player1 Attack
         if self.strength>=self.player2.defense:
@@ -166,7 +170,7 @@ class Character:
                 self.xpToNextLevel+=5
         #Player2 Counterattack
         else:
-            if self.weaponrange<=self.player2.weaponrange:
+            if self.weaponrange == self.player2.weaponrange:
                 if self.player2.strength>=self.defense:
                     if random.randint(1,100) <= self.dodge:
                         strings_of_actions.append("dodge1")

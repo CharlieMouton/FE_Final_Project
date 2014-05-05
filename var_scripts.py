@@ -22,3 +22,9 @@ def IsoToCart(isoX,isoY):
     cartX = (2 * (isoY) + isoX) / 2  
     cartY = (2 * (isoY) - isoX) / 2
     return (cartX, cartY)
+
+def empty(seq):
+    try:
+        return all(map(empty, seq))
+    except TypeError:
+        return False

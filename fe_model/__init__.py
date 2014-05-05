@@ -15,12 +15,12 @@ class Model:
     """
     def __init__(self):
         self.running = True
-
         self.ref = ref
         self.swidth = swidth
         self.sheight = sheight
         self.grid = {}
         self.character ={}
+        self.otherObject={}
         self.turn = 0
         self.teams = []
         self.charselected = None
@@ -36,6 +36,7 @@ class Model:
                 for y in range(0, self.sheight, self.ref):
                     node = block.Grass(x,y)
                     self.grid[(x,y)] = node
+                    self.character[(x,y)]=None
             for x in range(0, self.swidth, self.ref):
                 for y in range(0, self.sheight, self.ref):
                     if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
@@ -47,7 +48,7 @@ class Model:
             for x in range(0, self.swidth-2*ref, self.ref):
                 for y in range(0, self.sheight-2*ref, self.ref):
                     self.grid[(x,y)] = block.Grass(x,y)
-
+                    self.character[(x,y)]=None
             #add water
             for y in range(10):
                 self.grid[(0,y*ref)] = block.Outeredge(0,y*ref)
@@ -58,30 +59,36 @@ class Model:
 
             #add wall
             for x in [2,4,5,8,9,10]:
-                self.character[(x*ref,2*ref)] = block.Wall(x*ref,2*ref)
+                self.otherObject[(x*ref,2*ref)] = block.Wall(x*ref,2*ref)
             for y in [3,4,5,7,8]:
-                self.character[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
+                self.otherObject[(3*ref,y*ref)] = block.Wall(3*ref,y*ref)
             for y in [4,5]:
-                self.character[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
+                self.otherObject[(10*ref,y*ref)] = block.Wall(10*ref,y*ref)
+
 
             #add high grass
             for y in [5,6,7]:
-                self.grid[(4*ref,y*ref)] = block.HighGrass(4*ref,y*ref)
+                self.otherObject[(4*ref,y*ref)] = block.HighGrass(4*ref,y*ref)
             for x in [3,4]:
-                self.grid[(x*ref,1*ref)] = block.HighGrass(x*ref,1*ref)
+                self.otherObject[(x*ref,1*ref)] = block.HighGrass(x*ref,1*ref)
             for x in [6,8]:
-                self.grid[(x*ref,4*ref)] = block.HighGrass(x*ref,4*ref)
+                self.otherObject[(x*ref,4*ref)] = block.HighGrass(x*ref,4*ref)
             for x in [6,8,10]:
-                self.grid[(x*ref,6*ref)] = block.HighGrass(x*ref,6*ref)
+                self.otherObject[(x*ref,6*ref)] = block.HighGrass(x*ref,6*ref)
             for x in [7,9]:
-                self.grid[(x*ref,9*ref)] = block.HighGrass(x*ref,9*ref)
-            self.grid[(9*ref,0*ref)] = block.HighGrass(9*ref,0*ref)
-            self.grid[(7*ref,9*ref)] = block.HighGrass(7*ref,9*ref)
-            self.grid[(10*ref,10*ref)] = block.HighGrass(10*ref,10*ref)
-            
+
+                self.otherObject[(x*ref,9*ref)] = block.HighGrass(x*ref,9*ref)
+            self.otherObject[(9*ref,0*ref)] = block.HighGrass(9*ref,0*ref)
+            self.grid[(7*ref,5*ref)] = block.HighGrass(7*ref,5*ref)
+            self.otherObject[(7*ref,9*ref)] = block.HighGrass(7*ref,9*ref)
+            self.otherObject[(10*ref,10*ref)] = block.HighGrass(10*ref,10*ref)
+
             #add bridge
             self.grid[(ref,9*ref)] = block.Bridge(ref,9*ref)
             self.grid[(9*ref,8*ref)] = block.Bridge(9*ref,8*ref)
+            
+            for key, value in self.otherObject.iteritems():
+                self.grid[key]=self.otherObject[key]
 
         # Create players.
         self.populatePlayers()
@@ -96,29 +103,25 @@ class Model:
         """
         if self.level==0:
             
-            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 1)
-            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 2)
-            self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team  = 1)
-            self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team  = 2)
+            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
+            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
+            self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team = 0)
+            self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team = 1)
         
         if self.level==1:
 
-            self.character[(ref*5,ref*0)] = character.Warrior(self,location=(ref*5,ref*0), name='Julian', dodge = 5 , crit=5, team = 1)
-            self.character[(ref*7,ref*0)] = character.Warrior(self,location=(ref*7,ref*0), name='David', dodge = 5 , crit=5, team = 1)
-            self.character[(ref*8,ref*1)] = character.Warrior(self,location=(ref*8,ref*1), name='Charlie', dodge = 5, crit=5, team  = 1)
-            self.character[(ref*7,ref*1)] = character.Warrior(self,location=(ref*7,ref*1), name='Jacob', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*5,ref*10)] = character.Warrior(self,location=(ref*5,ref*10), name='Bob', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*6,ref*11)] = character.Warrior(self,location=(ref*6,ref*11), name='Tom', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*7,ref*10)] = character.Warrior(self,location=(ref*7,ref*10), name='Pierre', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*8,ref*11)] = character.Warrior(self,location=(ref*8,ref*11), name='Fishhead', dodge = 5 , crit=5, team  = 2)
-            self.character[(ref*6,ref*0)] = character.Archer(self,location=(ref*6,ref*0), name='Babe', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team  = 1)
-            self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team  = 2)
-
-        # print self.character[(300,300)].weaponrange
-        # print self.character[(400,500)].weaponrange
-
+            self.character[(ref*5,ref*0)] = character.Warrior(self,location=(ref*5,ref*0), name='Julian', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*7,ref*0)] = character.Warrior(self,location=(ref*7,ref*0), name='David', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*8,ref*1)] = character.Warrior(self,location=(ref*8,ref*1), name='Charlie', dodge = 5, crit=5, team = 0)
+            self.character[(ref*7,ref*1)] = character.Warrior(self,location=(ref*7,ref*1), name='Jacob', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*5,ref*10)] = character.Warrior(self,location=(ref*5,ref*10), name='Bob', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*6,ref*11)] = character.Warrior(self,location=(ref*6,ref*11), name='Tom', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*7,ref*10)] = character.Warrior(self,location=(ref*7,ref*10), name='Pierre', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*8,ref*11)] = character.Warrior(self,location=(ref*8,ref*11), name='Fishhead', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*6,ref*0)] = character.Archer(self,location=(ref*6,ref*0), name='Babe', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*8,ref*0)] = character.Archer(self,location=(ref*8,ref*0), name='Ashley', dodge = 5 , crit=5, team = 0)
+            self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team = 1)
+            self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team = 1)
 
     def organize_teams(self):
         """
@@ -135,70 +138,36 @@ class Model:
                             self.teams.append([])
                     self.teams[self.character[point].team].append(self.character[point])
 
-    # def updateCharLocation(self, x, y):
-    #     """
-    #     This function updates the character location.
-
-    #     Inputs: 'x' and 'y' are both input list of all locations along the path that the character is moving.  'x' and 'y' must be the same length.
-    #     Outputs: the direction the character should be facing after the move."""
-    #     for i in range(len(x)):
-    #         if i>0:
-    #             # If the location of this thingy does not have a character,
-    #             if self.character[(x[i],y[i])] == None:
-    #                 # Jump character from old location into new location.
-    #                 self.character[(x[i],y[i])]=self.character[(x[i-1], y[i-1])]
-    #                 # Update location.
-    #                 self.character[(x[i],y[i])].location=(x[i],y[i])
-    #                 # Moved is the distance from the old x to new x and old y to new y. 
-    #                 moved=int((abs(x[i]-x[i-1])+abs(y[i]-y[i-1]))/50)
-                    
-    #                 # Direction
-    #                 if abs(x[i]-x[i-1]) > abs(y[i]-y[i-1]):
-    #                     if x[i]-x[i-1] < 0:
-    #                         direction = 'n'
-    #                     else:
-    #                         direction = 's'
-    #                 else:
-    #                     if y[i]-y[i-1] < 0:
-    #                         direction = 'e'
-    #                     else:
-    #                         direction = 'w'
-
-    #                 # Updates character location for movement left
-    #                 self.character[(x[i],y[i])].movementleft-=moved
-
-    #                 # Delete old character in that location.
-    #                 self.character[(x[i-1],y[i-1])]=None
-
-    #                 # Returns the direction.
-    #                 return direction
+        for character in self.teams[0]:
+            character.can_move = True
 
     def location_update(self, list_of_locations):
         for index in range(len(list_of_locations)):
             if len(list_of_locations) > 0:
-                if list_of_locations[index] not in self.character:
-                    self.character[list_of_locations[index]]=self.character[list_of_locations[index-1]]
-                    self.character[list_of_locations[index]].location= list_of_locations[index]
-                    moved=int((abs(list_of_locations[index][0]-list_of_locations[index-1][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
-
-                    if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
-                        if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
-                            direction = 'n'
+                if list_of_locations[index] in self.character:
+                    if self.character[list_of_locations[index]]== None :
+                        self.character[list_of_locations[index]]=self.character[list_of_locations[index-1]]
+                        self.character[list_of_locations[index]].location= list_of_locations[index]
+                        moved=int((abs(list_of_locations[index][0]-list_of_locations[index-1][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
+    
+                        if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
+                            if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
+                                direction = 'n'
+                            else:
+                                direction = 's'
                         else:
-                            direction = 's'
-                    else:
-                        if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
-                            direction = 'e'
-                        else:
-                            direction = 'w'
-
-                    self.character[list_of_locations[index]].movementleft-=moved
-
-                    # Delete old character in that location.
-                    del self.character[list_of_locations[index-1]]
-
-                    # Returns the direction.
-                    return direction
+                            if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
+                                direction = 'e'
+                            else:
+                                direction = 'w'
+    
+                        self.character[list_of_locations[index]].movementleft-=moved
+    
+                        # Delete old character in that location.
+                        self.character[list_of_locations[index-1]]=None
+    
+                        # Returns the direction.
+                        return direction
 
     def next_turn(self):
         """
@@ -207,12 +176,23 @@ class Model:
         Inputs: the model 
         Outputs: None
         """
+        choice = self.turn % len(self.teams)
+        old_choice = choice
         self.charselected = None
-        for character in self.teams[self.turn % 3]:
+        for character in self.teams[choice]:
             character.can_move = False
+            character.movementleft = character.movement
+            character.o_location = character.location
 
         self.turn += 1
-        for character in self.teams[self.turn % 3]:
+        while self.turn % len(self.teams) == []:
+            self.turn += 1
+        
+        choice = self.turn % len(self.teams)
+        if choice == old_choice:
+            self.end_game()
+
+        for character in self.teams[choice]:
             character.can_move = True
             character.hasAttacked = False
             character.movementleft = character.movement
@@ -220,37 +200,50 @@ class Model:
     def charselect(self, corner_x, corner_y):
         """
         """
-        if (corner_x,corner_y) in self.character:
-            self.statselect = self.character[(corner_x,corner_y)]
-            self.charselected = self.character[(corner_x,corner_y)]
-            self.character[(corner_x,corner_y)].orient = 's'
+        if (corner_x, corner_y) in self.character:
+            if self.character[(corner_x,corner_y)] != None:
+                self.statselect = self.character[(corner_x,corner_y)]
+                self.charselected = self.character[(corner_x,corner_y)]
+                self.character[(corner_x,corner_y)].orient = 's'
 
     def char_reset(self, character):
         """
         """
-        character.orient = "s"
-        self.location_update([character.location, character.o_location])
-        character.movementleft=character.movement
+        if character.can_move == False:
+            return
+        else:
+            character.orient = "s"
+            self.location_update([character.location, character.o_location])
+            character.movementleft=character.movement
 
     def move(self, player, corner_x, corner_y):
-        if player.movementleft==0:
-            self.statselect = self.character[(corner_x,corner_y)]
-            self.charselected = self.character[(corner_x,corner_y)]
-        else:
+        if (corner_x, corner_y) in self.character:
+            if player.movementleft==0:
+                self.statselect = self.character[(corner_x,corner_y)]
+                self.charselected = self.character[(corner_x,corner_y)]
+            
+            elif self.character[(corner_x, corner_y)]!=None:
+                if player.team == self.character[(corner_x, corner_y)].team:
+                    player.clickTwice = False
+                    self.charselected = self.character[(corner_x, corner_y)]
+                    self.statselect = self.character[(corner_x,corner_y)]
+            
+                # Fighting situation.
+                elif self.character[(corner_x,corner_y)] != player:
+                    self.complete_fighting_situation(player, corner_x, corner_y)
+                    
             # If the place the character is moving to is empty,
-            if (corner_x,corner_y) not in self.character:
+            elif self.character[(corner_x,corner_y)] == None:
                 player.clickTwice = False
                 self.jump_to(player, corner_x, corner_y)
-    
-            # Fighting situation.
-            elif (corner_x,corner_y) in self.character and self.character[(corner_x,corner_y)] != player:
-                self.complete_fighting_situation(player, corner_x, corner_y)
 
     def jump_to(self, player, corner_x, corner_y):
         """
         This function jumps a character to the selected location.
         """
         # If the character can reach this block,
+        if player.can_move == False:
+            return
         if (corner_x,corner_y) in player.availabilities:
             # Update to that location.
             player.orient = self.location_update([player.location, (corner_x, corner_y)])
@@ -260,25 +253,29 @@ class Model:
     def complete_fighting_situation(self, player, corner_x, corner_y):
 
         # If two players are within weaponrange,
+        print 'got here'
         if int((abs(self.character[(corner_x,corner_y)].location[0]-player.location[0])+abs(self.character[(corner_x,corner_y)].location[1]-player.location[1]))/50) == player.weaponrange:
 
             # If the player has a clicktwice state,
             if player.clickTwice:
                 if not player.hasAttacked:
-                    self.strings_of_actions = player.battle(self.character[(corner_x, corner_y)])
-                    if player.CurrentHP == 0:
-                        self.character[player.location]=None
-                    if self.character[(corner_x, corner_y)].CurrentHP == 0:
-                        self.character[self.character[(corner_x, corner_y)].location]=None
+                    if player.team != self.character[(corner_x, corner_y)].team:
+                        self.strings_of_actions = player.battle(self.character[(corner_x, corner_y)])
+                        
+                        if player.CurrentHP <= 0:
+                            self.character[player.location]=None
+                        if self.character[(corner_x, corner_y)].CurrentHP <= 0:
+                            self.character[self.character[(corner_x, corner_y)].location]=None
                 
-                self.battlescreen = (player,self.character[(corner_x,corner_y)])
+                        self.battlescreen = (player,self.character[(corner_x,corner_y)])
 
-                player.clickTwice = False
-                player.movementleft=0
-                self.battlescreen = None
+                        player.clickTwice = False
+                        player.movementleft=0
+                        self.battlescreen = None
             
             else:
-                self.battlescreen = (player,self.character[(corner_x,corner_y)])
+                if player.team != self.character[(corner_x, corner_y)].team:
+                    self.battlescreen = (player,self.character[(corner_x,corner_y)])
                 player.clickTwice=True
             
         else:
@@ -287,31 +284,11 @@ class Model:
             self.charselected = self.character[(corner_x,corner_y)]
             self.character[(corner_x,corner_y)].orient = 's'
             
-    
-    
-    
-    def endgame(self):   
-        team1wins=False
-        team2wins=False
-        numberofcharacterin1=0
-        for character in self.teams[1]:
-            print self.teams[0]
-            if character in self.character.itervalues():
-                numberofcharacterin1+=1
-            if numberofcharacterin1==0:
-                team2wins=True
-     
-        numberofcharacterin2=0
-        for character in self.teams[2]:
-            if character in self.character.itervalues():
-                numberofcharacterin2+=1
-            if numberofcharacterin2==0:
-                team1wins=True        
-        return (team1wins,team2wins)
-    
-    
-    
-    
+    def end_game(self):
+        """
+        This function ends the gameself.
+        """
+        print "Game Ended."
     
     def update(self):
         """
@@ -320,12 +297,16 @@ class Model:
         Inputs: the model
         Outputs: None
         """
-        for character in self.teams[self.turn%3]:
+        for point in self.character:
+            if self.character[point] != None:
+                self.character[point].generate_availabilities()
+        
+        for character in self.teams[self.turn%len(self.teams)]:
             if character.can_move == True:
-                character.generate_availabilities()
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
+<<<<<<< HEAD
         result=self.endgame()
         if result==(True,False):
             print "Team 1 wins!"
@@ -346,3 +327,5 @@ class Model:
             
             
             
+=======
+>>>>>>> 9e02350a5f5f9eae0b6b6d99b36996c10d6d6b6c

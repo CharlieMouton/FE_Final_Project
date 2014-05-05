@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     model = Model()
     view=View(model,screen)
-    controller = Controller(model,view)
+    controller = Controller(model,view) 
      
     while model.running:
  
