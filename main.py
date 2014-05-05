@@ -5,7 +5,7 @@ import time
 from fe_model import *
 from fe_view import *
 from fe_controller import *
-
+from playmp3 import *
 
 
 pygame.init()
@@ -162,6 +162,7 @@ def main():
     
     pygame.init()
     
+    
     #Setup.
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption('Pyre Emblem')
@@ -171,13 +172,12 @@ def main():
     controller = Controller(model,view) 
      
     while model.running:
- 
         model.update() 
         view.draw()
         controller.control()
         
         time.sleep(.01)
-
+      
     pygame.quit()
     
     
