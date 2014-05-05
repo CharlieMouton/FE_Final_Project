@@ -36,7 +36,6 @@ class Model:
                 for y in range(0, self.sheight, self.ref):
                     node = block.Grass(x,y)
                     self.grid[(x,y)] = node
-                    self.character[(x,y)]=None
             for x in range(0, self.swidth, self.ref):
                 for y in range(0, self.sheight, self.ref):
                     if x not in range(1 * self.ref, self.swidth - 1*self.ref,self.ref) or y not in range(1*self.ref, self.sheight-1*self.ref, self.ref):
@@ -48,7 +47,6 @@ class Model:
             for x in range(0, self.swidth-2*ref, self.ref):
                 for y in range(0, self.sheight-2*ref, self.ref):
                     self.grid[(x,y)] = block.Grass(x,y)
-                    self.character[(x,y)]=None
             #add water
             for y in range(10):
                 self.grid[(0,y*ref)] = block.Outeredge(0,y*ref)
@@ -217,6 +215,7 @@ class Model:
             character.movementleft=character.movement
 
     def move(self, player, corner_x, corner_y):
+        print "is it here"
         if (corner_x, corner_y) in self.character:
             if player.movementleft==0:
                 self.statselect = self.character[(corner_x,corner_y)]
@@ -230,12 +229,12 @@ class Model:
             
             else:
                 # If the place the character is moving to is empty,
-                if self.character[(corner_x,corner_y)] == None:
+                if (corner_x,corner_y) not in self.character:
                     player.clickTwice = False
                     self.jump_to(player, corner_x, corner_y)
                     
                 # Fighting situation.
-                elif self.character[(corner_x,corner_y)] != None and self.character[(corner_x,corner_y)] != player:
+                elif (corner_x,corner_y) in self.character and self.character[(corner_x,corner_y)] != player:
                     self.complete_fighting_situation(player, corner_x, corner_y)
 
     def jump_to(self, player, corner_x, corner_y):
@@ -263,7 +262,7 @@ class Model:
                         self.strings_of_actions = player.battle(self.character[(corner_x, corner_y)])
                         
                         if player.CurrentHP <= 0:
-                            self.character[player.location]=None
+                            del self.character[player.location]
                         if self.character[(corner_x, corner_y)].CurrentHP <= 0:
                             self.character[self.character[(corner_x, corner_y)].location]=None
                 

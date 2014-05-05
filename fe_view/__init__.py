@@ -28,7 +28,6 @@ class View:
         for key,value in self.model.otherObject.iteritems():
             self.surfaceObjects[key]=self.model.otherObject[key]
 
-
         ordgrid = sorted(self.model.grid, key=itemgetter(0,1))
         for point in ordgrid:
             tempobj = self.model.grid[point]
@@ -40,6 +39,9 @@ class View:
         ordchar = sorted(self.characters, key=itemgetter(0,1))
         for point in ordchar:
                 if str(self.surfaceObjects[point].__class__)[19:len(str(self.surfaceObjects[point].__class__))] == "ock.Wall'>":
+                    print self.model.character
+                    if self.model.character[point].can_move and self.model.character[point] != self.model.charselected:
+                        self.screen.blit(movesquare,(CartToIso(point[0],point[1],0)[0]-48,CartToIso(point[0],point[1],0)[1]-9))
                     self.screen.blit(self.surfaceObjects[point].image,(CartToIso(point[0],point[1],0)[0]-50,CartToIso(point[0],point[1],0)[1]-40))
                 elif self.model.character[point]!= None:
                         self.screen.blit(self.characters[point].image,(CartToIso(point[0],point[1],0)[0]-25,CartToIso(point[0],point[1],0)[1]-55))
