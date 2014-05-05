@@ -228,15 +228,14 @@ class Model:
                     self.charselected = self.character[(corner_x, corner_y)]
                     self.statselect = self.character[(corner_x,corner_y)]
             
-            else:
-                # If the place the character is moving to is empty,
-                if self.character[(corner_x,corner_y)] == None:
-                    player.clickTwice = False
-                    self.jump_to(player, corner_x, corner_y)
-                    
                 # Fighting situation.
-                elif self.character[(corner_x,corner_y)] != None and self.character[(corner_x,corner_y)] != player:
+                elif self.character[(corner_x,corner_y)] != player:
                     self.complete_fighting_situation(player, corner_x, corner_y)
+                    
+            # If the place the character is moving to is empty,
+            elif self.character[(corner_x,corner_y)] == None:
+                player.clickTwice = False
+                self.jump_to(player, corner_x, corner_y)
 
     def jump_to(self, player, corner_x, corner_y):
         """
@@ -254,6 +253,7 @@ class Model:
     def complete_fighting_situation(self, player, corner_x, corner_y):
 
         # If two players are within weaponrange,
+        print 'got here'
         if int((abs(self.character[(corner_x,corner_y)].location[0]-player.location[0])+abs(self.character[(corner_x,corner_y)].location[1]-player.location[1]))/50) == player.weaponrange:
 
             # If the player has a clicktwice state,
