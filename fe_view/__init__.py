@@ -149,13 +149,18 @@ class View:
         crit = myfont.render(str(character.crit), 1, (255,255,255))
         self.screen.blit(crit,(965+258,685-530))
         defense = myfont.render(str(character.defense), 1, (255,255,255))
-        self.screen.blit(defense,(965+258,700-530))        
+        self.screen.blit(defense,(965+258,700-530))
         for block in character.availabilities:
             bluesq = pygame.image.load('fe_model/images/BlueSquare.png')
             self.screen.blit(bluesq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))
+        if self.model.path != None:
+            for block in self.model.path:
+                redsq = pygame.image.load('fe_model/images/GreenSquare.png')
+                self.screen.blit(redsq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))
         for block in character.attackrange:
             redsq = pygame.image.load('fe_model/images/RedSquare.png')
-            self.screen.blit(redsq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))   
+            self.screen.blit(redsq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1)) 
+        
 
     def turn_display(self):
         """Displays the turn which the game is currently in."""
@@ -168,24 +173,3 @@ class View:
             myfont = pygame.font.SysFont("arial", 128)
             message=myfont.render("Team %s wins"%(team), 1, (0,0,0)) #255,255,255
             self.screen.blit(message, (12*ref,10*ref))
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            

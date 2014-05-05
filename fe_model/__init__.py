@@ -28,7 +28,8 @@ class Model:
         self.battlescreen = None
         self.gameover=None
         self.strings_of_actions = []
-        self.level = 1
+        self.path=[]
+        self.level = 0
 
         # Generate map.
         if self.level == 0:
@@ -101,7 +102,7 @@ class Model:
         """
         if self.level==0:
             
-            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
+            self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', movement= 10,dodge = 5 , crit=5, team = 0)
             # self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
             # self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team = 0)
             # self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team = 1)
@@ -139,6 +140,7 @@ class Model:
             character.can_move = True
 
     def location_update(self, list_of_locations):
+        self.direction=''
         for index in range(len(list_of_locations)):
             if len(list_of_locations) > 0:
                 if list_of_locations[index] not in self.character:
@@ -148,22 +150,22 @@ class Model:
 
                     if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
                         if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
-                            direction = 'n'
+                            self.direction = 'n'
                         else:
-                            direction = 's'
+                            self.direction = 's'
                     else:
                         if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
-                            direction = 'e'
+                            self.direction = 'e'
                         else:
-                            direction = 'w'
+                            self.direction = 'w'
 
                     self.character[list_of_locations[index]].movementleft-=moved
-
                     # Delete old character in that location.
                     del self.character[list_of_locations[index-1]]
 
-                    # Returns the direction.
-                    return direction
+
+
+                    
 
     def next_turn(self):
         """
@@ -207,8 +209,9 @@ class Model:
         if character.can_move == False:
             return
         else:
-            character.orient = "s"
+            self.path=[]
             self.location_update([character.location, character.o_location])
+            character.orient = "s"
             character.movementleft=character.movement
 
     def move(self, player, corner_x, corner_y):
@@ -239,8 +242,12 @@ class Model:
         if player.can_move == False:
             return
         if (corner_x,corner_y) in player.availabilities:
+            self.path = []
+            self.path = player.generate_path(player.availabilities,(corner_x,corner_y),player.location)
+
             # Update to that location.
-            player.orient = self.location_update([player.location, (corner_x, corner_y)])
+            self.location_update(self.path)
+            player.orient = self.direction
 
         else:
             self.charselected = None
@@ -262,7 +269,6 @@ class Model:
                             self.character[self.character[(corner_x, corner_y)].location]=None
                 
                         self.battlescreen = (player,self.character[(corner_x,corner_y)])
-
                         player.clickTwice = False
                         player.movementleft=0
                         self.battlescreen = None

@@ -163,7 +163,7 @@ class Character:
 
         return return_blocks
 
-    def generate_path(self, original_availabilities, end_location):
+    def generate_path(self, original_availabilities, end_location, start_location):
         """
         Generates the path which the character took to get to the location.
 
@@ -173,10 +173,11 @@ class Character:
         path = []
 
         location = end_location
-        while original_availabilities[location] != start_location:
+        while location != start_location:
             path.append(location)
             location = original_availabilities[location]
-
+        path.append(location)
+        path =path[::-1]
         return path
 
     def battle(self, player2):
