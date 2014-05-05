@@ -157,7 +157,10 @@ class GameMenu():
  
     
 
+"""
 def main():    
+"""
+if __name__ == "__main__":
     pygame.init()
     
     
@@ -181,7 +184,7 @@ def main():
     pygame.quit()
     
     
-
+"""
 if __name__ == "__main__":
     
  
@@ -195,7 +198,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Fire Emblem')
     gm = GameMenu(screen, funcs.keys(), funcs)
     gm.run()
-
+"""
     
     
     
