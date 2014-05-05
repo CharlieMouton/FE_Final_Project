@@ -299,3 +299,24 @@ class Model:
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
+"""
+        result=self.endgame()
+        if result==(True,False):
+            print "Team 1 wins!"
+            self.gameover=1
+        
+        if result==(False, True):
+            print "Team 2 wins!"
+            self.gameover=2
+                
+"""            
+            
+            
+            
+   
+            
+            
+            
+            
+            
+          
