@@ -103,7 +103,7 @@ class Model:
         if self.level==0:
             
             self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', movement= 10,dodge = 5 , crit=5, team = 0)
-            # self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
+            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
             # self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team = 0)
             # self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team = 1)
         
@@ -162,10 +162,6 @@ class Model:
                     self.character[list_of_locations[index]].movementleft-=moved
                     # Delete old character in that location.
                     del self.character[list_of_locations[index-1]]
-
-
-
-                    
 
     def next_turn(self):
         """
@@ -298,13 +294,18 @@ class Model:
         Outputs: None
         """
         for point in self.character:
-            self.character[point].generate_availabilities()
+            if self.character[point] != None:
+                self.character[point].generate_availabilities()
         
         for character in self.teams[self.turn%len(self.teams)]:
             if character.can_move == True:
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
-                character = None
+                # del self.character[character.location]
+                self.character.pop(character.location, None)
+                # self.teams[self.turn%len(self.teams)].remove(character)
+
+                # character = None
 
         # result=self.endgame()
         # if result==(True,False):
@@ -314,4 +315,3 @@ class Model:
         # if result==(False, True):
         #     print "Team 2 wins!"
         #     self.gameover=2
-                           

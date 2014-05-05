@@ -6,8 +6,6 @@ from fe_model import *
 from fe_view import *
 from fe_controller import *
 
-
-
 pygame.init()
  
 WHITE = (255, 255, 255)

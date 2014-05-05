@@ -154,6 +154,7 @@ class View:
             bluesq = pygame.image.load('fe_model/images/BlueSquare.png')
             self.screen.blit(bluesq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))
         if self.model.path != None:
+            print self.model.path
             for block in self.model.path:
                 redsq = pygame.image.load('fe_model/images/GreenSquare.png')
                 self.screen.blit(redsq,(CartToIso(block[0],block[1])[0]-47,CartToIso(block[0],block[1])[1]+1))
