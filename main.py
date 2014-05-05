@@ -170,12 +170,14 @@ def main():
     model = Model()
     view=View(model,screen)
     controller = Controller(model,view) 
-     
+
+    playmusic()
+
     while model.running:
         model.update() 
         view.draw()
         controller.control()
-        
+
         time.sleep(.01)
       
     pygame.quit()
