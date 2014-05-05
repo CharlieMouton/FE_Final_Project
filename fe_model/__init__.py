@@ -181,7 +181,7 @@ class Model:
             character.o_location = character.location
 
         self.turn += 1
-        while self.turn % len(self.teams) == []:
+        while self.teams[self.turn % len(self.teams)] == []:
             self.turn += 1
         
         choice = self.turn % len(self.teams)
