@@ -306,7 +306,7 @@ class Model:
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
-<<<<<<< HEAD
+"""
         result=self.endgame()
         if result==(True,False):
             print "Team 1 wins!"
@@ -316,7 +316,7 @@ class Model:
             print "Team 2 wins!"
             self.gameover=2
                 
-                
+"""            
             
             
             
@@ -326,6 +326,4 @@ class Model:
             
             
             
-            
-=======
->>>>>>> 9e02350a5f5f9eae0b6b6d99b36996c10d6d6b6c
+          
