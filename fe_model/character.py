@@ -85,10 +85,7 @@ class Character:
             temp_buffer = {}
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
-                # new_blocks = [block for block in blocks if block in self.model.grid]
-
                 new_blocks = [block for block in blocks if block in self.model.grid and block not in other_teams_location]
-
                 next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
                 
                 next_positions_dict = {}
@@ -97,6 +94,7 @@ class Character:
 
                 if step < self.movementleft:
                     self.availabilities[current_position] = current_positions[current_position]
+
                 elif step == self.movementleft+self.weaponrange-1:
                     self.attackrange[current_position] = current_positions[current_position]
 
@@ -105,6 +103,33 @@ class Character:
             current_positions = temp_buffer
 
         return self.availabilities, self.attackrange
+
+    def attackrangeFunc(self):
+        self.attackrange={}
+        current_positions = {self.location: self.location}
+        other_teams = [team for team in self.model.teams if self.model.teams.index(team) != self.team]
+        other_teams_location = [team_member.location for team in other_teams for team_member in team]
+
+        # Iterate throughout the map to find available positions.
+        for step in range(int(self.movementleft)+int(self.weaponrange)):
+            temp_buffer = {}
+            for current_position in current_positions:
+                blocks = self.surroundings(current_position)
+                new_blocks = [block for block in blocks if block in self.model.grid]
+                next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
+                
+                next_positions_dict = {}
+                for next_position in next_positions:
+                    next_positions_dict[next_position] = current_position
+
+                if step == self.movementleft+self.weaponrange-1:
+                    self.attackrange[current_position] = current_positions[current_position]
+
+                temp_buffer.update(next_positions_dict)
+            
+            current_positions = temp_buffer
+
+        return self.attackrange
 
     def surroundings(self, current_position):
         blocks = range(4)
