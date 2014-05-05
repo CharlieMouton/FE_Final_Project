@@ -174,6 +174,7 @@ class Character:
 
         location = end_location
         while location != start_location:
+            print original_availabilities[location]
             path.append(location)
             location = original_availabilities[location]
         path.append(location)

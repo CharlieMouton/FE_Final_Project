@@ -29,7 +29,7 @@ class Model:
         self.gameover=None
         self.strings_of_actions = []
         self.path=[]
-        self.level = 0
+        self.level = 1
 
         # Generate map.
         if self.level == 0:
@@ -141,28 +141,55 @@ class Model:
 
     def location_update(self, list_of_locations):
         self.direction=''
+        spotFilled=False
         for index in range(len(list_of_locations)):
             if len(list_of_locations) > 0:
-                if list_of_locations[index] not in self.character:
-                    self.character[list_of_locations[index]]=self.character[list_of_locations[index-1]]
-                    self.character[list_of_locations[index]].location= list_of_locations[index]
-                    moved=int((abs(list_of_locations[index][0]-list_of_locations[index-1][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
-
-                    if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
-                        if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
-                            self.direction = 'n'
+                if index>0:
+                    if list_of_locations[index] not in self.character:
+                        if spotFilled:
+                            print 'here'
+                            self.character[list_of_locations[index]]=self.character[list_of_locations[index-2]]
+                            self.character[list_of_locations[index]].location= list_of_locations[index]
+                            moved=int((abs(list_of_locations[index][0]-list_of_locations[index-2][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
+    
+                            if abs(list_of_locations[index][0]-list_of_locations[index-2][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
+                                if list_of_locations[index][0]-list_of_locations[index-2][0] < 0:
+                                    self.direction = 'n'
+                                else:
+                                    self.direction = 's'
+                            else:
+                                if list_of_locations[index][1]-list_of_locations[index-2][1] < 0:
+                                    self.direction = 'e'
+                                else:
+                                    self.direction = 'w'
+        
+                            self.character[list_of_locations[index]].movementleft-=moved
+                            # Delete old character in that location.
+                            self.character.pop(list_of_locations[index-2], None)
+                            # del self.character[list_of_locations[index-1]]
+                            spotFilled=False
                         else:
-                            self.direction = 's'
+                            self.character[list_of_locations[index]]=self.character[list_of_locations[index-1]]
+                            self.character[list_of_locations[index]].location= list_of_locations[index]
+                            moved=int((abs(list_of_locations[index][0]-list_of_locations[index-1][0])+abs(list_of_locations[index][1]-list_of_locations[index-1][1]))/50)
+    
+                            if abs(list_of_locations[index][0]-list_of_locations[index-1][0]) > abs(list_of_locations[index][1]-list_of_locations[index-1][1]):
+                                if list_of_locations[index][0]-list_of_locations[index-1][0] < 0:
+                                    self.direction = 'n'
+                                else:
+                                    self.direction = 's'
+                            else:
+                                if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
+                                    self.direction = 'e'
+                                else:
+                                    self.direction = 'w'
+        
+                            self.character[list_of_locations[index]].movementleft-=moved
+                            # Delete old character in that location.
+                            self.character.pop(list_of_locations[index-1], None)
+                            # del self.character[list_of_locations[index-1]]
                     else:
-                        if list_of_locations[index][1]-list_of_locations[index-1][1] < 0:
-                            self.direction = 'e'
-                        else:
-                            self.direction = 'w'
-
-                    self.character[list_of_locations[index]].movementleft-=moved
-                    # Delete old character in that location.
-                    self.character.pop(list_of_locations[index-1], None)
-                    # del self.character[list_of_locations[index-1]]
+                        spotFilled=True
 
     def next_turn(self):
         """
@@ -241,9 +268,9 @@ class Model:
         if (corner_x,corner_y) in player.availabilities:
             self.path = []
             self.path = player.generate_path(player.availabilities,(corner_x,corner_y),player.location)
-
+            print (player.location)
             # Update to that location.
-            self.location_update(self.path)
+            self.location_update([player.location, (corner_x, corner_y)])
             player.orient = self.direction
 
         else:
