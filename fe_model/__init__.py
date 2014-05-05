@@ -102,9 +102,9 @@ class Model:
         if self.level==0:
             
             self.character[(300,300)] = character.Warrior(self,location=(300,300), name='Julian', dodge = 5 , crit=5, team = 0)
-            self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
-            self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team = 0)
-            self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team = 1)
+            # self.character[(300,350)] = character.Warrior(self,location=(300,350), name='David', dodge = 5 , crit=5, team = 1)
+            # self.character[(400,500)] = character.Archer(self,location=(400,500), name='Sae', dodge = 5 , crit=5, team = 0)
+            # self.character[(400,500)] = character.Archer(self,location=(450,500), name='Pan', dodge = 5 , crit=5, team = 1)
         
         if self.level==1:
 
@@ -299,24 +299,13 @@ class Model:
                 character.image = character.images[character.orient]
             if character.CurrentHP <= 0:
                 character = None
-"""
-        result=self.endgame()
-        if result==(True,False):
-            print "Team 1 wins!"
-            self.gameover=1
+
+        # result=self.endgame()
+        # if result==(True,False):
+        #     print "Team 1 wins!"
+        #     self.gameover=1
         
-        if result==(False, True):
-            print "Team 2 wins!"
-            self.gameover=2
-                
-"""            
-            
-            
-            
-   
-            
-            
-            
-            
-            
-          
+        # if result==(False, True):
+        #     print "Team 2 wins!"
+        #     self.gameover=2
+                           

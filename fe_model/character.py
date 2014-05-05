@@ -41,6 +41,7 @@ class Character:
 
         self.availabilities = {}
         self.attackrange = {}
+        self.perimeter = {}
         self.can_move = can_move
         self.orient = 's'
         self.hasAttacked = hasAttacked            
@@ -74,19 +75,26 @@ class Character:
         Inputs: A character
         Outputs: That character's availabilities and attackrange
         """
+        self.movementRange()
+        self.attackrangeFunc()
+        # self.perimeter_find()
+        # print self.perimeter
+        
+        return self.availabilities,self.attackrange
+
+    def movementRange(self):
         self.availabilities={}
-        self.attackrange={}
         current_positions = {self.location: self.location}
         other_teams = [team for team in self.model.teams if self.model.teams.index(team) != self.team]
         other_teams_location = [team_member.location for team in other_teams for team_member in team]
         
         # Iterate throughout the map to find available positions.
-        for step in range(int(self.movementleft)+int(self.weaponrange)):
+        for step in range(int(self.movementleft)):
             temp_buffer = {}
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
                 new_blocks = [block for block in blocks if block in self.model.grid and block not in other_teams_location]
-                next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
+                next_positions = [block for block in new_blocks if (block not in self.availabilities and self.model.grid[block].movementcost <= self.movementleft - step)]
                 
                 next_positions_dict = {}
                 for next_position in next_positions:
@@ -95,41 +103,51 @@ class Character:
                 if step < self.movementleft:
                     self.availabilities[current_position] = current_positions[current_position]
 
-                elif step == self.movementleft+self.weaponrange-1:
-                    self.attackrange[current_position] = current_positions[current_position]
 
                 temp_buffer.update(next_positions_dict)
             
             current_positions = temp_buffer
-
-        return self.availabilities, self.attackrange
+        # print self.current_positions
+        return self.availabilities
 
     def attackrangeFunc(self):
         self.attackrange={}
-        current_positions = {self.location: self.location}
-        other_teams = [team for team in self.model.teams if self.model.teams.index(team) != self.team]
-        other_teams_location = [team_member.location for team in other_teams for team_member in team]
+        self.perimeter = {}
+        self.perimeter_find()
+        current_positions = self.perimeter
 
         # Iterate throughout the map to find available positions.
-        for step in range(int(self.movementleft)+int(self.weaponrange)):
+        # print current_positions
+        for step in range(int(self.weaponrange+1)):
             temp_buffer = {}
             for current_position in current_positions:
                 blocks = self.surroundings(current_position)
                 new_blocks = [block for block in blocks if block in self.model.grid]
-                next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <= self.movementleft - step + self.weaponrange)]
-                
+                # next_positions = [block for block in new_blocks if (block not in self.availabilities and block not in self.attackrange and self.model.grid[block].movementcost <=self.movementleft - step + self.weaponrange)]
+                next_positions = [block for block in new_blocks if (block not in self.attackrange)]
+
                 next_positions_dict = {}
                 for next_position in next_positions:
                     next_positions_dict[next_position] = current_position
 
-                if step == self.movementleft+self.weaponrange-1:
-                    self.attackrange[current_position] = current_positions[current_position]
+                if step == self.weaponrange:
+                    if current_position not in self.availabilities:
+                        self.attackrange[current_position] = current_positions[current_position]
 
                 temp_buffer.update(next_positions_dict)
-            
             current_positions = temp_buffer
-
+        # print current_positions
+        # print self.attackrange
         return self.attackrange
+
+    def perimeter_find(self):
+        for location in self.availabilities:
+            surround = self.surroundings(location)
+            for point in surround:
+                if point not in self.availabilities:
+                    self.perimeter[location] = self.availabilities[location]
+                    break
+
 
     def surroundings(self, current_position):
         blocks = range(4)
