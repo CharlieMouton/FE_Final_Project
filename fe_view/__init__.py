@@ -21,7 +21,7 @@ class View:
 
     def draw(self):
         self.screen.fill(pygame.Color(255,255,255))
-        movesquare = pygame.image.load("fe_model/images/GreenSquare.png")
+        # movesquare = pygame.image.load("fe_model/images/GreenSquare.png")
         for key,value in self.model.character.iteritems():
             self.characters[key]=self.model.character[key]
             self.surfaceObjects[key]=self.model.character[key]

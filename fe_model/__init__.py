@@ -123,10 +123,6 @@ class Model:
             self.character[(ref*6,ref*10)] = character.Archer(self,location=(ref*6,ref*10), name='Sae', dodge = 5 , crit=5, team = 1)
             self.character[(ref*7,ref*11)] = character.Archer(self,location=(ref*7,ref*11), name='Pan', dodge = 5 , crit=5, team = 1)
 
-        # print self.character[(300,300)].weaponrange
-        # print self.character[(400,500)].weaponrange
-
-
     def organize_teams(self):
         """
         This function places all players into the right teams.
