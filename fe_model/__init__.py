@@ -161,7 +161,8 @@ class Model:
 
                     self.character[list_of_locations[index]].movementleft-=moved
                     # Delete old character in that location.
-                    del self.character[list_of_locations[index-1]]
+                    self.character.pop(list_of_locations[index-1], None)
+                    # del self.character[list_of_locations[index-1]]
 
     def next_turn(self):
         """
@@ -260,11 +261,14 @@ class Model:
                         self.strings_of_actions = player.battle(self.character[(corner_x, corner_y)])
                         
                         if player.CurrentHP <= 0:
-                            del self.character[player.location]
+                            # del self.character[player.location]
+                            self.character.pop(player.location, None)
                         if self.character[(corner_x, corner_y)].CurrentHP <= 0:
-                            self.character[self.character[(corner_x, corner_y)].location]=None
+                            # del self.character[self.character[(corner_x, corner_y)].location]
+                            self.character.pop(self.character[(corner_x, corner_y)].location, None)
                 
-                        self.battlescreen = (player,self.character[(corner_x,corner_y)])
+                        if (corner_x, corner_y) in self.character:
+                            self.battlescreen = (player,self.character[(corner_x,corner_y)])
                         player.clickTwice = False
                         player.movementleft=0
                         self.battlescreen = None
@@ -303,7 +307,7 @@ class Model:
             if character.CurrentHP <= 0:
                 # del self.character[character.location]
                 self.character.pop(character.location, None)
-                # self.teams[self.turn%len(self.teams)].remove(character)
+                self.teams[self.turn%len(self.teams)].remove(character)
 
                 # character = None
 

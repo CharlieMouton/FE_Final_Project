@@ -5,6 +5,7 @@ import time
 from fe_model import *
 from fe_view import *
 from fe_controller import *
+from playmp3 import *
 
 pygame.init()
  
@@ -136,11 +137,11 @@ class GameMenu():
                     for item in self.items:
                         if item.is_mouse_selection(mpos):
                             self.funcs[item.text]()
- 
+            """
             if pygame.mouse.get_rel() != (0, 0):
                 self.mouse_is_visible = True
                 self.cur_item = None
- 
+            """
             self.set_mouse_visibility()
  
             # Redraw the background
@@ -155,10 +156,9 @@ class GameMenu():
  
     
 
-    
 def main():    
-    
     pygame.init()
+    
     
     #Setup.
     screen = pygame.display.set_mode(size)
@@ -167,15 +167,16 @@ def main():
     model = Model()
     view=View(model,screen)
     controller = Controller(model,view) 
-     
+
+    playmusic()
+
     while model.running:
- 
         model.update() 
         view.draw()
         controller.control()
-        
-        time.sleep(.01)
 
+        time.sleep(.01)
+      
     pygame.quit()
     
     
@@ -193,7 +194,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Fire Emblem')
     gm = GameMenu(screen, funcs.keys(), funcs)
     gm.run()
-    
+
     
     
     
