@@ -138,11 +138,11 @@ class GameMenu():
                     for item in self.items:
                         if item.is_mouse_selection(mpos):
                             self.funcs[item.text]()
- 
+            """
             if pygame.mouse.get_rel() != (0, 0):
                 self.mouse_is_visible = True
                 self.cur_item = None
- 
+            """
             self.set_mouse_visibility()
  
             # Redraw the background
@@ -157,9 +157,10 @@ class GameMenu():
  
     
 
-    
+"""
 def main():    
-    
+"""
+if __name__ == "__main__":
     pygame.init()
     
     
@@ -183,7 +184,7 @@ def main():
     pygame.quit()
     
     
-
+"""
 if __name__ == "__main__":
     
  
@@ -197,7 +198,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Fire Emblem')
     gm = GameMenu(screen, funcs.keys(), funcs)
     gm.run()
-    
+"""
     
     
     
