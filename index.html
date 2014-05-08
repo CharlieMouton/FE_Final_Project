@@ -1,36 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="FE final project : " />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>FE final project by CharlieMouton</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>FE final project</title>
   </head>
-
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/CharlieMouton/FE_Final_Project">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/CharlieMouton/FE_Final_Project/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/CharlieMouton/FE_Final_Project/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/CharlieMouton/FE_Final_Project">View on GitHub</a>
+    <div class="wrapper">
 
-          <h1 id="project_title">FE final project</h1>
-          <h2 id="project_tagline"></h2>
+      <section>
+        <div id="title">
+          <h1>FE final project</h1>
+          <p></p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/CharlieMouton">CharlieMouton</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/CharlieMouton/FE_Final_Project/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/CharlieMouton/FE_Final_Project/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
         <h3>
 <a name="welcome-to-our-website" class="anchor" href="#welcome-to-our-website"><span class="octicon octicon-link"></span></a>Welcome to our website.</h3>
 
@@ -58,18 +65,31 @@
 <p>Thank you.</p>
 
 <p>P.S. We are not collaborating with any other groups. We have no need for an angel adviser. We are not working across fields or with another course. Thanks again!</p>
+
+<h3>
+<a name="design-story" class="anchor" href="#design-story"><span class="octicon octicon-link"></span></a>Design Story</h3>
+
+<p>Working on availabilities</p>
+
+<p>An important part of creating the complete functionality of our game experience is to implement an algorithm that produces the locations where a character can access on the game field. This is easier said than done; there are a variety of factors that influence how we can implement the most effective algorithm. Some factors include:
+Sorting through the whole map: This algorithm should mitigate its need to look through the whole map to produce which blocks are available to our current character. Because a character can move only a certain range, we feel that it’s ineffective to look at all blocks and determine whether or not the character can move to it.
+Walls: Walls are direct obstacles for the characters, but they are placed directly above the grid. Therefore when considering movement, walls must not only prevent the character to walk into them, but they also must stop characters from walking through them.
+Individual block effects: We are accounting for the fact that some blocks have limiting or special abilities. For instance, if we in the future want to implement a swamp or a teleportation block, we must be able to factor in and calculate the available block locations for all of those situations. Special blocks will impact how this algorithm functions directly as the game gets more complex.
+Characters on blocks: Based on how our code is currently constructed, we made the intentional decision to keep characters and the grid blocks separate. Therefore, our algorithm must also consider where each character is in order to treat those characters as walls or allies when the time is appropriate.
+Path History: Initial availabilities may be easy to generate, but later on it may be a challenge to work in another method that calculates the exactly path which the character took to get to its location. In the beginning, we plan to have the character teleport directly to a newly available location, but the act of moving to a location can be a major future challenge. 
+Movement History: Similar to path history, our algorithm must have another set of memories that determine if a character can still move after an attack. However, the character would have already expended some movement, and this needs to be tracked so that eventually the character has an option to backtrack its actions.</p>
+
+<p>Currently, our design plan has the following unique options:
+We can produce all the area around our character: This appears to be the easiest and the closest stepping stone for producing a list of available locations. We can just use math to create an area that the character may have the range to reach. However, its easy implementation has a trade off with its ability to detect walls or special characters. Using this as our first iteration for range generation could potentially cause more challenges than necessary in the future. 
+We can look through each individual block and determine its feasibility of movement in reference to the character: If we look at each individual block, we should not be able to miss a block that is not analyzed. Additionally, the block and the character interaction directly without any assumptions. This implementation can be extremely computationally intensive because our algorithm would have to be a qualifier that analyzes each block. Increase in the size of the game map would linearly make the search processes slower.
+We can create a recursive function that branches out from the character’s original location: This method would aim to make the algorithm ‘grow’ from a character’s location. Like how a cell gets bigger and bigger, this algorithm would analyze the perimeter repeatedly for how many turns a character has. When it runs out of steps to branch, it should stop and produce a list of available locations. During the growth process, we can implement a recognizing method that determines whether a block is an obstacle or has special features. This algorithm could be much more difficult to implement because it may require buffers that can behave weirdly with walls. In terms of efficiency however, this method seems to make the most sense from a conceptual stance. 
+We can implement Plan 1 and 2 together to remove scanned blocks that the player cannot move to: Alternatively we can generate all the moves that the character can reach first and then analyze how each block in that preliminary list relates to the character. At first, this proposition seems easy but with closer inspection we can see that this would take an algorithm that does two parts. More importantly, if there was a wall block relatively close to the character, the algorithm cannot determine how that wall can full impact all the locations that the character can go after the character expends its moves walking around the block.</p>
+
+<p>From these considerations, our plan is to attempt strategy number 3. This may not be the easiest way to initially set up the algorithm, but hopefully by considering all unique scenarios this method will become successful. One of the biggest challenges that we need to overcome is calculating how ‘inhibitive’ a wall actually is. With the recursive growth method, we should be able to ‘grow’ around the walls rather than analyzing each independent block.</p>
       </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">FE final project maintained by <a href="https://github.com/CharlieMouton">CharlieMouton</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
